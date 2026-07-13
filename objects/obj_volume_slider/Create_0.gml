@@ -34,7 +34,7 @@ if (volume_type == "music") {
 /// @function save_volume()
 // 保存到配置文件
 function save_volume(){
-	ini_open("config.ini");
+	ini_open("config_mod.ini");
 	if (volume_type == "music") {
 	    ini_write_real("settings", "music_volume", global.music_volume);
 	} else if (volume_type == "sound") {

@@ -8,7 +8,7 @@ if (is_waiting) {
         update_text();
         
         // 保存到配置文件
-        ini_open("config.ini");
+        ini_open("config_mod.ini");
         ini_write_real("keybinds", key_name, current_key);
         ini_close();
         

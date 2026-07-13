@@ -3,7 +3,7 @@ function move_files () {
     var _local_folder = global.laboratory_manager.file_util.transfer_path_to_windows( _user_profile + "\\FVM_Reborn")
 
     var _saves_old = global.laboratory_manager.file_util.transfer_path_to_windows( _user_profile + "\\美食大战老鼠_重生\\saves")
-    var _saves_new = global.laboratory_manager.file_util.transfer_path_to_windows( _user_profile + "\\FVM_Reborn\\saves")
+    var _saves_new = global.laboratory_manager.file_util.transfer_path_to_windows( _user_profile + "\\FVM_Reborn_Mod\\saves_mod")
     var _save_folder_new_exists = native_folder_exists(_saves_new)
     var _save_folder_old_exists = native_folder_exists(_saves_old)
     if ((_save_folder_new_exists == 0) &&( _save_folder_old_exists == 1)) {
@@ -69,8 +69,8 @@ global.keybind_config = [
 ];
 //window_set_caption("FVM:Reborn")
 // 初始化全局设置（如果不存在配置文件）
-if (!file_exists("config.ini")) {
-    ini_open("config.ini");
+if (!file_exists("config_mod.ini")) {
+    ini_open("config_mod.ini");
     ini_write_bool("settings", "screen_shake", true);
     ini_write_bool("settings", "screen_flash", true);
 	ini_write_bool("settings", "fullscreen", false);
@@ -85,7 +85,6 @@ if (!file_exists("config.ini")) {
 	ini_write_bool("settings", "borderless_window", true);
 	ini_write_real("settings", "save_slot", 0)
 	ini_write_bool("settings", "lose_focus_pause", true)
-	ini_open("config.ini");
     for (var i = 0; i < array_length(global.keybind_config); i++) {
         var kb = global.keybind_config[i];
         ini_write_real("keybinds", kb.name, kb.default1);
@@ -97,7 +96,7 @@ global.music_volume_before_mute = 0.7;
 global.sound_volume_before_mute = 0.7;
 
 // 读取配置到全局变量
-ini_open("config.ini");
+ini_open("config_mod.ini");
 global.screen_shake = ini_read_bool("settings", "screen_shake", true);
 global.screen_flash = ini_read_bool("settings", "screen_flash", true);
 global.fullscreen = ini_read_bool("settings", "fullscreen", false);

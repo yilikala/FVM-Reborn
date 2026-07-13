@@ -36,6 +36,7 @@ load_file(global.save_slot)
 
 
 //{//测试版设置初始存档
+unlock_card("thor",16,3,8)
 //	unlock_card("toast_bread",10,0,7)
 //	unlock_card("small_fire",10,1,7)
 //	unlock_card("xiao_long_bao",10,0,7)

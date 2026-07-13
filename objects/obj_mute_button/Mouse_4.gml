@@ -14,7 +14,7 @@ if (volume_type == "music") {
 	audio_group_set_gain(sound,global.sound_volume,0)
     
     // 保存设置
-    ini_open("config.ini");
+    ini_open("config_mod.ini");
     ini_write_real("settings", "music_volume", global.music_volume);
     ini_close();
     
@@ -29,7 +29,7 @@ if (volume_type == "music") {
 	audio_group_set_gain(music,global.music_volume,0)
 	audio_group_set_gain(sound,global.sound_volume,0)
     
-    ini_open("config.ini");
+    ini_open("config_mod.ini");
     ini_write_real("settings", "sound_volume", global.sound_volume);
     ini_close();
 }

@@ -294,4 +294,12 @@ function slots_init(){
 		{"shape":2, "sprite":spr_king_triple_long_bao_2_0, "cost":175, "cooldown":5*60, "description":"黑心三向国王小笼包：向三个方向发射包子，可填充5张三向包子类卡片","plant_type":"normal","feature_type":"king_tbun","target_card":"none"}
 	])
 	
+	
+	
+	register_card("thor", obj_thor, [
+	    {"shape":0, "sprite":spr_thor_icon, "cost":200, "cooldown":7*60, "description":"索尔神使","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_thor},
+	    {"shape":1, "sprite":spr_thor_icon_1, "cost":200, "cooldown":7*60, "description":"索尔圣神","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_thor_1},
+		{"shape":2, "sprite":spr_thor_icon_2, "cost":200, "cooldown":7*60, "description":"雷神·索尔","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_thor_2},
+		{"shape":3, "sprite":spr_thor_icon_3, "cost":200, "cooldown":7*60, "description":"至尊雷神","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_thor_3}
+	]);
 }

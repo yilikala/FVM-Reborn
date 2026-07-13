@@ -11,7 +11,7 @@ if room != room_battle{
 	audio_play_sound(snd_button,0,0)
 	// 保存到配置文件
 	if (config_key != "") {
-	    ini_open("config.ini");
+	    ini_open("config_mod.ini");
 	    ini_write_real("settings", config_key, state);
 	    ini_close();
 	}

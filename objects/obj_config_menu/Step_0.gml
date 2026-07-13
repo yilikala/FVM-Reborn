@@ -178,17 +178,17 @@ function draw_controls_page(){
 	    var btn1 = instance_create_depth(x - 200, y - 170, depth-1, obj_setting_toggle);
 	    btn1.config_key = "replace_placement";
 	    btn1.tooltip_text = "放置卡片后自动移除本格原有的卡片";
-	    ini_open("config.ini");
-	    btn1.state = ini_read_bool("settings", "replace_placement", false);
-	    ini_close();
+    ini_open("config_mod.ini");
+    btn1.state = ini_read_bool("settings", "replace_placement", false);
+    ini_close();
 	    array_push(setting_buttons, btn1);
     
 	    var btn2 = instance_create_depth(x + 200, y - 170, depth-1, obj_setting_toggle);
 	    btn2.config_key = "quick_placement";
 	    btn2.tooltip_text = "按下快捷键后直接将卡片放置在鼠标对应位置\n该选项对铲子生效，开启该选项会自动关闭放置预览";
-	    ini_open("config.ini");
-	    btn2.state = ini_read_bool("settings", "quick_placement", false);
-	    ini_close();
+    ini_open("config_mod.ini");
+    btn2.state = ini_read_bool("settings", "quick_placement", false);
+    ini_close();
 	    array_push(setting_buttons, btn2);
     
 	    // 创建快捷键绑定按钮（当前页）
