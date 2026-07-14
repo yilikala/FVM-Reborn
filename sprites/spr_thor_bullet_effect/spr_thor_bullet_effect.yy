@@ -33,8 +33,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Thor",
-    "path":"folders/精灵/new_cards/Thor.yy",
+    "name":"thor",
+    "path":"folders/精灵/new_cards/thor.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

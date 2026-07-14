@@ -66,4 +66,9 @@ function skill_init(){
 	register_card_skill("king_triple_long_bao","cycle",[1.3*60,1.25*60,1.2*60,1.15*60,1.1*60,1.05*60,1*60,0.95*60,0.9*60])
 	
 	register_card_skill("thor","cycle",[2.5*60,2.4*60,2.3*60,2.2*60,2.1*60,2.0*60,1.9*60,1.8*60,1.7*60])
+	register_card_skill("apollo","flame_produce",[25,27,29,31,34,37,40,44,48])
+	register_card_skill("ares","cycle",[1.4*60,1.35*60,1.25*60,1.2*60,1.15*60,1.1*60,1.05*60,1.0*60,0.9*60])
+	register_card_skill("cupid","cycle",[1.4*60,1.35*60,1.25*60,1.2*60,1.15*60,1.1*60,1.05*60,1.0*60,0.9*60])
+	register_card_skill("poseidon","cycle",[1.8*60,1.75*60,1.7*60,1.65*60,1.6*60,1.55*60,1.5*60,1.45*60,1.4*60])
+	register_card_skill("diana","cycle",[1.5*60,1.45*60,1.4*60,1.35*60,1.3*60,1.25*60,1.2*60,1.15*60,1.1*60])
 }

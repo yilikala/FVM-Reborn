@@ -22,6 +22,9 @@ function register_card(card_id, _obj, _shapes_array) {
 		if struct_exists(shape_info,"place_preview"){
 			shape_data[? "place_preview"] = shape_info.place_preview
 		}
+		if struct_exists(shape_info,"is_gold"){
+			shape_data[? "is_gold"] = shape_info.is_gold
+		}
         
         ds_list_add(card[? "shapes"], shape_data);
     }

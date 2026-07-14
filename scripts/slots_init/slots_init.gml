@@ -288,18 +288,47 @@ function slots_init(){
 	    {"shape":1, "sprite":spr_king_long_bao_1_0, "cost":125, "cooldown":5*60, "description":"红心国王小笼包：发射包子，可填充3张包子类卡片","plant_type":"normal","feature_type":"king_bun","target_card":"none"},
 		{"shape":2, "sprite":spr_king_long_bao_2_0, "cost":125, "cooldown":5*60, "description":"黑心国王小笼包：发射包子，可填充5张包子类卡片","plant_type":"normal","feature_type":"king_bun","target_card":"none"}
 	])
+
 	register_card("king_triple_long_bao",obj_king_triple_long_bao,[
 	    {"shape":0, "sprite":spr_king_triple_long_bao_0_0, "cost":175, "cooldown":5*60, "description":"三向国王小笼包：向三个方向发射包子，可填充2张三向包子类卡片","plant_type":"normal","feature_type":"king_tbun","target_card":"none"},
 	    {"shape":1, "sprite":spr_king_triple_long_bao_1_0, "cost":175, "cooldown":5*60, "description":"红心三向国王小笼包：向三个方向发射包子，可填充3张三向包子类卡片","plant_type":"normal","feature_type":"king_tbun","target_card":"none"},
 		{"shape":2, "sprite":spr_king_triple_long_bao_2_0, "cost":175, "cooldown":5*60, "description":"黑心三向国王小笼包：向三个方向发射包子，可填充5张三向包子类卡片","plant_type":"normal","feature_type":"king_tbun","target_card":"none"}
 	])
 	
-	
-	
-	register_card("thor", obj_thor, [
-	    {"shape":0, "sprite":spr_thor_icon, "cost":200, "cooldown":7*60, "description":"索尔神使","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_thor},
-	    {"shape":1, "sprite":spr_thor_icon_1, "cost":200, "cooldown":7*60, "description":"索尔圣神","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_thor_1},
-		{"shape":2, "sprite":spr_thor_icon_2, "cost":200, "cooldown":7*60, "description":"雷神·索尔","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_thor_2},
-		{"shape":3, "sprite":spr_thor_icon_3, "cost":200, "cooldown":7*60, "description":"至尊雷神","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_thor_3}
+	register_card("apollo", obj_apollo, [
+	    {"shape":0, "sprite":spr_apollo, "cost":200, "cooldown":50*60, "description":"阿波罗神使","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":1, "sprite":spr_apollo_1, "cost":200, "cooldown":40*60, "description":"阿波罗圣神","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+		{"shape":2, "sprite":spr_apollo_2, "cost":200, "cooldown":30*60, "description":"太阳神·阿波罗","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+		{"shape":3, "sprite":spr_apollo_3, "cost":25, "cooldown":15*60, "description":"至尊太阳神","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1}
+	]);	
+	register_card("ares",obj_ares,[
+	    {"shape":0, "sprite":spr_ares, "cost":150, "cooldown":7*60, "description":"阿瑞斯神使：前后各发射4枚子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":1, "sprite":spr_ares_1, "cost":150, "cooldown":7*60, "description":"阿瑞斯圣神：前后各发射5枚子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":2, "sprite":spr_ares_2, "cost":150, "cooldown":7*60, "description":"战神·阿瑞斯：后方发射一枚6倍伤害的超级子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":3, "sprite":spr_ares_3, "cost":150, "cooldown":7*60, "description":"至尊战神：前后各发射一枚10倍伤害的超级子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1}
 	]);
+	register_card("cupid",obj_cupid,[
+	    {"shape":0, "sprite":spr_cupid, "cost":300, "cooldown":7*60, "description":"丘比特神使：向前方三行每路发射2发爱心弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":1, "sprite":spr_cupid_1, "cost":300, "cooldown":7*60, "description":"丘比特圣神：前方向三行发射中路3发边路2发爱心弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":2, "sprite":spr_cupid_2, "cost":300, "cooldown":7*60, "description":"爱神·丘比特：向前方三行每路发射3发爱心弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":3, "sprite":spr_cupid_3, "cost":300, "cooldown":7*60, "description":"至尊爱神：每路首发变为3倍伤害的穿透超级子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1}
+	]);	
+	register_card("thor", obj_thor, [
+	    {"shape":0, "sprite":spr_thor_icon, "cost":200, "cooldown":7*60, "description":"索尔神使","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_thor,"is_gold":1},
+	    {"shape":1, "sprite":spr_thor_icon_1, "cost":200, "cooldown":7*60, "description":"索尔圣神","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_thor_1,"is_gold":1},
+		{"shape":2, "sprite":spr_thor_icon_2, "cost":200, "cooldown":7*60, "description":"雷神·索尔","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_thor_2,"is_gold":1},
+		{"shape":3, "sprite":spr_thor_icon_3, "cost":200, "cooldown":7*60, "description":"至尊雷神","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_thor_3,"is_gold":1}
+	]);
+	register_card("diana", obj_diana, [
+	    {"shape":0, "sprite":spr_diana, "cost":225, "cooldown":30*60, "description":"戴安娜神使：发射6发追踪飞镖","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":1, "sprite":spr_diana_1, "cost":225, "cooldown":30*60, "description":"戴安娜圣神：发射7发追踪飞镖","plant_type":"normal","feature_type":"amphi","target_card":"none","is_gold":1},
+	    {"shape":2, "sprite":spr_diana_2, "cost":225, "cooldown":30*60, "description":"月神·戴安娜：首发超级飞镖，2倍伤害3*3溅射","plant_type":"normal","feature_type":"amphi","target_card":"none","is_gold":1},
+	    {"shape":3, "sprite":spr_diana_3, "cost":225, "cooldown":30*60, "description":"至尊月神：每存在一张戴安娜攻击力+5%，最大200%","plant_type":"normal","feature_type":"amphi","target_card":"none","is_gold":1}
+	])
+	register_card("poseidon", obj_poseidon, [
+	    {"shape":0, "sprite":spr_poseidon, "cost":275, "cooldown":35*60, "description":"波塞冬神使：5*5矩形范围穿透攻击，每轮2次","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":1, "sprite":spr_poseidon_1, "cost":275, "cooldown":35*60, "description":"波塞冬圣神：5*5矩形范围穿透攻击，每轮2次","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":2, "sprite":spr_poseidon_2, "cost":275, "cooldown":35*60, "description":"海神·波塞冬：5*5矩形范围穿透攻击，每轮3次","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":3, "sprite":spr_poseidon_3, "cost":275, "cooldown":35*60, "description":"至尊海神：7行5列矩形范围穿透攻击，每轮4次","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1}
+	])
 }

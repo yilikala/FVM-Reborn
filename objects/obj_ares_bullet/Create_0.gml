@@ -1,0 +1,16 @@
+damage = 0
+move_speed = 0
+row = 0
+damage_type = "normal"
+target_type = "normal"
+timer = 0
+target_row = -1
+start_y = 0
+target_y_calculated = false
+burnt = 0
+bounced = false
+brazier_list = ds_list_create()
+is_super = false
+super_mult = 1
+image_xscale = 1.6
+image_yscale = 1.6

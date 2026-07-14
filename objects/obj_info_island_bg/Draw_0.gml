@@ -55,7 +55,7 @@ if info_button_select == 1 {
             var card_y = y - 435 + row * 142*1.5-y_offset;
             
             // 绘制卡片
-				draw_sprite_ext(spr_slot, 0, card_x, card_y-3, 0.30, 0.30, 0, c_white, 1);
+				draw_sprite_ext(get_slot_sprite(card_data), 0, card_x, card_y-3, 0.30, 0.30, 0, c_white, 1);
                 draw_sprite_ext(card_data[? "sprite"], 0, card_x, card_y+15, 0.8, 0.8, 0, c_white, 1);
 				draw_set_color(c_white);
 				draw_set_halign(fa_center);

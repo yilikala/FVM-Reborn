@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"get_slot_sprite",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"get_slot_sprite",
+  "parent":{
+    "name":"assistant",
+    "path":"folders/脚本/assistant.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

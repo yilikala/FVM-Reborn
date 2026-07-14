@@ -1,0 +1,2 @@
+ds_list_destroy(brazier_list)
+ds_list_destroy(hit_enemy_list)

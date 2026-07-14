@@ -8,9 +8,6 @@ function move_files () {
     var _save_folder_old_exists = native_folder_exists(_saves_old)
     if ((_save_folder_new_exists == 0) &&( _save_folder_old_exists == 1)) {
         var _copy_result = native_copy_folder(_saves_old, _local_folder)
-        if (_copy_result) {
-            show_message_async("存档已自动迁移到[" + _saves_new + "]")
-        }
     } 
 
     var _local_laboratory = global.laboratory_manager.file_util.transfer_path_to_windows(working_directory + "laboratory")

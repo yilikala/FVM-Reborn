@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"track_find_best_target",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"track_find_best_target",
+  "parent":{
+    "name":"assistant",
+    "path":"folders/脚本/assistant.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

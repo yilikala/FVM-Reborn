@@ -55,7 +55,7 @@ for(var i = 0 ; i < slot_rows ; i++){
             // 绘制卡片
             if (is_unlocked) {
                 // 已解锁的卡片正常绘制
-				draw_sprite_ext(spr_slot, 0, card_x, card_y-3, 0.25, 0.25, 0, c_white, 1);
+				draw_sprite_ext(get_slot_sprite(card_data), 0, card_x, card_y-3, 0.25, 0.25, 0, c_white, 1);
                 draw_sprite_ext(card_data[? "sprite"], 0, card_x, card_y+15, 0.7, 0.7, 0, c_white, 1);
 				draw_set_color(c_black);
 				draw_set_halign(fa_center);
@@ -94,8 +94,8 @@ for(var i = 0 ; i < slot_rows ; i++){
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_bottom);
 				draw_set_font(font_pixel)
-				draw_sprite_ext(spr_slot, 0, card_x, card_y-3, 0.25, 0.25, 0, c_gray, 1);
 				card_data = card_data_shapes[| card_shape]
+				draw_sprite_ext(get_slot_sprite(card_data), 0, card_x, card_y-3, 0.25, 0.25, 0, c_gray, 1);
                 draw_sprite_ext(card_data[? "sprite"], 0, card_x, card_y+15, 0.7, 0.7, 0, c_gray, 1);
 				var info_index = 0
 				var length = array_length(global.save_data.unlocked_cards)
@@ -180,10 +180,10 @@ for(var i = deck_first_slot_index; i < deck_first_slot_index+11;i++){
 	var card_cost = card_data[? "cost"]
 	
 	var card_x = x + 805 + (i - deck_first_slot_index) * 86;
-    var card_y = y + 132
+	var card_y = y + 132
 	
 	// 已解锁的卡片正常绘制
-				draw_sprite_ext(spr_slot, 0, card_x, card_y-3, 0.25, 0.25, 0, c_white, 1);
+				draw_sprite_ext(get_slot_sprite(card_data), 0, card_x, card_y-3, 0.25, 0.25, 0, c_white, 1);
                 draw_sprite_ext(card_data[? "sprite"], 0, card_x, card_y+15, 0.7, 0.7, 0, c_white, 1);
 				draw_set_color(c_black);
 				draw_set_halign(fa_center);

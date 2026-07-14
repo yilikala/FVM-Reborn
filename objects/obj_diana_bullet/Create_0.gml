@@ -1,0 +1,14 @@
+damage = 0
+move_speed = 0
+damage_type = "track"
+target_type = "track"
+timer = 0
+target_enemy = noone
+banding_card_obj = noone
+row = 0
+is_super = false
+shape = 0
+hit_enemies = ds_list_create()
+image_xscale = 1.8
+image_yscale = 1.8
+image_speed = 0

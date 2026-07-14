@@ -29,3 +29,6 @@ if card_equipped_attire_id(plant_id) == "takoyaki_cancer"{
 plant_type = "normal"
 is_slowdown = false
 target_type = "track"
+
+track_target = noone
+track_timer = 0
