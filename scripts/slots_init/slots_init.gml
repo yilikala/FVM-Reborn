@@ -331,4 +331,16 @@ function slots_init(){
 	    {"shape":2, "sprite":spr_poseidon_2, "cost":275, "cooldown":35*60, "description":"海神·波塞冬：5*5矩形范围穿透攻击，每轮3次","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
 	    {"shape":3, "sprite":spr_poseidon_3, "cost":275, "cooldown":35*60, "description":"至尊海神：7行5列矩形范围穿透攻击，每轮4次","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1}
 	])
+	register_card("loki",obj_loki,[
+	    {"shape":0, "sprite":spr_loki, "cost":225, "cooldown":7*60, "description":"洛基神使：点燃子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":1, "sprite":spr_loki_1, "cost":225, "cooldown":7*60, "description":"洛基圣神：点燃子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":2, "sprite":spr_loki_2, "cost":225, "cooldown":7*60, "description":"火神·洛基：点燃子弹并附加一格60%溅射","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":3, "sprite":spr_loki_3, "cost":225, "cooldown":7*60, "description":"至尊火神：一格100%溅射+3×3范围40%溅射","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1}
+	])
+	register_card("hera",obj_hera,[
+	    {"shape":0, "sprite":spr_hera_icon, "cost":125, "cooldown":20*60, "description":"赫拉神使：保护被罩住的卡片，摧毁时5×5爆炸","plant_type":"shield_outer","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":1, "sprite":spr_hera_icon_1, "cost":125, "cooldown":20*60, "description":"赫拉圣神：保护被罩住的卡片并反伤，摧毁时5×5爆炸","plant_type":"shield_outer","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":2, "sprite":spr_hera_icon_2, "cost":125, "cooldown":20*60, "description":"天后·赫拉：放置时为同格卡片增加1000HP","plant_type":"shield_outer","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":3, "sprite":spr_hera_icon_3, "cost":125, "cooldown":20*60, "description":"至尊天后：额外创建两个自身复制体","plant_type":"shield_outer","feature_type":"normal","target_card":"none","is_gold":1}
+	])
 }

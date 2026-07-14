@@ -23,13 +23,14 @@ if shape == 3 { total_attacks = 4 }
 
 var _x = x;
 var _y = y;
+var _row = grid_row
 var _hw = global.grid_cell_size_x * 2.5
-var _hh = global.grid_cell_size_y * 2.5
-if shape == 3 { _hw = global.grid_cell_size_x * 3.5 }
+var _hr = 2
+if shape == 3 { _hr = 3 }
 
 var has_enemy = false
 with (obj_enemy_parent) {
-	if (can_target_on(other.target_type, target_type) && abs(x - _x) <= _hw && abs(y - _y) <= _hh) {
+	if (can_target_on(other.target_type, target_type) && abs(grid_row - _row) <= _hr && abs(x - _x) <= _hw) {
 		has_enemy = true
 	}
 }

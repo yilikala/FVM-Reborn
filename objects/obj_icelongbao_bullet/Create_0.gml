@@ -8,3 +8,5 @@ bounced = false
 brazier_list = ds_list_create()
 image_xscale = 1.8
 image_yscale = 1.8
+loki_burnt = false
+loki_shape = 0

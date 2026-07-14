@@ -14,3 +14,5 @@ is_super = false
 super_mult = 1
 image_xscale = 1.6
 image_yscale = 1.6
+loki_burnt = false
+loki_shape = 0
