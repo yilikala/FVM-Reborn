@@ -11,6 +11,13 @@ draw_set_color(c_yellow);
 draw_set_halign(fa_right);
 draw_set_valign(fa_bottom);
 draw_text(x - 485, y + 447, string(global.save_data.player.gold));
+
+// 绘制玩家点券余额
+draw_set_font(font_number); 
+draw_set_color(c_yellow);
+draw_set_halign(fa_right);
+draw_set_valign(fa_bottom);
+draw_text(x - 220, y + 447, string(global.save_data.player.points));
 //绘制页码
 draw_set_color(c_white);
 draw_set_halign(fa_center);

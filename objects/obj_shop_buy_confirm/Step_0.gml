@@ -59,6 +59,9 @@ for (var i = 0; i < array_length(buttons); i++) {
 							else if target_item == "card_slot_21" && global.save_data.unlocked_items.max_slot == 20{
 								global.save_data.unlocked_items.max_slot += 1
 							}
+							else if target_item == "exchange_points"{
+								global.save_data.player.points += 100
+							}
 							save_file(global.save_slot)
 						}
 					}

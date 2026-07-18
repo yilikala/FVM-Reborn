@@ -10,14 +10,84 @@ draw_set_font(font_number)
 draw_set_colour(c_yellow)
 draw_set_valign(fa_middle)
 draw_set_halign(fa_left)
+
 //draw_text(x-160,y+300,"300")
 draw_set_halign(fa_right)
 draw_text(x+758,y+473,string(global.save_data.player.gold))
-draw_set_colour(c_white)
-draw_set_valign(fa_top)
+// 绘制玩家点券余额
+draw_text(x+492,y+473,+string(global.save_data.player.points))
+draw_set_colour(c_yellow)
+draw_set_valign(fa_middle)
 draw_set_halign(fa_left)
-for(var i = 0 ; i < 10 ; i++){
+// 通用材料栏迭代
+var _mat_list = (button_select == 0) ? card_material_id_list
+            : ((button_select == 1) ? gem_material_id_list
+                                    : spice_synthesis_material_id_list)
+var _mat_total = array_length(_mat_list)
+var _mat_visible = min(material_per_page, _mat_total)
+var _mat_page_offset = material_page * material_per_page
+
+// 重置材料栏相关悬停
+hover_material_index = -1
+hover_switch_arrow = false
+hover_insurance_box = false
+
+for(var i = 0 ; i < _mat_visible ; i++){
     draw_sprite_ext(spr_package_slot_bg,1,x-752+i*84,y + 454,1.8,1.8,0,c_white,1)
+}
+for(var i = 0 ; i < _mat_visible ; i++){
+    var _global_i = _mat_page_offset + i
+    if _global_i >= _mat_total { break }
+    var _mat_id = _mat_list[_global_i]
+    var _mat_info = get_material_info(_mat_id)
+    draw_sprite_ext(spr_craft_material,_mat_info.icon,x-752+i*84,y + 454,1.8,1.8,0,c_white,1)
+    draw_set_halign(fa_right)
+    draw_set_valign(fa_bottom)
+    draw_set_colour(c_white)
+    draw_set_font(font_number)
+    var _amt = get_material_amount(_mat_id)
+    if _amt < 10000{
+        draw_text(x-752+i*84+40,y + 454+42,string(_amt))
+    }
+    else{
+        draw_text(x-752+i*84+40,y + 454+42,string(floor(_amt/10000))+"w")
+    }
+// 悬停检测
+    if point_in_rectangle(mouse_x, mouse_y,
+                          x-752+i*84-42, y + 454-42,
+                          x-752+i*84+42, y + 454+42){
+        hover_material_index = _global_i
+    }
+    // 高亮当前已投入的材料
+    var _is_match = false
+    if button_select == 0{
+        _is_match = (input_spice_id == _mat_id || input_clover_id == _mat_id)
+    }
+    else if button_select == 1{
+        _is_match = (input_crystal_id == _mat_id || input_clover_id == _mat_id)
+    }
+    else if button_select == 2{
+        _is_match = (syn_input_spice_id == _mat_id || syn_input_clover_id == _mat_id)
+    }
+    if _is_match{
+        draw_set_color(c_yellow)
+        draw_rectangle(x-752+i*84-42, y + 454-42,
+                       x-752+i*84+42, y + 454+42, true)
+        draw_set_color(c_white)
+    }
+}
+
+// 切换箭头（总材料数超过单页时显示，卡片/宝石强化页均适用）
+if _mat_total > material_per_page{
+    var _ax = x - 1602 + (material_per_page + 0) * 84 + 16
+    var _ay = y + 385
+    // 悬停检测
+    if point_in_rectangle(mouse_x, mouse_y, _ax - 24, _ay - 24, _ax + 24, _ay + 24){
+        hover_switch_arrow = true
+    }
+    draw_set_color(hover_switch_arrow ? c_yellow : c_white)
+    draw_triangle(_ax - 14, _ay - 16, _ax - 14, _ay + 16, _ax + 14, _ay, false)
+    draw_set_color(c_white)
 }
 
 if button_select == 0{
@@ -28,24 +98,6 @@ if button_select == 0{
 	draw_sprite_ext(spr_craft_slot_text,0,x-305,y+100,1.8,1.8,0,c_white,1)
 	draw_sprite_ext(spr_craft_slot_text,1,x-455,y-20,1.8,1.8,0,c_white,1)
 	draw_sprite_ext(spr_craft_slot_text,2,x-155,y-20,1.8,1.8,0,c_white,1)
-	//绘制卡片强化材料
-	for(var i = 0 ; i < array_length(card_material_id_list) ; i++){
-		var material_id = card_material_id_list[i]
-		var material_info = get_material_info(material_id)
-		var material_amount = get_material_amount(material_id)
-		draw_sprite_ext(spr_craft_material,material_info.icon,x-752+i*84,y + 454,1.8,1.8,0,c_white,1)
-		draw_set_halign(fa_right);
-		draw_set_valign(fa_bottom);
-		draw_set_colour(c_white)
-		draw_set_font(font_number)
-		if get_material_amount(material_id) < 10000{
-			draw_text(x-752+i*84+40,y + 454+42,string(get_material_amount(material_id)))
-		}
-		else{
-			draw_text(x-752+i*84+40,y + 454+42,string(floor(get_material_amount(material_id)/10000))+"w")
-		}
-		
-	}
 	surface_set_target(card_surface)
 	//绘制右侧栏位
 	for(var i = 0 ; i < 7 ; i++){
@@ -145,94 +197,98 @@ if button_select == 0{
 		}
 		//绘制强化需要的材料
 		if card_data.max_level <= 15{
-			var spices_list = [0,0,0]
-			var clover_list = [0,0,0]
 			var craft_rule = get_card_craft_rule(string(card_data.max_level+1))
+			// 金币消耗
 			draw_set_font(font_number)
 			draw_set_colour(c_yellow)
 			draw_set_valign(fa_middle)
 			draw_set_halign(fa_left)
 			draw_text(x-160,y+300,string(craft_rule.gold_amount))
-			draw_sprite_ext(spr_craft_material,get_material_info(craft_rule.spices_require).icon,x-455,y-20,1.8,1.8,0,c_white,1)
-			draw_set_halign(fa_center)
-			draw_set_colour(c_black)
-			//如果低级材料不足，尝试获取高级材料
-			var display_spices_amount = 0
-			var use_enhanced_spices = false
-			if get_material_amount(craft_rule.spices_require) < craft_rule.spices_amount{
-				for(var i = array_get_index(spices_use_order,craft_rule.spices_require);i < array_length(spices_use_order);i++){
-					display_spices_amount += get_material_amount(spices_use_order[i])
-					if display_spices_amount>= craft_rule.spices_amount{
-						use_enhanced_spices = true
-						break
-					}
-				}
+
+// 香料槽：显示玩家投入
+			if input_spice_id != ""{
+				var _spice_info = get_material_info(input_spice_id)
+				draw_sprite_ext(spr_craft_material,_spice_info.icon,x-455,y-20,1.8,1.8,0,c_white,1)
+				draw_set_halign(fa_center)
+				draw_set_valign(fa_middle)
+				draw_set_font(font_number)
+				draw_set_colour(c_black)
+				draw_text(x-455,y+35,string(input_spice_count)+"/"+string(input_spice_max))
 			}
 			else{
-				display_spices_amount = get_material_amount(craft_rule.spices_require)
-			}
-			draw_text(x-455,y+35,string(display_spices_amount)+"/"+string(craft_rule.spices_amount))
-			draw_set_font(font_yuan)
-			if use_enhanced_spices{
-				draw_set_colour(c_red)
-				draw_text(x-455,y+60,"使用了高级香料")
-			}
-			if craft_rule.clover_require != "none"{
-				//如果低级材料不足，尝试获取高级材料
-				var display_clover_amount = 0
-				var use_enhanced_clover = false
-				if get_material_amount(craft_rule.clover_require) < craft_rule.clover_amount{
-					for(var i = array_get_index(clover_use_order,craft_rule.clover_require);i < array_length(clover_use_order);i++){
-						display_clover_amount += get_material_amount(clover_use_order[i])
-						if display_clover_amount>= craft_rule.clover_amount{
-							use_enhanced_clover = true
-							break
-						}
-					}
-				}
-				else{
-					display_clover_amount = get_material_amount(craft_rule.clover_require)
-				}
-				draw_sprite_ext(spr_craft_material,get_material_info(craft_rule.clover_require).icon,x-155,y-20,1.8,1.8,0,c_white,1)
 				draw_set_halign(fa_center)
-				draw_set_colour(c_black)
-				draw_set_font(font_number)
-				draw_text(x-155,y+35,string(display_clover_amount)+"/"+string(craft_rule.clover_amount))
+				draw_set_valign(fa_middle)
 				draw_set_font(font_yuan)
-				if use_enhanced_clover{
-					draw_set_colour(c_red)
-					draw_text(x-155,y+60,"使用了高级四叶草")
-				}
+				draw_set_colour(c_gray)
+				draw_text(x-455,y+35,"未投入")
 			}
+			draw_set_font(font_yuan)
+			draw_set_colour(c_white)
+
+			// 四叶草槽：仅在投入时显示图标
+			if input_clover_id != ""{
+				var _clover_info = get_material_info(input_clover_id)
+				draw_sprite_ext(spr_craft_material,_clover_info.icon,x-155,y-20,1.8,1.8,0,c_white,1)
+			}
+			else{
+				draw_set_halign(fa_center)
+				draw_set_valign(fa_middle)
+				draw_set_font(font_yuan)
+				draw_set_colour(c_gray)
+				draw_text(x-155,y+35,"未投入")
+				draw_set_font(font_yuan)
+				draw_set_colour(c_white)
+			}
+
+			// 保险金：D消耗 + 下方居中勾选框
+			var _can_insure = (card_data.max_level >= 0)
+			var _ins_cost = get_insurance_cost(card_data.max_level + 1)
+			var _bx = x - 102
+			var _by = y + 163
+			// 消耗D
+			draw_set_halign(fa_center)
+			draw_set_valign(fa_middle)
+			draw_set_font(font_yuan)
+			draw_set_colour(_can_insure ? c_white : c_gray)
+			draw_text(_bx, _by, string(_ins_cost))
+			draw_set_colour(c_yellow)
+			// 下方居中勾选框
+			var _bx_box = _bx
+			var _by_box = _by + 65
+			if _can_insure && point_in_rectangle(mouse_x, mouse_y, _bx_box - 16, _by_box - 16, _bx_box + 16, _by_box + 16){
+				hover_insurance_box = true
+			}
+			if _can_insure && insured{
+				draw_set_color(c_yellow)
+				draw_rectangle(_bx_box - 12, _by_box - 12, _bx_box + 12, _by_box + 12, false)
+			}
+			draw_set_color(c_white)
+
+			// 成功率显示（最终成功率，>=100 显示100）
+			var _base_rate = get_card_base_rate(string(card_data.max_level + 1))
+			var _clover_num = (input_clover_id != "") ? 1 : 0
+			var _rate = calc_reinforce_rate(_base_rate, input_spice_count, craft_rule.spices_amount, _clover_num)
+			var _disp_rate = floor(_rate * 100)
+			if _disp_rate > 100 { _disp_rate = 100 }
+			draw_set_halign(fa_center)
+			draw_set_valign(fa_middle)
+			draw_set_font(font_yuan)
+			draw_set_colour(c_yellow)
+			draw_set_font(font_number)
+			draw_text(x-345, y+300, string(_disp_rate) + "%")
+			draw_set_colour(c_white)
+			draw_set_font(font_yuan)
 		}
 	}
-	
-	
-    
 }
 else if button_select == 1{
 	//绘制宝石强化UI背景
 	draw_sprite_ext(spr_package_gem_bg,0,x-305,y+110,1.8,1.8,0,c_white,1)
-	draw_sprite_ext(spr_craft_material_bg,0,x-305,y-40,1.8,1.8,0,c_white,1)
+	draw_sprite_ext(spr_craft_material_bg,0,x-455,y-20,1.8,1.8,0,c_white,1)
+	draw_sprite_ext(spr_craft_material_bg,0,x-155,y-20,1.8,1.8,0,c_white,1)
 	draw_sprite_ext(spr_craft_slot_text,3,x-305,y+110,1.8,1.8,0,c_white,1)
-	draw_sprite_ext(spr_craft_slot_text,4,x-305,y-40,1.8,1.8,0,c_white,1)
-	//绘制宝石强化材料
-	for(var i = 0 ; i < array_length(gem_material_id_list) ; i++){
-		var material_id = gem_material_id_list[i]
-		var material_info = get_material_info(material_id)
-		var material_amount = get_material_amount(material_id)
-		draw_sprite_ext(spr_craft_material,material_info.icon,x-752+i*84,y + 454,1.8,1.8,0,c_white,1)
-		draw_set_halign(fa_right);
-		draw_set_valign(fa_bottom);
-		draw_set_colour(c_white)
-		draw_set_font(font_number)
-		if get_material_amount(material_id) < 10000{
-			draw_text(x-752+i*84+40,y + 454+42,string(get_material_amount(material_id)))
-		}
-		else{
-			draw_text(x-752+i*84+40,y + 454+42,string(floor(get_material_amount(material_id)/10000))+"w")
-		}
-	}
+	draw_sprite_ext(spr_craft_slot_text,4,x-455,y-20,1.8,1.8,0,c_white,1)
+	draw_sprite_ext(spr_craft_slot_text,2,x-155,y-20,1.8,1.8,0,c_white,1)
 	//绘制右侧栏位
 	for(var i = 0 ; i < 7 ; i++){
         for(var j = 0 ; j < 9 ; j++){
@@ -327,38 +383,175 @@ else if button_select == 1{
 		if get_gem_max_level(weapon_id) > 0{
 			draw_sprite_ext(spr_star_slot,get_gem_max_level(weapon_id)-1,weapon_x-28,weapon_y-30,1.6,1.6,0,c_white,1)
 		}
-		//绘制强化需要的材料
+//绘制强化需要的材料
 		if get_gem_max_level(weapon_id) <= 14{
 			var craft_rule = get_gem_craft_rule(string(get_gem_max_level(weapon_id)+1))
+			// 金币消耗
 			draw_set_font(font_number)
 			draw_set_colour(c_yellow)
 			draw_set_valign(fa_middle)
 			draw_set_halign(fa_left)
 			draw_text(x-160,y+300,string(craft_rule.gold_amount))
-			draw_sprite_ext(spr_craft_material,get_material_info(craft_rule.crystal_require).icon,x-305,y-40,1.8,1.8,0,c_white,1)
-			draw_set_halign(fa_center)
-			draw_set_colour(c_black)
-			//如果低级材料不足，尝试获取高级材料
-			var display_crystal_amount = 0
-			var use_enhanced_crystal = false
-			if get_material_amount(craft_rule.crystal_require) < craft_rule.crystal_amount{
-				for(var i = array_get_index(crystal_use_order,craft_rule.crystal_require);i < array_length(crystal_use_order);i++){
-					display_crystal_amount += get_material_amount(crystal_use_order[i])
-					if display_crystal_amount>= craft_rule.crystal_amount{
-						use_enhanced_crystal = true
-						break
-					}
-				}
+
+			// 水晶槽：显示玩家投入（不可累加，固定为基础量）
+			if input_crystal_id != ""{
+				var _crystal_info = get_material_info(input_crystal_id)
+				draw_sprite_ext(spr_craft_material,_crystal_info.icon,x-455,y-20,1.8,1.8,0,c_white,1)
+				draw_set_halign(fa_center)
+				draw_set_valign(fa_middle)
+				draw_set_font(font_number)
+				draw_set_colour(c_black)
+				draw_text(x-455,y+35,string(input_crystal_count)+"/"+string(input_crystal_max))
 			}
 			else{
-				display_crystal_amount = get_material_amount(craft_rule.crystal_require)
+				draw_set_halign(fa_center)
+				draw_set_valign(fa_middle)
+				draw_set_font(font_yuan)
+				draw_set_colour(c_gray)
+				draw_text(x-455,y+35,"未投入")
 			}
-			draw_text(x-305,y+15,string(display_crystal_amount)+"/"+string(craft_rule.crystal_amount))
 			draw_set_font(font_yuan)
-			if use_enhanced_crystal{
-				draw_set_colour(c_red)
-				draw_text(x-305,y+40,"使用了高级水晶")
+			draw_set_colour(c_white)
+
+			// 四叶草槽：仅在投入时显示图标
+			if input_clover_id != ""{
+				var _clover_info = get_material_info(input_clover_id)
+				draw_sprite_ext(spr_craft_material,_clover_info.icon,x-155,y-20,1.8,1.8,0,c_white,1)
+			}
+			else{
+				draw_set_halign(fa_center)
+				draw_set_valign(fa_middle)
+				draw_set_font(font_yuan)
+				draw_set_colour(c_gray)
+				draw_text(x-155,y+35,"未投入")
+				draw_set_font(font_yuan)
+				draw_set_colour(c_white)
+			}
+
+			// 保险金：D消耗 + 下方居中勾选框
+			var _can_insure = (get_gem_max_level(weapon_id) >= 0)
+			var _ins_cost = get_insurance_cost(get_gem_max_level(weapon_id) + 1)
+			var _bx = x - 102
+			var _by = y + 163
+			// 消耗D
+			draw_set_halign(fa_center)
+			draw_set_valign(fa_middle)
+			draw_set_font(font_yuan)
+			draw_set_colour(_can_insure ? c_white : c_gray)
+			draw_text(_bx, _by, string(_ins_cost))
+			draw_set_colour(c_yellow)
+			// 下方居中勾选框
+			var _bx_box = _bx
+			var _by_box = _by + 65
+			if _can_insure && point_in_rectangle(mouse_x, mouse_y, _bx_box - 16, _by_box - 16, _bx_box + 16, _by_box + 16){
+				hover_insurance_box = true
+			}
+			if _can_insure && insured{
+				draw_set_color(c_yellow)
+				draw_rectangle(_bx_box - 12, _by_box - 12, _bx_box + 12, _by_box + 12, false)
+			}
+			draw_set_color(c_white)
+
+			// 成功率显示（最终成功率，>=100 显示100）
+			var _base_rate = get_gem_base_rate(string(get_gem_max_level(weapon_id) + 1))
+			var _clover_num = (input_clover_id != "") ? 1 : 0
+			var _rate = calc_reinforce_rate(_base_rate, input_crystal_count, craft_rule.crystal_amount, _clover_num)
+			var _disp_rate = floor(_rate * 100)
+			if _disp_rate > 100 { _disp_rate = 100 }
+			draw_set_halign(fa_center)
+			draw_set_valign(fa_middle)
+			draw_set_font(font_yuan)
+			draw_set_colour(c_yellow)
+			draw_set_font(font_number)
+			draw_text(x-345, y+300, string(_disp_rate) + "%")
+			draw_set_colour(c_white)
+			draw_set_font(font_yuan)
+		}
+	}
+}
+else if button_select == 2{
+	draw_sprite_ext(spr_package_gem_bg,0,x-305,y+110,1.8,1.8,0,c_white,1)
+	draw_sprite_ext(spr_craft_material_bg,0,x-305,y-40,1.8,1.8,0,c_white,1)
+	draw_sprite_ext(spr_craft_slot_text,1,x-305,y-40,1.8,1.8,0,c_white,1)
+	draw_sprite_ext(spr_craft_slot_text,2,x-305,y+110,1.8,1.8,0,c_white,1)
+	//绘制右侧栏位
+	for(var i = 0 ; i < 7 ; i++){
+        for(var j = 0 ; j < 9 ; j++){
+            draw_sprite_ext(spr_package_slot_bg,1,x+196+i*84,y - 324 + 88 * j,1.8,1.8,0,c_white,1)
+        }
+    }
+	//绘制合成内容
+	if syn_input_spice_id != ""{
+		var _rule = get_spice_synthesis_rule(syn_input_spice_id)
+		if !is_undefined(_rule){
+			// 原料香料图标显示在上槽
+			var _spice_info = get_material_info(syn_input_spice_id)
+			draw_sprite_ext(spr_craft_material,_spice_info.icon,x-305,y-40,1.8,1.8,0,c_white,1)
+			draw_set_halign(fa_center)
+			draw_set_valign(fa_middle)
+			draw_set_font(font_number)
+			draw_set_colour(c_black)
+			draw_text(x-305,y+15,string(get_material_amount(syn_input_spice_id))+"/"+string(_rule.required))
+			draw_set_font(font_yuan)
+			draw_set_colour(c_white)
+			draw_set_font(font_number)
+			draw_set_colour(c_yellow)
+			draw_set_valign(fa_middle)
+			draw_set_halign(fa_left)
+			draw_text(x-160,y+300,string(_rule.gold_amount))
+			var _can_operate = (syn_input_spice_id != "")
+			//保险金
+			var _bx = x - 102
+			var _by = y + 163
+			draw_set_halign(fa_center)
+			draw_set_valign(fa_middle)
+			draw_set_font(font_yuan)
+			draw_set_colour(_can_operate ? c_white : c_gray)
+			draw_text(_bx, _by, string(_rule.insurance))
+			draw_set_colour(c_yellow)
+			var _bx_box = _bx
+			var _by_box = _by + 65
+			if _can_operate && point_in_rectangle(mouse_x, mouse_y, _bx_box - 16, _by_box - 16, _bx_box + 16, _by_box + 16){
+				hover_insurance_box = true
+			}
+			if _can_operate && insured{
+				draw_set_color(c_yellow)
+				draw_rectangle(_bx_box - 12, _by_box - 12, _bx_box + 12, _by_box + 12, false)
+			}
+			draw_set_color(c_white)
+			// 产物图标显示在下槽（仅当未选四叶草时；若选了四叶草则优先显示四叶草）
+			if syn_input_clover_id == ""{
+				var _out_info = get_material_info(_rule.output_id)
+				draw_sprite_ext(spr_craft_material,_out_info.icon,x-305,y+110,1.8,1.8,0,c_white,1)
+				draw_set_halign(fa_center)
+				draw_set_valign(fa_middle)
+				draw_set_font(font_yuan)
+				draw_set_colour(c_black)
+				draw_text(x-305,y+165,"→ "+get_material_info(_rule.output_id).name+" x5")
+				draw_set_colour(c_white)
 			}
 		}
 	}
+	// 四叶草显示
+	if syn_input_clover_id != ""{
+		var _clover_info = get_material_info(syn_input_clover_id)
+		draw_sprite_ext(spr_craft_material,_clover_info.icon,x-305,y+110,1.8,1.8,0,c_white,1)
+	}
+	// 成功率
+	if syn_input_spice_id != "" && !is_undefined(get_spice_synthesis_rule(syn_input_spice_id)){
+		var _base_rate = get_spice_synthesis_base_rate(syn_input_spice_id)
+		var _clover_num = (syn_input_clover_id != "") ? 1 : 0
+		var _rate = calc_synthesis_rate(_base_rate, _clover_num)
+		var _disp_rate = floor(_rate * 100)
+		if _disp_rate > 100 { _disp_rate = 100 }
+		draw_set_halign(fa_center)
+		draw_set_valign(fa_middle)
+		draw_set_font(font_yuan)
+		draw_set_colour(c_yellow)
+		draw_set_font(font_number)
+		draw_text(x-345, y+300, string(_disp_rate) + "%")
+		draw_set_colour(c_white)
+		draw_set_font(font_yuan)
+	}
+
 }

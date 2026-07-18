@@ -33,6 +33,9 @@ function load_file(file_slot) {
 			reset_file(file_slot)
 		}
 		else{
+			if !variable_struct_exists(global.save_data.player, "points"){
+				global.save_data.player.points = 0
+			}
 			if global.save_data.version == "1.4"{
 				if array_get_index(global.save_data.completed_levels,"cocoa_island_night") != -1{
 					unlock_weapon("double_water_gun")
@@ -60,6 +63,7 @@ function reset_file(file_slot){
             "version": 1.6,
             "player": {
                 "gold": 0,
+                "points": 0,
                 "level": 1,
                 "experience": 0,
 				"name":"Player",
