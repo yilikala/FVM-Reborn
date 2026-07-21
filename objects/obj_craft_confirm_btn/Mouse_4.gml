@@ -26,7 +26,7 @@ if obj_craft_bg.button_select == 2{
 			else{
 				// 成功率
 				var _base_rate = get_spice_synthesis_base_rate(_id)
-				var _clover_num = (obj_craft_bg.syn_input_clover_id != "") ? 1 : 0
+				var _clover_num = (obj_craft_bg.syn_input_clover_id != "") ? get_clover_tier(obj_craft_bg.syn_input_clover_id) : 0
 				var _rate = calc_synthesis_rate(_base_rate, _clover_num)
 				var _roll = random(1.0)
 
@@ -63,7 +63,7 @@ if obj_craft_bg.button_select == 2{
 				else{
 					// 合成失败
 					if is_insured{
-						show_notice("不够好运，合成失败",60)
+						show_notice("不够好运，合成失败",120)
 						obj_craft_bg.insured = false
 					}
 					else{
@@ -71,7 +71,7 @@ if obj_craft_bg.button_select == 2{
 						if obj_craft_bg.syn_input_clover_id != ""{
 							add_material_amount(obj_craft_bg.syn_input_clover_id, -1)
 						}
-						show_notice("不够好运，合成失败",60)
+						show_notice("不够好运，合成失败",120)
 						obj_craft_bg.syn_last_spice_id = _id
 						obj_craft_bg.syn_last_clover_id = obj_craft_bg.syn_input_clover_id
 						if get_material_amount(_id) >= _rule.required{
@@ -132,7 +132,7 @@ if target_id != ""{
 				else{
 // 计算成功率
 				var _base_rate = get_card_base_rate(string(current_level + 1))
-				var _clover_num = (obj_craft_bg.input_clover_id != "") ? 1 : 0
+				var _clover_num = (obj_craft_bg.input_clover_id != "") ? get_clover_tier(obj_craft_bg.input_clover_id) : 0
 				var _rate = calc_reinforce_rate(_base_rate, obj_craft_bg.input_spice_count, craft_rule_info.spices_amount, _clover_num)
 				var _roll = random(1.0)
 
@@ -174,21 +174,21 @@ if target_id != ""{
 							if obj_craft_bg.input_clover_id != ""{
 								add_material_amount(obj_craft_bg.input_clover_id, -1)
 							}
-							show_notice("不够好运，强化失败",60)
+							show_notice("不够好运，强化失败",120)
 							// 重置四叶草
 							obj_craft_bg.input_clover_id = ""
 							obj_craft_bg.insured = false
 						}
 						else{
-							// 消耗所有投入香料和四叶草，≥5星降1星
+							// 消耗所有投入香料和四叶草，>5星降1星
 							add_material_amount(obj_craft_bg.input_spice_id, -obj_craft_bg.input_spice_count)
 							if obj_craft_bg.input_clover_id != ""{
 								add_material_amount(obj_craft_bg.input_clover_id, -1)
 							}
-							if current_level >= 5{
+							if current_level > 5{
 								upgrade_card(target_id, current_level - 1)
 							}
-							show_notice("不够好运，强化失败",60)
+							show_notice("不够好运，强化失败",120)
 							// 从当前星级刷新香料投入
 							var _nl = (current_level >= 5) ? (current_level - 1) : current_level
 							if _nl <= 15{
@@ -246,7 +246,7 @@ if target_id != ""{
 				else{
 					// 计算成功率（水晶不累加，按基础量计，倍率为1）
 					var _base_rate = get_gem_base_rate(string(current_level + 1))
-					var _clover_num = (obj_craft_bg.input_clover_id != "") ? 1 : 0
+					var _clover_num = (obj_craft_bg.input_clover_id != "") ? get_clover_tier(obj_craft_bg.input_clover_id) : 0
 					var _rate = calc_reinforce_rate(_base_rate, obj_craft_bg.input_crystal_count, craft_rule_info.crystal_amount, _clover_num)
 					var _roll = random(1.0)
 
@@ -288,7 +288,7 @@ if target_id != ""{
 							if obj_craft_bg.input_clover_id != ""{
 								add_material_amount(obj_craft_bg.input_clover_id, -1)
 							}
-							show_notice("不够好运，强化失败",60)
+							show_notice("不够好运，强化失败",120)
 							// 重置四叶草
 							obj_craft_bg.input_clover_id = ""
 							obj_craft_bg.insured = false
@@ -303,7 +303,7 @@ if target_id != ""{
 								edit_gem_max_level(target_id, current_level - 1)
 								edit_gem_level(target_id, get_gem_max_level(target_id))
 							}
-							show_notice("不够好运，强化失败",60)
+							show_notice("不够好运，强化失败",120)
 							// 从当前星级刷新水晶投入
 							var _nl = (current_level >= 5) ? (current_level - 1) : current_level
 							if _nl <= 14 && (array_get_index(level_10_gems, target_id) == -1 || _nl < 10){

@@ -3988,35 +3988,33 @@
     ],
     "rewards": [
         {
-            "gold": 7000.0,
+            "gold": 14000,
             "items": [
                 {
-                    "id": "secret_spices",
-                    "amount": 400.0
+                    "id":"royal_spices","amount":80
                 },
                 {
                     "id": "middle_crystal",
-                    "amount": 300.0
+                    "amount": 60
                 },
                 {
-                    "id": "clover_2",
+                    "id": "clover_3",
                     "amount": 1.0
                 }
             ]
         },
         {
-            "gold": 7000.0,
+            "gold": 14000,
             "items": [
                 {
-                    "id": "secret_spices",
-                    "amount": 400.0
+                    "id":"royal_spices","amount":80
                 },
                 {
                     "id": "middle_crystal",
-                    "amount": 300.0
+                    "amount": 60
                 },
                 {
-                    "id": "clover_2",
+                    "id": "clover_3",
                     "amount": 1.0
                 }
             ],
@@ -4035,4 +4033,4 @@
         }
     ],
     "desc": "这是一个什么都没有的新关卡"
-} 
+}

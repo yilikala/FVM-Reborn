@@ -2077,37 +2077,37 @@
     ],
     "rewards": [
         {
-            "gold": 3500.0,
+            "gold": 7000,
             "items": [
                 {
                     "id": "secret_spices",
-                    "amount": 75.0
+                    "amount": 15
                 },
                 {
-                    "id": "middle_crystal",
-                    "amount": 50.0
+                    "id": "less_crystal",
+                    "amount": 30.0
                 },
                 {
                     "id": "clover_1",
-                    "amount": 1.0
+                    "amount": 3.0
                 }
             ]
         },
         {
             "skill_level": 0.0,
-            "gold": 3500.0,
+            "gold": 7000,
             "items": [
                 {
                     "id": "secret_spices",
-                    "amount": 75.0
+                    "amount": 15
                 },
                 {
-                    "id": "middle_crystal",
-                    "amount": 50.0
+                    "id": "less_crystal",
+                    "amount": 30.0
                 },
                 {
                     "id": "clover_1",
-                    "amount": 1.0
+                    "amount": 3.0
                 }
             ],
             "card_unlock": [
@@ -2118,4 +2118,4 @@
             "player_level": 23.0
         }
     ]
-} 
+} 

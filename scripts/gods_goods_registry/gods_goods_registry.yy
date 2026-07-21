@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"gods_goods_registry",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"gods_goods_registry",
+  "parent":{
+    "name":"Acticity",
+    "path":"folders/脚本/Menu/Acticity.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

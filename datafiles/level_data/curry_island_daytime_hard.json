@@ -2400,11 +2400,15 @@
             "items": [
                 {
                     "id": "natural_spices",
-                    "amount": 50.0
+                    "amount": 60
                 },
                 {
                     "id": "less_crystal",
                     "amount": 20.0
+                },
+                {
+                    "id": "clover_1",
+                    "amount": 2
                 }
             ]
         },
@@ -2416,11 +2420,15 @@
             "items": [
                 {
                     "id": "natural_spices",
-                    "amount": 50.0
+                    "amount": 60
                 },
                 {
                     "id": "less_crystal",
                     "amount": 20.0
+                },
+                {
+                    "id": "clover_1",
+                    "amount": 2
                 }
             ],
             "card_unlock": [
@@ -2429,4 +2437,4 @@
             "weapon_unlock": []
         }
     ]
-} 
+} 

@@ -9,7 +9,8 @@ event_user(0)
 
 // ========== 特定属性默认值 ==========
 
-attack_anim = 18;
+attack_anim = 18
 idle_anim = 11
+
 first_produce_delay = 60;
 plant_type = "normal"

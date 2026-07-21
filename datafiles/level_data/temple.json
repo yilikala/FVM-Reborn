@@ -3010,7 +3010,11 @@
                 },
                 {
                     "id": "less_crystal",
-                    "amount": 20
+                    "amount": 20.0
+                },
+                {
+                    "id": "clover_1",
+                    "amount": 5
                 }
             ]
         },
@@ -3023,13 +3027,17 @@
             "skill_level": 4.0,
             "gold": 3000.0,
             "items": [
-                {
+               {
                     "id": "natural_spices",
                     "amount": 60
                 },
                 {
                     "id": "less_crystal",
                     "amount": 20.0
+                },
+                {
+                    "id": "clover_1",
+                    "amount": 5
                 }
             ],
             "card_unlock": [
@@ -3042,4 +3050,4 @@
             ]
         }
     ]
-} 
+} 

@@ -36,6 +36,12 @@ function load_file(file_slot) {
 			if !variable_struct_exists(global.save_data.player, "points"){
 				global.save_data.player.points = 0
 			}
+			if !variable_struct_exists(global.save_data.player, "wish_count"){
+				global.save_data.player.wish_count = 0
+			}
+			if !variable_struct_exists(global.save_data.player, "wish_spent"){
+				global.save_data.player.wish_spent = 0
+			}
 			if global.save_data.version == "1.4"{
 				if array_get_index(global.save_data.completed_levels,"cocoa_island_night") != -1{
 					unlock_weapon("double_water_gun")
@@ -64,10 +70,12 @@ function reset_file(file_slot){
             "player": {
                 "gold": 0,
                 "points": 0,
-                "level": 1,
+				"level": 1,
                 "experience": 0,
 				"name":"Player",
-				"total_time":0
+				"total_time":0,
+				"wish_count":0,
+				"wish_spent":0
             },
             "unlocked_cards": [
                 {"id": "small_fire", "level": 0, "shape": 0,"skill":0,"max_level":0,"max_shape":0},

@@ -3909,19 +3909,19 @@
     ],
     "rewards": [
         {
-            "gold": 10000.0,
+            "gold": 20000,
             "items": [
                 {
-                    "id": "secret_spices",
-                    "amount": 400.0
+                    "id": "royal_spices",
+                    "amount": 20
                 },
                 {
                     "id": "middle_crystal",
-                    "amount": 300.0
+                    "amount": 15.0
                 },
                 {
-                    "id": "clover_1",
-                    "amount": 3.0
+                    "id": "clover_3",
+                    "amount": 2.0
                 }
             ]
         },
@@ -3935,19 +3935,19 @@
             ],
             "player_level": 31.0,
             "skill_level": 7.0,
-            "gold": 10000.0,
+            "gold": 20000,
             "items": [
                 {
-                    "id": "secret_spices",
-                    "amount": 400.0
+                    "id": "royal_spices",
+                    "amount": 20
                 },
                 {
                     "id": "middle_crystal",
-                    "amount": 300.0
+                    "amount": 15.0
                 },
                 {
-                    "id": "clover_1",
-                    "amount": 3.0
+                    "id": "clover_3",
+                    "amount": 2.0
                 }
             ]
         }
@@ -3962,4 +3962,4 @@
     "starting_flame": 50.0,
     "first_wave_delay": 15.0,
     "total_waves": 9.0
-} 
+} 

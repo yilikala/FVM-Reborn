@@ -264,9 +264,9 @@ if button_select == 0{
 			}
 			draw_set_color(c_white)
 
-			// 成功率显示（最终成功率，>=100 显示100）
+// 成功率显示（最终成功率，>=100 显示100）
 			var _base_rate = get_card_base_rate(string(card_data.max_level + 1))
-			var _clover_num = (input_clover_id != "") ? 1 : 0
+			var _clover_num = (input_clover_id != "") ? get_clover_tier(input_clover_id) : 0
 			var _rate = calc_reinforce_rate(_base_rate, input_spice_count, craft_rule.spices_amount, _clover_num)
 			var _disp_rate = floor(_rate * 100)
 			if _disp_rate > 100 { _disp_rate = 100 }
@@ -453,8 +453,8 @@ else if button_select == 1{
 			draw_set_color(c_white)
 
 			// 成功率显示（最终成功率，>=100 显示100）
-			var _base_rate = get_gem_base_rate(string(get_gem_max_level(weapon_id) + 1))
-			var _clover_num = (input_clover_id != "") ? 1 : 0
+var _base_rate = get_gem_base_rate(string(get_gem_max_level(weapon_id) + 1))
+			var _clover_num = (input_clover_id != "") ? get_clover_tier(input_clover_id) : 0
 			var _rate = calc_reinforce_rate(_base_rate, input_crystal_count, craft_rule.crystal_amount, _clover_num)
 			var _disp_rate = floor(_rate * 100)
 			if _disp_rate > 100 { _disp_rate = 100 }
@@ -540,7 +540,7 @@ else if button_select == 2{
 	// 成功率
 	if syn_input_spice_id != "" && !is_undefined(get_spice_synthesis_rule(syn_input_spice_id)){
 		var _base_rate = get_spice_synthesis_base_rate(syn_input_spice_id)
-		var _clover_num = (syn_input_clover_id != "") ? 1 : 0
+		var _clover_num = (syn_input_clover_id != "") ? get_clover_tier(syn_input_clover_id) : 0
 		var _rate = calc_synthesis_rate(_base_rate, _clover_num)
 		var _disp_rate = floor(_rate * 100)
 		if _disp_rate > 100 { _disp_rate = 100 }

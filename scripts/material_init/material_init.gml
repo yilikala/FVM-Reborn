@@ -25,8 +25,8 @@ function material_init(){
 										"icon":4,
 										"pos_x":4,
 										"pos_y":0}) //
-	register_material("angelic_spices",{"name":"天使香料",
-										"description":"天使香料：强化15~16星卡片所需材料",
+	register_material("holyspirit_spices",{"name":"圣灵香料",
+										"description":"圣灵香料：强化15~16星卡片所需材料",
 										"icon":5,
 										"pos_x":5,
 										"pos_y":0}) //
@@ -65,18 +65,18 @@ function material_init(){
 										"icon":12,
 										"pos_x":6,
 										"pos_y":1}) //
-	register_material("clover_SS",{"name":"SS级四叶草",
-										"description":"SS级四叶草：提升强化概率至3.3倍",
+	register_material("clover_SS",{"name":"SS四叶草",
+										"description":"SS四叶草：提升强化概率至3.3倍",
 										"icon":13,
 										"pos_x":7,
 										"pos_y":1}) //
-	register_material("clover_SSS",{"name":"SSS",
-										"description":"SSS级四叶草：提升强化概率至3.6倍",
+	register_material("clover_SSS",{"name":"SSS四叶草",
+										"description":"SSS四叶草：提升强化概率至3.6倍",
 										"icon":14,
 										"pos_x":0,
 										"pos_y":2}) //
-	register_material("clover_SSR",{"name":"SSR",
-										"description":"SSR级四叶草：提升强化概率至4倍",
+	register_material("clover_SSR",{"name":"SSR四叶草",
+										"description":"SSR四叶草：提升强化概率至4倍",
 										"icon":15,
 										"pos_x":1,
 										"pos_y":2}) //

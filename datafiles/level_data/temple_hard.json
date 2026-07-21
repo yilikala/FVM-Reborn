@@ -5123,7 +5123,11 @@
                 },
                 {
                     "id": "less_crystal",
-                    "amount": 20
+                    "amount": 20.0
+                },
+                {
+                    "id": "clover_1",
+                    "amount": 5
                 }
             ]
         },
@@ -5143,6 +5147,10 @@
                 {
                     "id": "less_crystal",
                     "amount": 20.0
+                },
+                {
+                    "id": "clover_1",
+                    "amount": 5
                 }
             ],
             "card_unlock": [
@@ -5155,4 +5163,4 @@
             ]
         }
     ]
-} 
+} 

@@ -1,0 +1,2 @@
+audio_play_sound(snd_button,0,0)
+instance_destroy(obj_exchange_menu_bg)

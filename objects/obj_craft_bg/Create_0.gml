@@ -17,7 +17,7 @@ var btn3 = instance_create_depth(x-661,y+250,depth-1,obj_craft_select_btn)
 btn3.button_index = 2
 btn3.text_spr = spr_craft_synthesize_text
 
-card_material_id_list = ["natural_spices","secret_spices","royal_spices","magical_spices","elven_spices","angelic_spices","clover_1","clover_2","clover_3","clover_4","clover_5","clover_6","clover_S","clover_SS","clover_SSS","clover_SSR"]
+card_material_id_list = ["natural_spices","secret_spices","royal_spices","magical_spices","elven_spices","holyspirit_spices","clover_1","clover_2","clover_3","clover_4","clover_5","clover_6","clover_S","clover_SS","clover_SSS","clover_SSR"]
 gem_material_id_list = ["less_crystal","middle_crystal","advanced_crystal","clover_1","clover_2","clover_3","clover_4","clover_5","clover_6","clover_S","clover_SS","clover_SSS","clover_SSR"]
 spice_synthesis_material_id_list = ["natural_spices","secret_spices","royal_spices","magical_spices","elven_spices","clover_1","clover_2","clover_3","clover_4","clover_5","clover_6","clover_S","clover_SS","clover_SSS","clover_SSR"]
 
@@ -31,7 +31,7 @@ card_surface = -1
 
 current_uprade_target_id = ""
 
-spices_use_order = ["natural_spices","secret_spices","royal_spices","magical_spices","elven_spices","angelic_spices"]
+spices_use_order = ["natural_spices","secret_spices","royal_spices","magical_spices","elven_spices","holyspirit_spices"]
 clover_use_order = ["clover_1","clover_2","clover_3","clover_4","clover_5","clover_6","clover_S","clover_SS","clover_SSS","clover_SSR"]
 crystal_use_order = ["less_crystal","middle_crystal","advanced_crystal"]
 

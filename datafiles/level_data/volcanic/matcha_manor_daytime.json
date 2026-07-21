@@ -1864,19 +1864,19 @@
     ],
     "rewards": [
         {
-            "gold": 5000.0,
+            "gold": 10000,
             "items": [
                 {
                     "id": "secret_spices",
-                    "amount": 200.0
+                    "amount": 35
                 },
                 {
-                    "id": "middle_crystal",
-                    "amount": 150.0
+                    "id": "less_crystal",
+                    "amount": 60.0
                 },
                 {
-                    "id": "clover_1",
-                    "amount": 1.0
+                    "id": "clover_2",
+                    "amount": 2.0
                 }
             ]
         },
@@ -1888,19 +1888,19 @@
             "gem_unlock": [],
             "player_level": 29.0,
             "skill_level": 0.0,
-            "gold": 5000.0,
+            "gold": 10000,
             "items": [
-                {
+               {
                     "id": "secret_spices",
-                    "amount": 200.0
+                    "amount": 35
                 },
                 {
-                    "id": "middle_crystal",
-                    "amount": 150.0
+                    "id": "less_crystal",
+                    "amount": 60.0
                 },
                 {
-                    "id": "clover_1",
-                    "amount": 1.0
+                    "id": "clover_2",
+                    "amount": 2.0
                 }
             ]
         }
@@ -1915,4 +1915,4 @@
     "starting_flame": 50.0,
     "first_wave_delay": 30.0,
     "total_waves": 5.0
-} 
+} 

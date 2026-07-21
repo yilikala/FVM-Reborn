@@ -1,0 +1,12 @@
+{
+  "$GMShader":"",
+  "%Name":"Shader13",
+  "name":"Shader13",
+  "parent":{
+    "name":"FVM-reborn",
+    "path":"FVM-reborn.yyp",
+  },
+  "resourceType":"GMShader",
+  "resourceVersion":"2.0",
+  "type":1,
+}

@@ -3599,16 +3599,16 @@
             "gold": 6000.0,
             "items": [
                 {
-                    "id": "natural_spices",
-                    "amount": 150.0
+                    "id": "secret_spices",
+                    "amount": 30.0
                 },
                 {
                     "id": "less_crystal",
-                    "amount": 40.0
+                    "amount": 50.0
                 },
                 {
-                    "id": "clover_1",
-                    "amount": 3
+                    "id": "clover_2",
+                    "amount": 2
                 }
             ]
         },
@@ -3622,20 +3622,20 @@
             "gold": 6000.0,
             "items": [
                 {
-                    "id": "natural_spices",
-                    "amount": 150.0
+                    "id": "secret_spices",
+                    "amount": 30.0
                 },
                 {
                     "id": "less_crystal",
-                    "amount": 40.0
+                    "amount": 50.0
                 },
                 {
-                    "id": "clover_1",
-                    "amount": 3
+                    "id": "clover_2",
+                    "amount": 2
                 }
             ],
             "card_unlock": ["chocolate_pult"],
             "weapon_unlock": []
         }
     ]
-} 
+} 

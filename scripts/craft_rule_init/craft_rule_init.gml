@@ -19,7 +19,18 @@ function get_gem_craft_rule(target_level){
 	return ds_map_find_value(global.gem_craft_rules,target_level)
 }
 
-// ========== 香料合成规则 ==========
+function get_clover_tier(clover_id){
+	var tiers = {
+		"clover_1":1, "clover_2":2, "clover_3":3,
+		"clover_4":4, "clover_5":5, "clover_6":6,
+		"clover_S":7, "clover_SS":8, "clover_SSS":9, "clover_SSR":10
+	}
+	if variable_struct_exists(tiers, clover_id){
+		return tiers[$ clover_id]
+	}
+	return 0
+}
+
 function spice_synthesis_registry_init(){
 	global.spice_synthesis_rules = ds_map_create()
 }
@@ -29,7 +40,6 @@ function register_spice_synthesis_rule(input_id, info){
 function get_spice_synthesis_rule(input_id){
 	return ds_map_find_value(global.spice_synthesis_rules, input_id)
 }
-// 香料合成的基础成功率（占位，后续可调）
 function get_spice_synthesis_base_rate(input_id){
 	var rule = get_spice_synthesis_rule(input_id)
 	if is_undefined(rule) { return 0 }
@@ -117,8 +127,8 @@ function craft_rule_init(){
 	register_card_craft_rule("12", {"spices_require":"magical_spices","spices_amount":15,"gold_amount":12000})
 	register_card_craft_rule("13", {"spices_require":"elven_spices",  "spices_amount":5,"gold_amount":15000})
 	register_card_craft_rule("14", {"spices_require":"elven_spices",  "spices_amount":15,"gold_amount":20000})
-	register_card_craft_rule("15", {"spices_require":"angelic_spices","spices_amount":5,"gold_amount":30000})
-	register_card_craft_rule("16", {"spices_require":"angelic_spices","spices_amount":20,"gold_amount":50000})
+	register_card_craft_rule("15", {"spices_require":"holyspirit_spices","spices_amount":5,"gold_amount":30000})
+	register_card_craft_rule("16", {"spices_require":"holyspirit_spices","spices_amount":20,"gold_amount":50000})
 	
 	
 	register_gem_craft_rule(
@@ -242,11 +252,11 @@ function craft_rule_init(){
 		}
 	)
 
-	// 香料合成规则注册：填入 input 的 id → output、消耗量、基础成功率
+	// 香料合成
 	spice_synthesis_registry_init()
 	register_spice_synthesis_rule("natural_spices",{"output_id":"secret_spices","required":20,"base_rate":0.55,"insurance":50,"gold_amount":500})
 	register_spice_synthesis_rule("secret_spices", {"output_id":"royal_spices",  "required":20,"base_rate":0.45,"insurance":100,"gold_amount":1000})
 	register_spice_synthesis_rule("royal_spices",  {"output_id":"magical_spices","required":15,"base_rate":0.35,"insurance":250,"gold_amount":2000})
 	register_spice_synthesis_rule("magical_spices",{"output_id":"elven_spices",  "required":15,"base_rate":0.30,"insurance":800,"gold_amount":5000})
-	register_spice_synthesis_rule("elven_spices",  {"output_id":"angelic_spices","required":10,"base_rate":0.20,"insurance":4000,"gold_amount":10000})
+	register_spice_synthesis_rule("elven_spices",  {"output_id":"holyspirit_spices","required":10,"base_rate":0.20,"insurance":4000,"gold_amount":10000})
 }

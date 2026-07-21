@@ -2960,35 +2960,33 @@
     ],
     "rewards": [
         {
-            "gold": 6000.0,
+            "gold": 12000,
             "items": [
                 {
-                    "id": "secret_spices",
-                    "amount": 300.0
+                    "id":"royal_spices","amount":60
                 },
                 {
                     "id": "middle_crystal",
-                    "amount": 250.0
+                    "amount": 50
                 },
                 {
-                    "id": "clover_2",
+                    "id": "clover_3",
                     "amount": 1.0
                 }
             ]
         },
         {
-            "gold": 6000.0,
+            "gold": 12000,
             "items": [
                 {
-                    "id": "secret_spices",
-                    "amount": 300.0
+                    "id":"royal_spices","amount":60
                 },
                 {
                     "id": "middle_crystal",
-                    "amount": 250.0
+                    "amount": 50
                 },
                 {
-                    "id": "clover_2",
+                    "id": "clover_3",
                     "amount": 1.0
                 }
             ],
@@ -3007,4 +3005,4 @@
         }
     ],
     "desc": ""
-} 
+}

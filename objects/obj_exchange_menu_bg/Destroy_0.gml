@@ -1,0 +1,4 @@
+instance_destroy(obj_exchange_menu_closer)
+instance_destroy(obj_exchange_menu_btn)
+obj_player_info_ui.menu_type = 0
+obj_world_map_button.world_map = 0

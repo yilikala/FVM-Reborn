@@ -2021,11 +2021,15 @@
             "items": [
                 {
                     "id": "natural_spices",
-                    "amount": 40.0
+                    "amount": 40
                 },
                 {
                     "id": "less_crystal",
                     "amount": 10.0
+                },
+                {
+                    "id": "clover_1",
+                    "amount": 2
                 }
             ]
         },
@@ -2037,11 +2041,15 @@
             "items": [
                 {
                     "id": "natural_spices",
-                    "amount": 40.0
+                    "amount": 40
                 },
                 {
                     "id": "less_crystal",
                     "amount": 10.0
+                },
+                {
+                    "id": "clover_1",
+                    "amount": 2
                 }
             ],
             "card_unlock": [
@@ -2051,4 +2059,4 @@
             "weapon_unlock": ["double_water_gun"]
         }
     ]
-} 
+} 
