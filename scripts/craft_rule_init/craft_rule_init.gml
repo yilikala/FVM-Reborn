@@ -129,6 +129,7 @@ function craft_rule_init(){
 	register_card_craft_rule("14", {"spices_require":"elven_spices",  "spices_amount":15,"gold_amount":20000})
 	register_card_craft_rule("15", {"spices_require":"holyspirit_spices","spices_amount":5,"gold_amount":30000})
 	register_card_craft_rule("16", {"spices_require":"holyspirit_spices","spices_amount":20,"gold_amount":50000})
+
 	
 	
 	register_gem_craft_rule(

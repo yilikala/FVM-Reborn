@@ -22,6 +22,7 @@ gem_material_id_list = ["less_crystal","middle_crystal","advanced_crystal","clov
 spice_synthesis_material_id_list = ["natural_spices","secret_spices","royal_spices","magical_spices","elven_spices","clover_1","clover_2","clover_3","clover_4","clover_5","clover_6","clover_S","clover_SS","clover_SSS","clover_SSR"]
 
 
+
 hover_card_index = -1
 hover_gem_index = -1
 close_timer = -1
@@ -56,3 +57,4 @@ syn_input_spice_id = ""    // 当前作为原料的低级香料
 syn_input_clover_id = ""   // 当前选定的四叶草
 syn_last_spice_id = ""     // 上一次合成使用的香料（用于自动重填）
 syn_last_clover_id = ""    // 上一次合成使用的四叶草
+

@@ -116,6 +116,7 @@ else if (state == "moving") {
 	                        ds_list_add(new_list, plant);
 	                        if (instance_exists(plant)) {
 	                            plant.grid_row = target_r;
+	                            plant.platform_grid_lock = true;
 	                        }
 	                    }
 	                    ds_list_clear(old_list);
@@ -142,6 +143,7 @@ else if (state == "moving") {
 	                        ds_list_add(new_list, plant);
 	                        if (instance_exists(plant)) {
 	                            plant.grid_col = target_c;
+	                            plant.platform_grid_lock = true;
 	                        }
 	                    }
 	                    ds_list_clear(old_list);
@@ -213,43 +215,80 @@ else if (state == "moving") {
                         if (variable_instance_exists(plant, "target_x")) plant.target_x += visual_delta_x;
                         if (variable_instance_exists(plant, "target_y")) plant.target_y += visual_delta_y;
                         
-                        var grid_pos = get_grid_position_from_world(plant.x, plant.y);
-                        plant.grid_col = grid_pos.col;
-                        plant.grid_row = grid_pos.row;
+                        // depth从视觉位置计算，但不覆盖grid_col/grid_row（保持逻辑位置）
                         if (variable_instance_exists(plant, "plant_type")) {
-                            plant.depth = calculate_plant_depth(plant.grid_col, plant.grid_row, plant.plant_type);
+                            var vis_grid_pos = get_grid_position_from_world(plant.x, plant.y);
+                            plant.depth = calculate_plant_depth(vis_grid_pos.col, vis_grid_pos.row, plant.plant_type);
                         }
                         
                         if (variable_instance_exists(plant, "banding_star_obj") && instance_exists(plant.banding_star_obj)) {
                             plant.banding_star_obj.x += visual_delta_x;
                             plant.banding_star_obj.y += visual_delta_y;
                         }
-                        
-                        with (all) {
-                            if ((variable_instance_exists(id, "parent_plant") && parent_plant == plant) || 
-                                (variable_instance_exists(id, "parent_player") && parent_player == plant)) {
-                                if (id != plant) {
-                                    x += visual_delta_x;
-                                    y += visual_delta_y;
-                                    if (variable_instance_exists(id, "target_x")) target_x += visual_delta_x;
-                                    if (variable_instance_exists(id, "target_y")) target_y += visual_delta_y;
-                                    
-                                    if (object_index == obj_melon_shield_inner && instance_exists(parent_plant)) {
-                                        depth = calculate_plant_depth(parent_plant.grid_col, parent_plant.grid_row, "shield_inner");
-                                    }
-                                }
-                            }
-                        }
+						
+						if (ds_map_exists(global._move_instance_map,plant.id)){
+							var _list = global._move_instance_map[? plant.id];
+							for(var _i=ds_list_size(_list)-1;_i>=0;_i--){
+								var _ins = _list[| _i]; 
+								if(instance_exists(_ins)){
+									with (_ins){
+										x += visual_delta_x;
+			                            y += visual_delta_y;
+			                            if (variable_instance_exists(id, "target_x")) target_x += visual_delta_x;
+			                            if (variable_instance_exists(id, "target_y")) target_y += visual_delta_y;
+			                            if (object_index == obj_melon_shield_inner && instance_exists(parent_plant)) {
+			                                depth = calculate_plant_depth(parent_plant.grid_col, parent_plant.grid_row, "shield_inner");
+			                            }
+									}
+								}else{
+									ds_list_delete(_list,_i);
+								}
+							}
+						}
+						
                     }
                 }
             }
         }
     }
-    
+	
+    // 删除不存在的实例id，并清理对应的 list
+	var _keys = ds_map_keys_to_array(global._move_instance_map);
+	for (var _i = 0; _i < array_length(_keys); _i++) {
+	    var _key = _keys[_i];
+	    if (!instance_exists(_key)) {
+	        var _list = global._move_instance_map[? _key];
+	        if (ds_exists(_list, ds_type_list)) {
+	            ds_list_destroy(_list);
+	        }
+	        ds_map_delete(global._move_instance_map, _key);
+	    }
+	}
+	
     if (is_finish) {
         move_progress = 0;
         visual_x_shift = 0;
         visual_y_shift = 0;
+        
+        // 清除platform_grid_lock，让grid_col/grid_row恢复由obj_card_parent管理
+        var fin_c_offset = is_axis_x ? current_offset : 0;
+        var fin_r_offset = (!is_axis_x) ? current_offset : 0;
+        var fin_cur_start_c = start_col + fin_c_offset;
+        var fin_cur_start_r = start_row + fin_r_offset;
+        
+        for (var c = fin_cur_start_c; c < fin_cur_start_c + width; c++) {
+            for (var r = fin_cur_start_r; r < fin_cur_start_r + length; r++) {
+                if (r >= 0 && r < global.grid_rows && c >= 0 && c < global.grid_cols) {
+                    var fin_plant_list = ds_grid_get(global.grid_plants, c, r);
+                    for (var i = 0; i < ds_list_size(fin_plant_list); i++) {
+                        var fin_plant = ds_list_find_value(fin_plant_list, i);
+                        if (instance_exists(fin_plant)) {
+                            fin_plant.platform_grid_lock = false;
+                        }
+                    }
+                }
+            }
+        }
         
         if (abs(current_offset) >= move_distance || current_offset == 0) {
             state = "idle";
@@ -259,4 +298,26 @@ else if (state == "moving") {
             step_migrated = false;
         }
     }
+}
+	
+	
+	
+if (id == global._last_platform){
+// 渲染前以x/y为锚点，统一更新所有卡片的grid_col/grid_row和depth
+with (obj_card_parent) {
+    var grid_pos = get_grid_position_from_world(x, y)
+    grid_col = grid_pos.col
+    grid_row = grid_pos.row
+    if (variable_instance_exists(id, "plant_type")) {
+        var _type = plant_type
+        if (object_index == obj_cotton_candy) _type = "lilypad"
+        depth = calculate_plant_depth(grid_col, grid_row, _type)
+    }
+}
+
+with (obj_melon_shield_inner) {
+    if (instance_exists(parent_plant)) {
+        depth = parent_plant.depth + 2
+    }
+}
 }
