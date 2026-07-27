@@ -1129,7 +1129,7 @@ function task_init(){
 					{
 						"type":"item",
 						"item_id":"royal_spices",
-						"amount":20
+						"amount":30
 					},
 					{
 						"type":"item",
@@ -1169,7 +1169,7 @@ function task_init(){
 					{
 						"type":"item",
 						"item_id":"royal_spices",
-						"amount":20
+						"amount":35
 					},
 					{
 						"type":"item",
@@ -1209,7 +1209,7 @@ function task_init(){
 					{
 						"type":"item",
 						"item_id":"royal_spices",
-						"amount":20
+						"amount":40
 					},
 					{
 						"type":"item",
@@ -1249,7 +1249,7 @@ function task_init(){
 					{
 						"type":"item",
 						"item_id":"royal_spices",
-						"amount":20
+						"amount":45
 					},
 					{
 						"type":"item",
@@ -1328,17 +1328,22 @@ function task_init(){
 				"rewards":[
 					{
 						"type":"item",
-						"item_id":"royal_spices",
-						"amount":250
+						"item_id":"magical_spices",
+						"amount":15
 					},
 					{
 						"type":"item",
-						"item_id":"middle_crystal",
-						"amount":200
+						"item_id":"advanced_crystal",
+						"amount":10
+					},
+					{
+						"type":"item",
+						"item_id":"clover_4",
+						"amount":1
 					},
 					{
 						"type":"gold",
-						"amount":14000
+						"amount":80000
 					}
 				]
 			}
@@ -1363,17 +1368,22 @@ function task_init(){
 				"rewards":[
 					{
 						"type":"item",
-						"item_id":"royal_spices",
-						"amount":250
+						"item_id":"magical_spices",
+						"amount":20
 					},
 					{
 						"type":"item",
-						"item_id":"middle_crystal",
-						"amount":200
+						"item_id":"advanced_crystal",
+						"amount":10
+					},
+					{
+						"type":"item",
+						"item_id":"clover_4",
+						"amount":1
 					},
 					{
 						"type":"gold",
-						"amount":14000
+						"amount":80000
 					}
 				]
 			}
@@ -1398,17 +1408,22 @@ function task_init(){
 				"rewards":[
 					{
 						"type":"item",
-						"item_id":"royal_spices",
-						"amount":300
+						"item_id":"magical_spices",
+						"amount":25
 					},
 					{
 						"type":"item",
-						"item_id":"middle_crystal",
-						"amount":250
+						"item_id":"advanced_crystal",
+						"amount":10
+					},
+					{
+						"type":"item",
+						"item_id":"clover_4",
+						"amount":1
 					},
 					{
 						"type":"gold",
-						"amount":16000
+						"amount":80000
 					}
 				]
 			}
@@ -1433,17 +1448,22 @@ function task_init(){
 				"rewards":[
 					{
 						"type":"item",
-						"item_id":"royal_spices",
-						"amount":300
+						"item_id":"magical_spices",
+						"amount":30
 					},
 					{
 						"type":"item",
-						"item_id":"middle_crystal",
-						"amount":250
+						"item_id":"advanced_crystal",
+						"amount":10
+					},
+					{
+						"type":"item",
+						"item_id":"clover_4",
+						"amount":1
 					},
 					{
 						"type":"gold",
-						"amount":16000
+						"amount":80000
 					}
 				]
 			}
@@ -1468,17 +1488,22 @@ function task_init(){
 				"rewards":[
 					{
 						"type":"item",
-						"item_id":"royal_spices",
-						"amount":600
+						"item_id":"magical_spices",
+						"amount":60
 					},
 					{
 						"type":"item",
-						"item_id":"middle_crystal",
-						"amount":500
+						"item_id":"advanced_crystal",
+						"amount":30
+					},
+					{
+						"type":"item",
+						"item_id":"clover_5",
+						"amount":3
 					},
 					{
 						"type":"gold",
-						"amount":32000
+						"amount":180000
 					}
 				]
 			}
@@ -2354,17 +2379,17 @@ function task_init(){
 				"rewards":[
 					{
 						"type":"item",
-						"item_id":"royal_spices",
-						"amount":400
+						"item_id":"magical_spices",
+						"amount":50
 					},
 					{
 						"type":"item",
-						"item_id":"middle_crystal",
-						"amount":300
+						"item_id":"advanced_crystal",
+						"amount":10
 					},
 					{
 						"type":"gold",
-						"amount":25000
+						"amount":40000
 					}
 				]
 			}
@@ -2770,23 +2795,23 @@ function task_init(){
 				"rewards":[
 					{
 						"type":"item",
-						"item_id":"royal_spices",
-						"amount":600
+						"item_id":"magical_spices",
+						"amount":80
 					},
 					{
 						"type":"item",
 						"item_id":"advanced_crystal",
-						"amount":50
-					},
-					{
-						"type":"gold",
-						"amount":35000
+						"amount":20
 					},
 					{
 						"type":"item",
-						"item_id":"clover_2",
-						"amount":10
+						"item_id":"clover_6",
+						"amount":1
 					},
+					{
+						"type":"gold",
+						"amount":20000
+					}
 				]
 			}
 		)
@@ -3208,23 +3233,23 @@ function task_init(){
 				"rewards":[
 					{
 						"type":"item",
-						"item_id":"royal_spices",
-						"amount":400
-					},
-					{
-						"type":"gold",
-						"amount":30000
+						"item_id":"magical_spices",
+						"amount":60
 					},
 					{
 						"type":"item",
 						"item_id":"advanced_crystal",
-						"amount":25
+						"amount":10
 					},
 					{
 						"type":"item",
-						"item_id":"clover_2",
+						"item_id":"clover_5",
 						"amount":5
 					},
+					{
+						"type":"gold",
+						"amount":20000
+					}
 				]
 			}
 		)

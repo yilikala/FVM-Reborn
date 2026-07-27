@@ -3052,44 +3052,46 @@
             "boss_wave": true,
             "wave_index": 5.0,
             "boss": "captain_america_mouse",
-            "boss_1_hp_modify": 0.69999999999999996
+            "boss_1_hp_modify": 0.7
         }
     ],
     "rewards": [
         {
-            "gold": 8000.0,
+            "gold": 20000,
             "items": [
                 {
-                    "id": "royal_spices",
-                    "amount": 500.0
+                    "id": "magical_spices",
+                    "amount": 20
                 },
                 {
                     "id": "middle_crystal",
-                    "amount": 400.0
+                    "amount": 60
                 },
                 {
-                    "id": "clover_2",
+                    "id": "clover_4",
                     "amount": 1.0
                 }
             ]
         },
         {
-            "gold": 8000.0,
+            "gold": 20000,
             "items": [
                 {
-                    "id": "royal_spices",
-                    "amount": 500.0
+                    "id": "magical_spices",
+                    "amount": 20
                 },
                 {
                     "id": "middle_crystal",
-                    "amount": 400.0
+                    "amount": 60
                 },
                 {
-                    "id": "clover_2",
+                    "id": "clover_4",
                     "amount": 1.0
                 }
             ],
-            "card_unlock": ["tang_hu_lu"],
+            "card_unlock": [
+                "tang_hu_lu"
+            ],
             "weapon_unlock": [],
             "gem_unlock": [],
             "player_level": 48.0,
@@ -3123,4 +3125,4 @@
         }
     ],
     "desc": ""
-} 
+}

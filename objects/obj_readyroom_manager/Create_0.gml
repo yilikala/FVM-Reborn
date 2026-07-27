@@ -18,6 +18,7 @@ ds_list_clear(global.selected_deck);
 select_card_index = ds_list_create()
 hover_card_index = -1
 hover_slot_index = -1
+hover_deck_slot = -1
 slot_rows = 11
 slot_cols = 10
 slot_surface = -1

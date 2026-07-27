@@ -24,6 +24,7 @@ spice_synthesis_material_id_list = ["natural_spices","secret_spices","royal_spic
 
 
 hover_card_index = -1
+hover_card_id = ""
 hover_gem_index = -1
 close_timer = -1
 

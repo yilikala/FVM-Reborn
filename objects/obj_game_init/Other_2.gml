@@ -28,6 +28,10 @@ randomise()
 global.plant_registry = ds_map_create();
 cards_init()
 
+if !instance_exists(obj_activity_manager){
+	instance_create_depth(0,0,-999,obj_activity_manager)
+}
+
 global.player_name = "Player";
 global.total_time = 0
 global.player_sprite = noone;

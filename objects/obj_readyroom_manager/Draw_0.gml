@@ -16,112 +16,88 @@ for(var i = 0 ; i < slot_rows ; i++){
     // 绘制所有已注册的植物卡片
     var card_index = 0;
     hover_card_index = -1; // 重置悬停卡片索引
+    hover_deck_slot = -1
     
     for(var i = 0; i < ds_list_size(global.player_deck); i += 2) {
         var card_id = global.player_deck[| i];
+        var card_data = {}
+        var card_shape = 0
+
+        // 检查是否已解锁
+        var is_unlocked = false;
+        for(var k = 0; k < array_length(global.save_data.unlocked_cards); k++) {
+            if (global.save_data.unlocked_cards[k].id == card_id) {
+                is_unlocked = true;
+                card_shape = global.save_data.unlocked_cards[k].shape
+                break;
+            }
+        }
+        // 检查是否已被选中
+        var is_selected = false
+        for(var s = 0;s<ds_list_size(global.selected_deck);s++){
+            if global.selected_deck[| s][? "card_id"] == card_id{
+                is_selected = true
+                break
+            }
+        }
+
+        // 锁定或已选中的卡片不占位，直接跳过
+        if (!is_unlocked || is_selected) {
+            continue
+        }
+
+        // 仅显示中的卡片参与排版
         var deck_entry = global.player_deck[| i+1];
-		var card_data_shapes = deck_entry[? "shapes"]
-		var card_data = {}
-		var card_shape = 0
-		//view_max_shapes = ds_list_size(card_data_shapes)-1
-        
-        // 计算卡片位置
+        var card_data_shapes = deck_entry[? "shapes"]
+        card_data = card_data_shapes[| card_shape]
         var row = card_index div slot_rows;
         var col = card_index mod slot_rows;
-        
-        if (row < slot_rows) {
-            var card_x = x + 42 + col * 84
-            var card_y = y + 48 + row * 96 - y_offset;
-            
-            // 检查卡片是否已解锁
-            var is_unlocked = false;
-			var is_selected = false
-            for(var k = 0; k < array_length(global.save_data.unlocked_cards); k++) {
-                if (global.save_data.unlocked_cards[k].id == card_id) {
-                    is_unlocked = true;
-					card_shape = global.save_data.unlocked_cards[k].shape
-					card_data = card_data_shapes[| card_shape]
-                    break;
-                }
+        var card_x = x + 42 + col * 84
+        var card_y = y + 48 + row * 96 - y_offset;
+
+        // 已解锁的卡片正常绘制
+        draw_sprite_ext(get_slot_sprite(card_data), 0, card_x, card_y-3, 0.25, 0.25, 0, c_white, 1);
+        draw_sprite_ext(card_data[? "sprite"], 0, card_x, card_y+15, 0.7, 0.7, 0, c_white, 1);
+        draw_set_color(c_black);
+        draw_set_halign(fa_center);
+        draw_set_valign(fa_bottom);
+        draw_set_font(font_pixel)
+        draw_text(card_x,card_y+37,card_data[? "cost"])
+        draw_set_font(font_yuan)
+        var length = array_length(global.save_data.unlocked_cards)
+        var info_index = 0
+        for (var j = 0;j < length;j++){
+            if global.save_data.unlocked_cards[j].id == card_id{
+                info_index = j
+                break
             }
-			for(var s = 0;s<ds_list_size(global.selected_deck);s++){
-				if global.selected_deck[| s][? "card_id"] == card_id{
-					is_unlocked = false
-					is_selected = true
-					break
-				}
-			}
-            
-            // 绘制卡片
-            if (is_unlocked) {
-                // 已解锁的卡片正常绘制
-				draw_sprite_ext(get_slot_sprite(card_data), 0, card_x, card_y-3, 0.25, 0.25, 0, c_white, 1);
-                draw_sprite_ext(card_data[? "sprite"], 0, card_x, card_y+15, 0.7, 0.7, 0, c_white, 1);
-				draw_set_color(c_black);
-				draw_set_halign(fa_center);
-				draw_set_valign(fa_bottom);
-				draw_set_font(font_pixel)
-				draw_text(card_x,card_y+37,card_data[? "cost"])
-				draw_set_font(font_yuan)
-				var length = array_length(global.save_data.unlocked_cards)
-				var info_index = 0
-				for (var j = 0;j < length;j++){
-					if global.save_data.unlocked_cards[j].id == card_id{
-						info_index = j
-						break
-					}
-				}
-				var level = global.save_data.unlocked_cards[info_index].level
-				if level > 0{
-					draw_sprite_ext(spr_star_slot, level - 1, card_x-25, card_y-35,1.4,1.4,0,c_white,1);
-				}
-                // 检查鼠标是否悬停在卡片上
-                var spr_width = 84;
-                var spr_height = 96;
-				
-				var hover_x = x + 803 + col * 84
-				var hover_y = y + 375 + row * 96 - y_offset
-                
-                if (point_in_rectangle(mouse_x, mouse_y, 
-                                      hover_x - spr_width/2, hover_y - spr_height/2,
-                                      hover_x + spr_width/2, hover_y + spr_height/2)) 
-				&& mouse_y > y+315 && mouse_y < y+755{
-                    hover_card_index = card_index;
-                }
-            } else if (is_selected){
-                // 未解锁的卡片使用灰色滤镜
-				draw_set_color(c_black);
-				draw_set_halign(fa_center);
-				draw_set_valign(fa_bottom);
-				draw_set_font(font_pixel)
-				card_data = card_data_shapes[| card_shape]
-				draw_sprite_ext(get_slot_sprite(card_data), 0, card_x, card_y-3, 0.25, 0.25, 0, c_gray, 1);
-                draw_sprite_ext(card_data[? "sprite"], 0, card_x, card_y+15, 0.7, 0.7, 0, c_gray, 1);
-				var info_index = 0
-				var length = array_length(global.save_data.unlocked_cards)
-				for (var j = 0;j < length;j++){
-					if global.save_data.unlocked_cards[j].id == card_id{
-						info_index = j
-						break
-					}
-				}
-				var level = global.save_data.unlocked_cards[info_index].level
-				if level > 0{
-					draw_sprite_ext(spr_star_slot, level - 1, card_x-25, card_y-35,1.4,1.4,0,c_gray,1);
-				}
-				draw_text(card_x,card_y+37,card_data[? "cost"])
-            }
-            
-            card_index++;
         }
+        var level = global.save_data.unlocked_cards[info_index].level
+        if level > 0{
+            draw_sprite_ext(spr_star_slot, level - 1, card_x-25, card_y-35,1.4,1.4,0,c_white,1);
+        }
+        // 检查鼠标是否悬停在卡片上
+        var spr_width = 84;
+        var spr_height = 96;
+        var hover_x_coord = x + 803 + col * 84
+        var hover_y_coord = y + 375 + row * 96 - y_offset
+        if (point_in_rectangle(mouse_x, mouse_y,
+                              hover_x_coord - spr_width/2, hover_y_coord - spr_height/2,
+                              hover_x_coord + spr_width/2, hover_y_coord + spr_height/2))
+        && mouse_y > y+315 && mouse_y < y+755{
+            hover_card_index = card_index;
+            hover_deck_slot = i div 2
+        }
+
+        card_index++;
     }
 	surface_reset_target()
 }
 draw_surface(slot_surface,x-25+803-42,y+ 375-48)
 {// 绘制悬停提示
     if (hover_card_index != -1 && !is_submenu_open) {
-		var card_id = global.player_deck[| hover_card_index*2];
-        var deck_entry = global.player_deck[| hover_card_index*2+1];
+		var card_id = global.player_deck[| hover_deck_slot*2];
+        var deck_entry = global.player_deck[| hover_deck_slot*2+1];
 		var card_data_shapes = deck_entry[? "shapes"]
 		var card_data = {}
 		var card_shape = 0

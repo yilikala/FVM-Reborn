@@ -105,15 +105,26 @@ if button_select == 0{
             draw_sprite_ext(spr_package_slot_bg,0,42+i*84,48+96 * j-y_offset,1.8,1.8,0,c_white,1)
         }
     }
-	//绘制所有已解锁防御卡
+	//绘制所有已解锁防御卡（按 player_deck 顺序与背包统一）
 	var card_index = 0
 	hover_card_index = -1
-	for(var i = 0 ; i < array_length(global.save_data.unlocked_cards);i++){
+	hover_card_id = ""
+	for(var i = 0 ; i < ds_list_size(global.player_deck);i += 2){
+		var card_id2 = global.player_deck[| i]
+		// 检查是否已解锁
+		var _unlocked_data = noone
+		for(var k = 0; k < array_length(global.save_data.unlocked_cards); k++){
+			if (global.save_data.unlocked_cards[k].id == card_id2) {
+				_unlocked_data = global.save_data.unlocked_cards[k]
+				break
+			}
+		}
+		// 未解锁的卡跳过
+		if (_unlocked_data == noone) { continue }
+
 		var card_col = card_index mod 7
 		var card_row = card_index div 7
-		var card_data = global.save_data.unlocked_cards[i]
-		var card_id = card_data.id
-		var card_slot_data = deck_get_card_data(card_id,card_data.shape)
+		var card_slot_data = deck_get_card_data(card_id2, _unlocked_data.shape)
 		var card_x = 42 + card_col*84
 		var card_y = 48+96 * card_row - y_offset
 
@@ -125,8 +136,8 @@ if button_select == 0{
 			draw_set_valign(fa_bottom);
 			draw_set_font(font_pixel)
 			draw_text(card_x,card_y+37,card_slot_data[? "cost"])
-			if card_data.max_level > 0{
-				draw_sprite_ext(spr_star_slot, card_data.max_level - 1, card_x-25, card_y-35,1.4,1.4,0,c_white,1);
+			if _unlocked_data.max_level > 0{
+				draw_sprite_ext(spr_star_slot, _unlocked_data.max_level - 1, card_x-25, card_y-35,1.4,1.4,0,c_white,1);
 			}
 		}
 		
@@ -143,6 +154,7 @@ if button_select == 0{
 	                                hover_card_x - spr_width/2, hover_card_y - spr_height/2,
 	                                hover_card_x + spr_width/2, hover_card_y + spr_height/2)) {
 	            hover_card_index = card_index;
+	            hover_card_id = card_id2
 	        }
 		}
 		card_index++

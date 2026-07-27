@@ -63,7 +63,7 @@ if !is_submenu_opened{
 	}
 	else if button_select == 0 && hover_card_index != -1{
 		audio_play_sound(snd_button,0,0)
-		current_uprade_target_id = global.save_data.unlocked_cards[hover_card_index].id
+		current_uprade_target_id = hover_card_id
 		// 自动填入基础香料
 		var _cd = get_card_info_simple(current_uprade_target_id)
 		if _cd.max_level <= 15{

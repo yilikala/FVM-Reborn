@@ -2979,7 +2979,6 @@
     {"id":{"name":"spr_zombie_with_wallnut_shield","path":"sprites/spr_zombie_with_wallnut_shield/spr_zombie_with_wallnut_shield.yy",},},
     {"id":{"name":"spr_zombie_with_wallnut","path":"sprites/spr_zombie_with_wallnut/spr_zombie_with_wallnut.yy",},},
     {"id":{"name":"Sprite1341","path":"sprites/Sprite1341/Sprite1341.yy",},},
-    {"id":{"name":"Sprite1413","path":"sprites/Sprite1413/Sprite1413.yy",},},
     {"id":{"name":"Sprite30","path":"sprites/Sprite30/Sprite30.yy",},},
   ],
   "resourceType":"GMProject",
