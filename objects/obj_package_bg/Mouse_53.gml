@@ -1,15 +1,14 @@
 if package_button_select == 1{
 	if not is_submenu_opened{
 		if hover_card_index != -1{
-			audio_play_sound(snd_button,0,0)
-			var inst = instance_create_depth(room_width/2,room_height/2,depth-5,obj_card_edit_menu)
-			inst.target_card_index = hover_card_index
-			var deck_entry = global.player_deck[| hover_card_index*2+1];
-			var card_data_shapes = deck_entry[? "shapes"]
-			view_max_shapes = ds_list_size(card_data_shapes)-1
-			//show_debug_message(view_max_shapes)
-			inst.view_max_shape = view_max_shapes
-			is_submenu_opened = true
+			// 进入按下状态：长按 + 拖动距离阈值后才真正开始拖拽；
+			// 短按释放则由 Step 触发卡片编辑菜单打开
+			drag_state = 1
+			drag_hold_timer = 0
+			drag_card_index = hover_card_index
+			drag_deck_slot = hover_deck_slot
+			drag_start_x = mouse_x
+			drag_start_y = mouse_y
 		}
 	}
 }

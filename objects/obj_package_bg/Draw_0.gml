@@ -91,106 +91,172 @@ else if info_button_select == 2{
 	draw_set_font(font_yuan)
 }
 if package_button_select == 1 {
+    // 创建/重置卡片栏表面（用于裁剪溢出内容，实现滚轮翻页）
+    if (!surface_exists(card_surface)) {
+        card_surface = surface_create(card_surface_w, card_surface_h)
+    }
+    // 根据当前卡片总数计算可滚动范围，并将 y_offset 夹到合法区间
+    var _total_cards = ds_list_size(global.player_deck) / 2
+    var _total_rows = max(8, ceil(_total_cards / package_rows))
+    var _max_offset = max(0, _total_rows * 96 - card_surface_h)
+    y_offset = clamp(y_offset, 0, _max_offset)
+    // 表面在屏幕上的起点（surface 内坐标 (0,0) 对应此处屏幕坐标）
+    var _surf_x = x - 354 - 42
+    var _surf_y = y - 359 - 48
+
+    hover_card_index = -1 // 重置悬停卡片索引
+    hover_deck_slot = -1
+    drag_card_data = undefined
+    drag_card_level = 0
+
+    // 渲染卡片网格到 surface（surface 内坐标以 (42,48) 为第一格中心）
+    surface_set_target(card_surface)
+    draw_clear_alpha(c_black, 0)
+
+    // 绘制背包格子背景
     for(var i = 0 ; i < package_rows ; i++){
-        for(var j = 0 ; j < package_cols ; j++){
-            draw_sprite_ext(spr_package_slot_bg,0,x-354+i*84,y - 361 + 96 * j,1.8,1.8,0,c_white,1)
+        for(var j = 0 ; j < _total_rows ; j++){
+            draw_sprite_ext(spr_package_slot_bg,0,42+i*84,48+96*j-y_offset,1.8,1.8,0,c_white,1)
         }
     }
-    
+
     // 绘制所有已注册的植物卡片
-    var card_index = 0;
-    hover_card_index = -1; // 重置悬停卡片索引
-    
+    var card_index = 0
     for(var i = 0; i < ds_list_size(global.player_deck); i += 2) {
-        var card_id = global.player_deck[| i];
-        var deck_entry = global.player_deck[| i+1];
-		var card_data_shapes = deck_entry[? "shapes"]
-		var card_data = {}
-		var card_shape = 0
-		//view_max_shapes = ds_list_size(card_data_shapes)-1
-        
-        // 计算卡片位置
-        var row = card_index div package_rows;
-        var col = card_index mod package_rows;
-        
-        if (row < package_rows) {
-            var card_x = x - 354 + col * 84;
-            var card_y = y - 359 + row * 96;
-            
-            // 检查卡片是否已解锁
-            var is_unlocked = false;
-            for(var k = 0; k < array_length(global.save_data.unlocked_cards); k++) {
-                if (global.save_data.unlocked_cards[k].id == card_id) {
-                    is_unlocked = true;
-					card_shape = global.save_data.unlocked_cards[k].shape
-					card_data = card_data_shapes[| card_shape]
-                    break;
-                }
+        var card_id = global.player_deck[| i]
+        var deck_entry = global.player_deck[| i+1]
+        var card_data_shapes = deck_entry[? "shapes"]
+        var card_data = {}
+        var card_shape = 0
+
+        // 检查卡片是否已解锁
+        var is_unlocked = false
+        for(var k = 0; k < array_length(global.save_data.unlocked_cards); k++) {
+            if (global.save_data.unlocked_cards[k].id == card_id) {
+                is_unlocked = true
+                card_shape = global.save_data.unlocked_cards[k].shape
+                card_data = card_data_shapes[| card_shape]
+                break
             }
-            
-            // 绘制卡片
-            if (is_unlocked) {
-                // 已解锁的卡片正常绘制
-				draw_sprite_ext(get_slot_sprite(card_data), 0, card_x, card_y-3, 0.25, 0.25, 0, c_white, 1);
-                draw_sprite_ext(card_data[? "sprite"], 0, card_x, card_y+15, 0.7, 0.7, 0, c_white, 1);
-				draw_set_color(c_black);
-				draw_set_halign(fa_center);
-				draw_set_valign(fa_bottom);
-				draw_set_font(font_pixel)
-				draw_text(card_x,card_y+37,card_data[? "cost"])
-				draw_set_font(font_yuan)
-				var length = array_length(global.save_data.unlocked_cards)
-				var info_index = 0
-				for (var j = 0;j < length;j++){
-					if global.save_data.unlocked_cards[j].id == card_id{
-						info_index = j
-						break
-					}
-				}
-				var level = global.save_data.unlocked_cards[info_index].level
-				if level > 0{
-					draw_sprite_ext(spr_star_slot, level - 1, card_x-25, card_y-35,1.4,1.4,0,c_white,1);
-				}
-                // 检查鼠标是否悬停在卡片上
-                var spr_width = 84;
-                var spr_height = 96;
-                
-                if (point_in_rectangle(mouse_x, mouse_y, 
-                                      card_x - spr_width/2, card_y - spr_height/2,
-                                      card_x + spr_width/2, card_y + spr_height/2)) {
-                    hover_card_index = card_index;
-                }
-            } else {
-                // 未解锁的卡片使用灰色滤镜
-				draw_sprite_ext(get_slot_sprite(card_data), 0, card_x, card_y-3, 0.25, 0.25, 0, c_gray, 1);
-				card_data = card_data_shapes[| card_shape]
-                draw_sprite_ext(card_data[? "sprite"], 0, card_x, card_y+15, 0.7, 0.7, 0, c_gray, 1);
-            }
-            
-            card_index++;
         }
+
+        // 未解锁的卡片直接隐藏（跳过，不占格子）
+        if (!is_unlocked) {
+            continue
+        }
+
+        // 计算卡片位置（surface 内坐标，仅已解锁卡片参与排版）
+        var col = card_index mod package_rows
+        var row = card_index div package_rows
+        var _cx = 42 + col * 84
+        var _cy = 48 + row * 96 - y_offset
+
+        // 该卡片是否正处于被拖状态
+        var _is_drag_source = (drag_state == 2 && drag_card_index == card_index)
+
+        // 缓存星标等级（鼠标拖拽卡悬浮绘制时也要用）
+        var length = array_length(global.save_data.unlocked_cards)
+        var info_index = 0
+        for (var j = 0;j < length;j++){
+            if global.save_data.unlocked_cards[j].id == card_id{
+                info_index = j
+                break
+            }
+        }
+        var level = global.save_data.unlocked_cards[info_index].level
+
+        if (!_is_drag_source) {
+            // 正常绘制卡片
+            draw_sprite_ext(get_slot_sprite(card_data), 0, _cx, _cy-3, 0.25, 0.25, 0, c_white, 1)
+            draw_sprite_ext(card_data[? "sprite"], 0, _cx, _cy+15, 0.7, 0.7, 0, c_white, 1)
+            draw_set_color(c_black)
+            draw_set_halign(fa_center)
+            draw_set_valign(fa_bottom)
+            draw_set_font(font_pixel)
+            draw_text(_cx, _cy+37, card_data[? "cost"])
+            draw_set_font(font_yuan)
+            if level > 0{
+                draw_sprite_ext(spr_star_slot, level - 1, _cx-25, _cy-35, 1.4, 1.4, 0, c_white, 1)
+            }
+        } else {
+            // 被拖卡片：原位置留空（仅格子背景），并缓存渲染数据用于悬浮绘制
+            drag_card_data = card_data
+            drag_card_level = level
+            // 半透明幽灵作为来源占位提示
+            draw_set_alpha(0.3)
+            draw_sprite_ext(get_slot_sprite(card_data), 0, _cx, _cy-3, 0.25, 0.25, 0, c_white, 1)
+            draw_sprite_ext(card_data[? "sprite"], 0, _cx, _cy+15, 0.7, 0.7, 0, c_white, 1)
+            draw_set_alpha(1)
+        }
+
+        // 检查鼠标是否悬停在卡片上（屏幕坐标）
+        var spr_width = 84
+        var spr_height = 96
+        var _screen_cx = x - 354 + col * 84
+        var _screen_cy = y - 359 + row * 96 - y_offset
+        if (mouse_x > _surf_x && mouse_x < _surf_x + card_surface_w
+            && mouse_y > _surf_y && mouse_y < _surf_y + card_surface_h){
+            if (point_in_rectangle(mouse_x, mouse_y,
+                _screen_cx - spr_width/2, _screen_cy - spr_height/2,
+                _screen_cx + spr_width/2, _screen_cy + spr_height/2)) {
+                hover_card_index = card_index
+                hover_deck_slot = i div 2
+            }
+        }
+
+        card_index++
     }
-    
-    // 绘制悬停提示
-    if (hover_card_index != -1) {
-        // 获取鼠标位置
-        var tooltip_x = mouse_x + 15;
-        var tooltip_y = mouse_y + 15;
-		
-		var tooltip_text = "左键点击调节卡片\n右键点击查看情报"
-        
-        // 绘制提示背景
-        draw_set_color(c_black);
-        draw_set_alpha(0.7);
-        draw_rectangle(tooltip_x - 5, tooltip_y - 5, 
-                      tooltip_x + string_width(tooltip_text)+5, tooltip_y + string_height(tooltip_text)+5, false);
-        
-        // 绘制提示文本
-		draw_set_halign(fa_left);
-		draw_set_valign(fa_top);
-        draw_set_alpha(1);
-        draw_set_color(c_white);
-        draw_text(tooltip_x, tooltip_y, tooltip_text);
+
+    surface_reset_target()
+    draw_surface(card_surface, _surf_x, _surf_y)
+
+    // 拖拽中：在鼠标位置悬浮绘制被拖卡，并在目标格上绘制高亮边框
+    if (drag_state == 2 && !is_undefined(drag_card_data)) {
+        // 高亮目标格
+        if (hover_card_index != -1 && hover_card_index != drag_card_index && hover_deck_slot != -1) {
+            var _hcol = hover_card_index mod package_rows
+            var _hrow = hover_card_index div package_rows
+            var _hx = x - 354 + _hcol * 84
+            var _hy = y - 359 + _hrow * 96 - y_offset
+            draw_set_color(c_yellow)
+            draw_set_alpha(1)
+            draw_rectangle(_hx - 42, _hy - 48, _hx + 42, _hy + 48, true)
+            draw_set_color(c_white)
+        }
+        // 跟随鼠标的卡片
+        draw_sprite_ext(get_slot_sprite(drag_card_data), 0, mouse_x, mouse_y-3, 0.25, 0.25, 0, c_white, 1)
+        draw_sprite_ext(drag_card_data[? "sprite"], 0, mouse_x, mouse_y+15, 0.7, 0.7, 0, c_white, 1)
+        draw_set_color(c_black)
+        draw_set_halign(fa_center)
+        draw_set_valign(fa_bottom)
+        draw_set_font(font_pixel)
+        draw_text(mouse_x, mouse_y+37, drag_card_data[? "cost"])
+        draw_set_font(font_yuan)
+        if drag_card_level > 0{
+            draw_sprite_ext(spr_star_slot, drag_card_level - 1, mouse_x-25, mouse_y-35, 1.4, 1.4, 0, c_white, 1)
+        }
+    } else {
+        // 悬停提示（拖拽中不显示以免遮挡）
+        if (hover_card_index != -1) {
+            // 获取鼠标位置
+            var tooltip_x = mouse_x + 15
+            var tooltip_y = mouse_y + 15
+
+            var tooltip_text = "左键点击调节卡片\n长按拖动以交换位置\n右键点击查看情报"
+
+            // 绘制提示背景
+            draw_set_color(c_black)
+            draw_set_alpha(0.7)
+            draw_rectangle(tooltip_x - 5, tooltip_y - 5,
+                          tooltip_x + string_width(tooltip_text)+5, tooltip_y + string_height(tooltip_text)+5, false)
+
+            // 绘制提示文本
+            draw_set_halign(fa_left)
+            draw_set_valign(fa_top)
+            draw_set_alpha(1)
+            draw_set_color(c_white)
+            draw_text(tooltip_x, tooltip_y, tooltip_text)
+        }
     }
 }
 else if package_button_select == 2 {

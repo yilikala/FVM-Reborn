@@ -29,8 +29,26 @@ btn4.type = "Player Info"
 btn4.button_index = 2
 btn4.sprite_index = spr_packageselect_btn_4
 
-hover_card_index = -1; // 当前悬停的卡片索引
+hover_card_index = -1; // 当前悬停的卡片索引（仅已解锁卡，紧凑排序）
 hover_weapon_index = -1
 hover_gem_index = -1
 hover_material_index = -1
+hover_deck_slot = -1 // 被悬停卡在 player_deck 中的条目位置（i/2，传递给子菜单用）
 view_max_shapes = 0
+
+// 卡片栏滚动相关
+y_offset = 0
+card_surface = -1
+card_surface_w = 768
+card_surface_h = 815
+
+// 卡片栏拖拽相关
+drag_state = 0 // 0=空闲 1=按下中 2=拖拽中
+drag_hold_timer = 0
+drag_start_x = 0
+drag_start_y = 0
+drag_card_index = -1 // 被拖卡片的 hover_card_index 值
+drag_deck_slot = -1 // 被拖卡片的 player_deck 条目位置
+// 被拖卡片的渲染数据（每帧在 Draw 中刷新一次供悬浮绘制用）
+drag_card_data = undefined
+drag_card_level = 0

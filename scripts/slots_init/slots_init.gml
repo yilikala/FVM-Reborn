@@ -296,51 +296,51 @@ function slots_init(){
 	])
 	
 	register_card("apollo", obj_apollo, [
-	    {"shape":0, "sprite":spr_apollo, "cost":200, "cooldown":50*60, "description":"阿波罗神使","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
-	    {"shape":1, "sprite":spr_apollo_1, "cost":200, "cooldown":40*60, "description":"阿波罗圣神","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
-		{"shape":2, "sprite":spr_apollo_2, "cost":200, "cooldown":30*60, "description":"太阳神·阿波罗","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
-		{"shape":3, "sprite":spr_apollo_3, "cost":25, "cooldown":15*60, "description":"至尊太阳神","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1}
+	    {"shape":0, "sprite":spr_apollo, "cost":200, "cooldown":50*60, "description":"阿波罗神使：生产巨量火苗","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":1, "sprite":spr_apollo_1, "cost":200, "cooldown":40*60, "description":"阿波罗圣神：生产巨量火苗","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+		{"shape":2, "sprite":spr_apollo_2, "cost":200, "cooldown":30*60, "description":"太阳神·阿波罗：生产巨量火苗","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+		{"shape":3, "sprite":spr_apollo_3, "cost":25, "cooldown":15*60, "description":"至尊太阳神：生产巨量火苗","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1}
 	]);	
 	register_card("ares",obj_ares,[
-	    {"shape":0, "sprite":spr_ares, "cost":150, "cooldown":7*60, "description":"阿瑞斯神使：前后各发射4枚子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
-	    {"shape":1, "sprite":spr_ares_1, "cost":150, "cooldown":7*60, "description":"阿瑞斯圣神：前后各发射5枚子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
-	    {"shape":2, "sprite":spr_ares_2, "cost":150, "cooldown":7*60, "description":"战神·阿瑞斯：后方发射一枚6倍伤害的超级子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
-	    {"shape":3, "sprite":spr_ares_3, "cost":150, "cooldown":7*60, "description":"至尊战神：前后各发射一枚10倍伤害的超级子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1}
+	    {"shape":0, "sprite":spr_ares, "cost":150, "cooldown":7*60, "description":"阿瑞斯神使：向前后发射威力巨大的子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":1, "sprite":spr_ares_1, "cost":150, "cooldown":7*60, "description":"阿瑞斯圣神：向前后发射威力巨大的子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":2, "sprite":spr_ares_2, "cost":150, "cooldown":7*60, "description":"战神·阿瑞斯：向前后发射威力巨大的子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":3, "sprite":spr_ares_3, "cost":150, "cooldown":7*60, "description":"至尊战神：向前后发射威力巨大的子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1}
 	]);
 	register_card("cupid",obj_cupid,[
-	    {"shape":0, "sprite":spr_cupid, "cost":300, "cooldown":7*60, "description":"丘比特神使：向前方三行每路发射2发爱心弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
-	    {"shape":1, "sprite":spr_cupid_1, "cost":300, "cooldown":7*60, "description":"丘比特圣神：前方向三行发射中路3发边路2发爱心弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
-	    {"shape":2, "sprite":spr_cupid_2, "cost":300, "cooldown":7*60, "description":"爱神·丘比特：向前方三行每路发射3发爱心弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
-	    {"shape":3, "sprite":spr_cupid_3, "cost":300, "cooldown":7*60, "description":"至尊爱神：每路首发变为3倍伤害的穿透超级子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1}
+	    {"shape":0, "sprite":spr_cupid, "cost":300, "cooldown":7*60, "description":"丘比特神使：向前方三行发射威力巨大的箭矢","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":1, "sprite":spr_cupid_1, "cost":300, "cooldown":7*60, "description":"丘比特圣神：向前方三行发射威力巨大的箭矢","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":2, "sprite":spr_cupid_2, "cost":300, "cooldown":7*60, "description":"爱神·丘比特：向前方三行发射威力巨大的箭矢","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":3, "sprite":spr_cupid_3, "cost":300, "cooldown":7*60, "description":"至尊爱神：向前方三行发射威力巨大的箭矢","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1}
 	]);	
 	register_card("thor", obj_thor, [
-	    {"shape":0, "sprite":spr_thor_icon, "cost":200, "cooldown":7*60, "description":"索尔神使","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_thor,"is_gold":1},
-	    {"shape":1, "sprite":spr_thor_icon_1, "cost":200, "cooldown":7*60, "description":"索尔圣神","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_thor_1,"is_gold":1},
-		{"shape":2, "sprite":spr_thor_icon_2, "cost":200, "cooldown":7*60, "description":"雷神·索尔","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_thor_2,"is_gold":1},
-		{"shape":3, "sprite":spr_thor_icon_3, "cost":200, "cooldown":7*60, "description":"至尊雷神","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_thor_3,"is_gold":1}
+	    {"shape":0, "sprite":spr_thor_icon, "cost":200, "cooldown":7*60, "description":"索尔神使：投掷出威力巨大的冰锤","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_thor,"is_gold":1},
+	    {"shape":1, "sprite":spr_thor_icon_1, "cost":200, "cooldown":7*60, "description":"索尔圣神：投掷出威力巨大的冰锤","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_thor_1,"is_gold":1},
+		{"shape":2, "sprite":spr_thor_icon_2, "cost":200, "cooldown":7*60, "description":"雷神·索尔：投掷出威力巨大的冰锤","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_thor_2,"is_gold":1},
+		{"shape":3, "sprite":spr_thor_icon_3, "cost":200, "cooldown":7*60, "description":"至尊雷神：投掷出威力巨大的冰锤","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_thor_3,"is_gold":1}
 	]);
 	register_card("diana", obj_diana, [
-	    {"shape":0, "sprite":spr_diana, "cost":225, "cooldown":30*60, "description":"戴安娜神使：发射6发追踪飞镖","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
-	    {"shape":1, "sprite":spr_diana_1, "cost":225, "cooldown":30*60, "description":"戴安娜圣神：发射7发追踪飞镖","plant_type":"normal","feature_type":"amphi","target_card":"none","is_gold":1},
-	    {"shape":2, "sprite":spr_diana_2, "cost":225, "cooldown":30*60, "description":"月神·戴安娜：首发超级飞镖，2倍伤害3*3溅射","plant_type":"normal","feature_type":"amphi","target_card":"none","is_gold":1},
-	    {"shape":3, "sprite":spr_diana_3, "cost":225, "cooldown":30*60, "description":"至尊月神：每存在一张戴安娜攻击力+5%，最大200%","plant_type":"normal","feature_type":"amphi","target_card":"none","is_gold":1}
+	    {"shape":0, "sprite":spr_diana, "cost":225, "cooldown":30*60, "description":"戴安娜神使：发射大量全屏追踪的飞镖","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":1, "sprite":spr_diana_1, "cost":225, "cooldown":30*60, "description":"戴安娜圣神：发射大量全屏追踪的飞镖","plant_type":"normal","feature_type":"amphi","target_card":"none","is_gold":1},
+	    {"shape":2, "sprite":spr_diana_2, "cost":225, "cooldown":30*60, "description":"月神·戴安娜：发射大量全屏追踪的飞镖","plant_type":"normal","feature_type":"amphi","target_card":"none","is_gold":1},
+	    {"shape":3, "sprite":spr_diana_3, "cost":225, "cooldown":30*60, "description":"至尊月神：发射大量全屏追踪的飞镖","plant_type":"normal","feature_type":"amphi","target_card":"none","is_gold":1}
 	])
 	register_card("poseidon", obj_poseidon, [
-	    {"shape":0, "sprite":spr_poseidon, "cost":275, "cooldown":35*60, "description":"波塞冬神使：5*5矩形范围穿透攻击，每轮2次","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
-	    {"shape":1, "sprite":spr_poseidon_1, "cost":275, "cooldown":35*60, "description":"波塞冬圣神：5*5矩形范围穿透攻击，每轮2次","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
-	    {"shape":2, "sprite":spr_poseidon_2, "cost":275, "cooldown":35*60, "description":"海神·波塞冬：5*5矩形范围穿透攻击，每轮3次","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
-	    {"shape":3, "sprite":spr_poseidon_3, "cost":275, "cooldown":35*60, "description":"至尊海神：7行5列矩形范围穿透攻击，每轮4次","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1}
+	    {"shape":0, "sprite":spr_poseidon, "cost":275, "cooldown":35*60, "description":"波塞冬神使：发射5*5范围穿透的水波","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":1, "sprite":spr_poseidon_1, "cost":275, "cooldown":35*60, "description":"波塞冬圣神：发射5*5范围穿透的水波","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":2, "sprite":spr_poseidon_2, "cost":275, "cooldown":35*60, "description":"海神·波塞冬：发射5*5范围穿透的水波","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":3, "sprite":spr_poseidon_3, "cost":275, "cooldown":35*60, "description":"至尊海神：发射5*5范围穿透的水波","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1}
 	])
 	register_card("loki",obj_loki,[
-	    {"shape":0, "sprite":spr_loki, "cost":225, "cooldown":7*60, "description":"洛基神使：点燃子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
-	    {"shape":1, "sprite":spr_loki_1, "cost":225, "cooldown":7*60, "description":"洛基圣神：点燃子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
-	    {"shape":2, "sprite":spr_loki_2, "cost":225, "cooldown":7*60, "description":"火神·洛基：点燃子弹并附加一格60%溅射","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
-	    {"shape":3, "sprite":spr_loki_3, "cost":225, "cooldown":7*60, "description":"至尊火神：一格100%溅射+3×3范围40%溅射","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1}
+	    {"shape":0, "sprite":spr_loki, "cost":225, "cooldown":7*60, "description":"洛基神使：巨额增加穿过子弹的伤害","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":1, "sprite":spr_loki_1, "cost":225, "cooldown":7*60, "description":"洛基圣神：巨额增加穿过子弹的伤害","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":2, "sprite":spr_loki_2, "cost":225, "cooldown":7*60, "description":"火神·洛基：巨额增加穿过子弹的伤害","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":3, "sprite":spr_loki_3, "cost":225, "cooldown":7*60, "description":"至尊火神：巨额增加穿过子弹的伤害","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1}
 	])
 	register_card("hera",obj_hera,[
-	    {"shape":0, "sprite":spr_hera_icon, "cost":125, "cooldown":20*60, "description":"赫拉神使：保护被罩住的卡片，摧毁时5×5爆炸","plant_type":"shield_outer","feature_type":"normal","target_card":"none","is_gold":1},
-	    {"shape":1, "sprite":spr_hera_icon_1, "cost":125, "cooldown":20*60, "description":"赫拉圣神：保护被罩住的卡片并反伤，摧毁时5×5爆炸","plant_type":"shield_outer","feature_type":"normal","target_card":"none","is_gold":1},
-	    {"shape":2, "sprite":spr_hera_icon_2, "cost":125, "cooldown":20*60, "description":"天后·赫拉：放置时为同格卡片增加1000HP","plant_type":"shield_outer","feature_type":"normal","target_card":"none","is_gold":1},
-	    {"shape":3, "sprite":spr_hera_icon_3, "cost":125, "cooldown":20*60, "description":"至尊天后：额外创建两个自身复制体","plant_type":"shield_outer","feature_type":"normal","target_card":"none","is_gold":1}
+	    {"shape":0, "sprite":spr_hera_icon, "cost":125, "cooldown":20*60, "description":"赫拉神使：保护被罩住的卡片，摧毁时爆炸","plant_type":"shield_outer","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":1, "sprite":spr_hera_icon_1, "cost":125, "cooldown":20*60, "description":"赫拉圣神：保护被罩住的卡片，摧毁时爆炸","plant_type":"shield_outer","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":2, "sprite":spr_hera_icon_2, "cost":125, "cooldown":20*60, "description":"天后·赫拉：保护被罩住的卡片，摧毁时爆炸","plant_type":"shield_outer","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":3, "sprite":spr_hera_icon_3, "cost":125, "cooldown":20*60, "description":"至尊天后：保护被罩住的卡片，摧毁时爆炸","plant_type":"shield_outer","feature_type":"normal","target_card":"none","is_gold":1}
 	])
 }
