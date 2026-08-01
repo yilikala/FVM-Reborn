@@ -1,22 +1,23 @@
 function init_native_log() {
+    var _user_profile = environment_get_variable("LOCALAPPDATA")
     var _local_log_file = global.native_util.get_path_in_local_appdata("\\FVM_Reborn\\native\\latest.log")
 	var _error_code = native_set_native_log_file_path(_local_log_file)
 	if (_error_code != 0) {
         global.native_util.show_error(_error_code, "设置日志路径失败")
 	}
 
-    var _saves_old = global.laboratory_manager.file_util.transfer_path_to_windows( _user_profile + "\\美食大战老鼠_重生\\saves")
-    var _saves_new = global.laboratory_manager.file_util.transfer_path_to_windows( _user_profile + "\\FVM_Reborn_Mod\\saves_mod")
+    var _saves_old = global.native_util.transfer_path_to_windows( _user_profile + "\\美食大战老鼠_重生\\saves")
+    var _saves_new = global.native_util.transfer_path_to_windows( _user_profile + "\\FVM_Reborn_Mod\\saves_mod")
     var _save_folder_new_exists = native_folder_exists(_saves_new)
     var _save_folder_old_exists = native_folder_exists(_saves_old)
     if ((_save_folder_new_exists == 0) && (_save_folder_old_exists == 1)) {
-        var _copy_result = native_copy_folder(_saves_old, _local_folder)
+        var _copy_result = native_copy_folder(_saves_old, _saves_new)
     } 
 
     var _local_laboratory = global.native_util.transfer_path_to_windows(working_directory + "laboratory")
     var _local_laboratory_exists = native_folder_exists(_local_laboratory)
     if (_local_laboratory_exists == 1) {
-        var _lab_copy_result = native_copy_folder(_local_laboratory, _local_folder)
+        var _lab_copy_result = native_copy_folder(_local_laboratory, _saves_new)
         if (_lab_copy_result != 0) {
             global.native_util.show_error(_lab_copy_result, "实验室目录迁移失败")
         } else {
@@ -46,7 +47,7 @@ global.gui_stack = new GuiStack()
 global.native_util = new NativeUtil()
 
 init_native_log()
-move_files()
+// move_files() -- 合并遗漏：函数定义不存在，已屏蔽
 
 // 初始化全局键位映射
 global.keybind_map = ds_map_create();

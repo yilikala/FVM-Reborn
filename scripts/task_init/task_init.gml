@@ -1528,17 +1528,22 @@ function task_init(){
 				"rewards":[
 					{
 						"type":"item",
-						"item_id":"royal_spices",
-						"amount":350
+						"item_id":"magical_spices",
+						"amount":35
 					},
 					{
 						"type":"item",
-						"item_id":"middle_crystal",
-						"amount":300
+						"item_id":"advanced_crystal",
+						"amount":10
+					},
+					{
+						"type":"item",
+						"item_id":"clover_4",
+						"amount":2
 					},
 					{
 						"type":"gold",
-						"amount":18000
+						"amount":85000
 					}
 				]
 			}
@@ -1563,17 +1568,22 @@ function task_init(){
 				"rewards":[
 					{
 						"type":"item",
-						"item_id":"royal_spices",
-						"amount":350
+						"item_id":"magical_spices",
+						"amount":35
 					},
 					{
 						"type":"item",
-						"item_id":"middle_crystal",
-						"amount":300
+						"item_id":"advanced_crystal",
+						"amount":10
+					},
+					{
+						"type":"item",
+						"item_id":"clover_4",
+						"amount":2
 					},
 					{
 						"type":"gold",
-						"amount":18000
+						"amount":85000
 					}
 				]
 			}
@@ -1598,17 +1608,22 @@ function task_init(){
 				"rewards":[
 					{
 						"type":"item",
-						"item_id":"royal_spices",
-						"amount":400
+						"item_id":"magical_spices",
+						"amount":40
 					},
 					{
 						"type":"item",
-						"item_id":"middle_crystal",
-						"amount":350
+						"item_id":"advanced_crystal",
+						"amount":10
+					},
+					{
+						"type":"item",
+						"item_id":"clover_4",
+						"amount":2
 					},
 					{
 						"type":"gold",
-						"amount":20000
+						"amount":95000
 					}
 				]
 			}
@@ -1633,17 +1648,22 @@ function task_init(){
 				"rewards":[
 					{
 						"type":"item",
-						"item_id":"royal_spices",
-						"amount":400
+						"item_id":"magical_spices",
+						"amount":40
 					},
 					{
 						"type":"item",
-						"item_id":"middle_crystal",
-						"amount":350
+						"item_id":"advanced_crystal",
+						"amount":10
+					},
+					{
+						"type":"item",
+						"item_id":"clover_4",
+						"amount":2
 					},
 					{
 						"type":"gold",
-						"amount":20000
+						"amount":95000
 					}
 				]
 			}
@@ -1668,17 +1688,22 @@ function task_init(){
 				"rewards":[
 					{
 						"type":"item",
-						"item_id":"royal_spices",
-						"amount":800
+						"item_id":"magical_spices",
+						"amount":80
 					},
 					{
 						"type":"item",
-						"item_id":"middle_crystal",
-						"amount":700
+						"item_id":"advanced_crystal",
+						"amount":20
+					},
+					{
+						"type":"item",
+						"item_id":"clover_6",
+						"amount":1
 					},
 					{
 						"type":"gold",
-						"amount":40000
+						"amount":150000
 					}
 				]
 			}
@@ -2418,17 +2443,17 @@ function task_init(){
 				"rewards":[
 					{
 						"type":"item",
-						"item_id":"royal_spices",
-						"amount":800
+						"item_id":"magical_spices",
+						"amount":80
 					},
 					{
 						"type":"item",
-						"item_id":"middle_crystal",
-						"amount":600
+						"item_id":"advanced_crystal",
+						"amount":20
 					},
 					{
 						"type":"gold",
-						"amount":50000
+						"amount":60000
 					}
 				]
 			}
@@ -2844,23 +2869,23 @@ function task_init(){
 				"rewards":[
 					{
 						"type":"item",
-						"item_id":"royal_spices",
-						"amount":3000
+						"item_id":"elven_spices",
+						"amount":20
 					},
 					{
 						"type":"item",
 						"item_id":"advanced_crystal",
-						"amount":250
-					},
-					{
-						"type":"gold",
-						"amount":70000
+						"amount":40
 					},
 					{
 						"type":"item",
-						"item_id":"clover_3",
-						"amount":30
+						"item_id":"clover_S",
+						"amount":1
 					},
+					{
+						"type":"gold",
+						"amount":25000
+					}
 				]
 			}
 		)
@@ -3283,23 +3308,23 @@ function task_init(){
 				"rewards":[
 					{
 						"type":"item",
-						"item_id":"royal_spices",
-						"amount":1500
-					},
-					{
-						"type":"gold",
-						"amount":60000
+						"item_id":"magical_spices",
+						"amount":80
 					},
 					{
 						"type":"item",
 						"item_id":"advanced_crystal",
-						"amount":75
+						"amount":20
 					},
 					{
 						"type":"item",
-						"item_id":"clover_3",
-						"amount":10
+						"item_id":"clover_6",
+						"amount":5
 					},
+					{
+						"type":"gold",
+						"amount":25000
+					}
 				]
 			}
 		)

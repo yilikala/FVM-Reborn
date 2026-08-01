@@ -1,18 +1,16 @@
 var _x = x
-var _y = y
+var _hit_row = row
 if instance_exists(hitted_enemy){
 	_x = hitted_enemy.x;
-	_y = hitted_enemy.y;
+	_hit_row = hitted_enemy.grid_row;
 }
-var _range = 200;
 var splash_ratio = 0.4
 if shape >= 1{
 	splash_ratio = 0.5
 }
 
 with (obj_enemy_parent) {
-	if (hp > 0 && point_distance(x, y, _x, _y) < _range && grid_row <= other.row+1&& grid_row >= other.row-1 && id != other.hitted_enemy and (can_hit(other.target_type,target_type) or target_type == "air")) {
-		
+	if (hp > 0 && id != other.hitted_enemy && abs(grid_row - _hit_row) <= 1 && abs(x - _x) <= global.grid_cell_size_x * 1.8 && (can_hit(other.target_type,target_type) or target_type == "air")) {
 		damage_amount = other.damage * splash_ratio
 		if other.is_super{
 			damage_amount = other.damage * 3 * splash_ratio
