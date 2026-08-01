@@ -2837,20 +2837,20 @@ function task_init(){
 					},
 					{
 						"type":"time_limit",
-						"desc":"通关时间不超过540秒",
-						"require":540,
+						"desc":"通关时间不超过660秒",
+						"require":660,
 					},
 				],
 				"rewards":[
 					{
 						"type":"item",
 						"item_id":"royal_spices",
-						"amount":1200
+						"amount":3000
 					},
 					{
 						"type":"item",
 						"item_id":"advanced_crystal",
-						"amount":50
+						"amount":250
 					},
 					{
 						"type":"gold",
@@ -2859,7 +2859,7 @@ function task_init(){
 					{
 						"type":"item",
 						"item_id":"clover_3",
-						"amount":20
+						"amount":30
 					},
 				]
 			}
@@ -3284,7 +3284,7 @@ function task_init(){
 					{
 						"type":"item",
 						"item_id":"royal_spices",
-						"amount":800
+						"amount":1500
 					},
 					{
 						"type":"gold",
@@ -3293,7 +3293,7 @@ function task_init(){
 					{
 						"type":"item",
 						"item_id":"advanced_crystal",
-						"amount":25
+						"amount":75
 					},
 					{
 						"type":"item",
