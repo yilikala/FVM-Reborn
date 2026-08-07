@@ -1,9 +1,8 @@
-// obj_plant_parent 的 Step 事件
+// obj_plant_parent �?Step 事件
 if global.is_paused{
 	exit
 }
-// 动画计时器
-
+// 动画计时�?
 	if timer < flash_speed - 1 {
 	    timer++;
 	} else {
@@ -24,16 +23,14 @@ if global.is_paused{
 
 
 
-// 计算深度值
-//var depth_value = -((y + depth_offset) * 10 + x);
+// 计算深度�?//var depth_value = -((y + depth_offset) * 10 + x);
 //depth = depth_value - depth_group * 100;
-depth = parent_player.depth-1
+depth = parent_player.depth-2
 
 // 检测自身右方是否有敌人，并获取最近的敌人
 var has_enemy = false
 var target_enemy = noone
-var min_distance = 10000 // 设置一个足够大的初始值
-
+var min_distance = 10000 // 设置一个足够大的初始�?
 with(obj_enemy_parent){
     if (grid_row == other.grid_row && grid_col >= other.grid_col && grid_col <= (global.grid_cols + 1)) && can_target_on("throw",target_type){
         var distance = grid_col - other.grid_col
@@ -64,7 +61,6 @@ if (has_enemy) {
         state = CARD_STATE.IDLE;
     }
 } else {
-    // 没有符合条件的敌人，重置状态
-    attack_timer = 0;
+    // 没有符合条件的敌人，重置状�?    attack_timer = 0;
     state = CARD_STATE.IDLE;
 }

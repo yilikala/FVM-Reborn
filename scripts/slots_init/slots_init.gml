@@ -368,4 +368,10 @@ function slots_init(){
 	    {"shape":2, "sprite":spr_hera_icon_2, "cost":125, "cooldown":20*60, "description":"天后·赫拉：保护被罩住的卡片，摧毁时爆炸","plant_type":"shield_outer","feature_type":"normal","target_card":"none","is_gold":1},
 	    {"shape":3, "sprite":spr_hera_icon_3, "cost":125, "cooldown":20*60, "description":"至尊天后：保护被罩住的卡片，摧毁时爆炸","plant_type":"shield_outer","feature_type":"normal","target_card":"none","is_gold":1}
 	])
+	register_card("odin",obj_odin,[
+	    {"shape":0, "sprite":spr_odin, "cost":230, "cooldown":7*60, "description":"奥丁神使：发射直线穿透，威力巨大的长矛","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":1, "sprite":spr_odin_1, "cost":230, "cooldown":7*60, "description":"奥丁圣神：发射直线穿透，威力巨大的长矛","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":2, "sprite":spr_odin_2, "cost":230, "cooldown":7*60, "description":"主神·奥丁：发射直线穿透，威力巨大的长矛","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":3, "sprite":spr_odin_3, "cost":230, "cooldown":7*60, "description":"至尊主神：发射直线穿透，威力巨大的长矛","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1}
+	])
 }

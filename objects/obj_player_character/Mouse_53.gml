@@ -1,4 +1,4 @@
-﻿if not is_placed{
+if not is_placed{
 	var logical_x = mouse_x;
 	var logical_y = mouse_y;
 	var platform_shift_x = 0;
@@ -48,7 +48,7 @@
 			}
 		}
 		if global.save_data.equipped_items.secondary_weapon.id != ""{
-			var s_inst = instance_create_depth(x,y,depth,obj_player_shield)
+			var s_inst = instance_create_depth(x+20,y-35,depth,obj_player_shield)
 			s_inst.parent_player = id
 			s_inst.grid_row = grid_row
 			s_inst.grid_col = grid_col
@@ -58,6 +58,16 @@
 			if get_gem_index("health_gem") != -1{
 				hp += get_gem_info("health_gem").hp_increase * (get_gem_level("health_gem")+1)
 				max_hp += get_gem_info("health_gem").hp_increase * (get_gem_level("health_gem")+1)
+			}
+			// 副武器专属宝石图标
+			var s_gem_list = global.save_data.equipped_items.secondary_weapon.gems
+			for(var i = 0 ; i < array_length(s_gem_list);i++){
+				var gem_id = s_gem_list[i]
+				var gem_info = get_gem_info(gem_id)
+				if gem_info.obj != noone{
+					instance_create_depth(390,213+gem_index*80,-500,gem_info.obj)
+					gem_index++
+				}
 			}
 		}
 		if global.save_data.equipped_items.super_weapon.id != ""{

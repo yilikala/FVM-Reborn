@@ -10,7 +10,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Weapons",
-    "path":"folders/物体/Player/Weapons.yy",
+    "path":"folders/物体/Bullet/normal/Player/Weapons.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_long_bao_gun",
-    "path":"sprites/spr_long_bao_gun/spr_long_bao_gun.yy",
+    "name":"spr_cookie_shield",
+    "path":"sprites/spr_cookie_shield/spr_cookie_shield.yy",
   },
   "spriteMaskId":null,
   "visible":true,

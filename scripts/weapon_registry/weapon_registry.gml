@@ -37,6 +37,7 @@ function equip_weapon(weapon_id,slot){
 	else if slot == "super_weapon"{
 		global.save_data.equipped_items.super_weapon.id = weapon_id
 	}
+	filter_weapon_gems(slot)
 	save_file(global.save_slot)
 }
 
@@ -54,7 +55,69 @@ function remove_weapon(slot){
 	else if slot == "super_weapon"{
 		global.save_data.equipped_items.super_weapon.id = ""
 	}
+	filter_weapon_gems(slot)
 	save_file(global.save_slot)
+}
+
+/// @desc 获取武器可容纳的宝石槽位数（拥有专属宝石的武器为4，其余为3）
+function get_weapon_slot_limit(weapon_id) {
+	var _wdata = get_weapon_info(weapon_id)
+	if (is_undefined(_wdata)) return 3
+	if (variable_struct_exists(_wdata, "exclusive_gems")) {
+		var _eg = _wdata.exclusive_gems
+		if (!is_undefined(_eg) && array_length(_eg) > 0) {
+			return 4
+		}
+	}
+	return 3
+}
+
+/// @desc 武器是否拥有专属宝石系统
+function is_weapon_exclusive(weapon_id) {
+	var _wdata = get_weapon_info(weapon_id)
+	if (is_undefined(_wdata)) return false
+	return variable_struct_exists(_wdata, "exclusive_gems")
+		&& !is_undefined(_wdata.exclusive_gems)
+		&& array_length(_wdata.exclusive_gems) > 0
+}
+
+/// @desc 宝石是否为专属宝石
+function is_gem_exclusive(gem_id) {
+	var _gdata = get_gem_info(gem_id)
+	if (is_undefined(_gdata)) return false
+	return variable_struct_exists(_gdata, "exclusive_for")
+}
+
+/// @desc 宝石是否能装配到指定武器上
+function is_gem_compatible(weapon_id, gem_id) {
+	var _gdata = get_gem_info(gem_id)
+	if (is_undefined(_gdata)) return false
+	var _wexcl = is_weapon_exclusive(weapon_id)
+	var _gexcl = is_gem_exclusive(gem_id)
+	if (_gexcl) {
+		// 专属宝石只能装配到指定专属武器
+		if (!_wexcl) return false
+		if (_gdata.exclusive_for != weapon_id) return false
+		var _wdata = get_weapon_info(weapon_id)
+		return !is_undefined(_wdata) && array_get_index(_wdata.exclusive_gems, gem_id) != -1
+	} else {
+		// 普通宝石不能装配到专属武器上
+		return !_wexcl
+	}
+}
+
+/// @desc 过滤某个槽位上与当前武器不兼容的宝石
+function filter_weapon_gems(slot_name){
+	var _slot_struct = variable_struct_get(global.save_data.equipped_items, slot_name)
+	var _wid = _slot_struct.id
+	var _gems = _slot_struct.gems
+	var _new = []
+	for (var i = 0; i < array_length(_gems); i++){
+		if (is_gem_compatible(_wid, _gems[i])){
+			array_push(_new, _gems[i])
+		}
+	}
+	_slot_struct.gems = _new
 }
 
 /// @function equip_gem(gem_id,slot,level)
@@ -64,12 +127,29 @@ function equip_gem(gem_id){
 	var gem_data = get_gem_info(gem_id)
 	var gem_level = get_gem_level(gem_id)
 	var slot = gem_data.slot
+	// 该槽位当前装备的武器
+	var weapon_id = ""
+	if slot == "main_weapon"{
+		weapon_id = global.save_data.equipped_items.main_weapon.id
+	}
+	else if slot == "secondary_weapon"{
+		weapon_id = global.save_data.equipped_items.secondary_weapon.id
+	}
+	else if slot == "super_weapon"{
+		weapon_id = global.save_data.equipped_items.super_weapon.id
+	}
+	// 兼容性检查：专属武器只能装专属宝石，专属宝石只能装到对应武器
+	if !is_gem_compatible(weapon_id, gem_id){
+		show_notice("该宝石无法装配到当前武器",60)
+		return
+	}
+	var _slot_limit = get_weapon_slot_limit(weapon_id)
 	var slot_gem = []
 	if slot == "main_weapon"{
 		if get_gem_index(gem_id) == -1{
 			slot_gem = global.save_data.equipped_items.main_weapon.gems
 			//show_debug_message(slot_gem)
-			if array_length(slot_gem) < 3{
+			if array_length(slot_gem) < _slot_limit{
 				slot_gem[array_length(slot_gem)] = gem_id
 			}
 			//show_debug_message(slot_gem)
@@ -79,7 +159,7 @@ function equip_gem(gem_id){
 		if get_gem_index(gem_id) == -1{
 			slot_gem = global.save_data.equipped_items.secondary_weapon.gems
 			//show_debug_message(slot_gem)
-			if array_length(slot_gem) < 3{
+			if array_length(slot_gem) < _slot_limit{
 				slot_gem[array_length(slot_gem)] = gem_id
 			}
 			//show_debug_message(slot_gem)
@@ -89,7 +169,7 @@ function equip_gem(gem_id){
 		if get_gem_index(gem_id) == -1{
 			slot_gem = global.save_data.equipped_items.super_weapon.gems
 			//show_debug_message(slot_gem)
-			if array_length(slot_gem) < 3{
+			if array_length(slot_gem) < _slot_limit{
 				slot_gem[array_length(slot_gem)] = gem_id
 			}
 			//show_debug_message(slot_gem)

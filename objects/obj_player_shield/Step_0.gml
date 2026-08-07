@@ -9,6 +9,116 @@ depth = parent_player.depth-1
 
 timer++
 
+if !aura_created{
+	if is_gods_shield{
+		if gods_flame_gem{
+			var _eff = instance_create_depth(spawn_x-15, spawn_y-30, 0, obj_shield_aura)
+			_eff.sprite_index = spr_gods_shield_effect_1
+			_eff.depth = parent_player.depth - 3
+			array_push(shield_vfx_insts, _eff)
+		}
+		if gods_damage_gem{
+			var _eff = instance_create_depth(spawn_x-15, spawn_y-5, 0, obj_shield_aura)
+			_eff.sprite_index = spr_gods_shield_effect_2
+			_eff.depth = parent_player.depth + 149
+			array_push(shield_vfx_insts, _eff)
+		}
+		if gods_buff_gem{
+			var _eff = instance_create_depth(spawn_x-15, spawn_y-5, 0, obj_shield_aura)
+			_eff.sprite_index = spr_gods_shield_effect_3
+			_eff.depth = parent_player.depth + 150
+			array_push(shield_vfx_insts, _eff)
+		}
+		if gods_hp_gem{
+			var _eff = instance_create_depth(spawn_x-15, spawn_y-5, 0, obj_shield_aura)
+			_eff.sprite_index = spr_gods_shield_effect_4
+			_eff.depth = parent_player.depth + 148
+			array_push(shield_vfx_insts, _eff)
+		}
+	}
+	else if is_master_shield{
+		if gods_flame_gem{
+			var _eff = instance_create_depth(spawn_x-15, spawn_y-30, 0, obj_shield_aura)
+			_eff.sprite_index = spr_master_shield_effect_1
+			_eff.depth = parent_player.depth - 3
+			array_push(shield_vfx_insts, _eff)
+		}
+		if gods_damage_gem{
+			var _eff = instance_create_depth(spawn_x-15, spawn_y-5, 0, obj_shield_aura)
+			_eff.sprite_index = spr_master_shield_effect_2
+			_eff.depth = parent_player.depth + 149
+			array_push(shield_vfx_insts, _eff)
+		}
+		if gods_buff_gem{
+			var _eff = instance_create_depth(spawn_x-15, spawn_y-5, 0, obj_shield_aura)
+			_eff.sprite_index = spr_master_shield_effect_3
+			_eff.depth = parent_player.depth + 150
+			array_push(shield_vfx_insts, _eff)
+		}
+		if master_eye_gem{
+			var _eff = instance_create_depth(spawn_x-15, spawn_y-5, 0, obj_shield_aura)
+			_eff.sprite_index = spr_master_shield_effect_4
+			_eff.depth = parent_player.depth + 148
+			array_push(shield_vfx_insts, _eff)
+		}
+	}
+	else if is_rose_shield{
+		if rose_flame_gem{
+			var _eff = instance_create_depth(spawn_x-15, spawn_y-5, 0, obj_shield_aura)
+			_eff.sprite_index = spr_rose_shield_effect_5
+			_eff.depth = parent_player.depth +148
+			array_push(shield_vfx_insts, _eff)
+		}
+		if rose_buff_gem{
+			var _eff = instance_create_depth(spawn_x-15, spawn_y-5, 0, obj_shield_aura)
+			_eff.sprite_index = spr_rose_shield_effect_3
+			_eff.depth = parent_player.depth + 150
+			array_push(shield_vfx_insts, _eff)
+		}
+		if rose_dmg_gem{
+			var _eff = instance_create_depth(spawn_x-15, spawn_y-5, 0, obj_shield_aura)
+			_eff.sprite_index = spr_rose_shield_effect_4
+			_eff.depth = parent_player.depth + 149
+			array_push(shield_vfx_insts, _eff)
+		}
+	}
+	aura_created = true
+}
+
+if parent_player.state == CARD_STATE.IDLE{
+	anim_timer++
+	// 每6帧才更新一次运动
+	if (anim_timer >= 6) {
+		anim_timer = 0
+
+	    t += t_speed * t_dir;
+
+	    // 到终点反向
+	    if (t >= 1) {
+	        t = 1;
+	        t_dir = -1;
+	    }
+
+	    // 回到起点再反向
+	    if (t <= -1) {
+	        t = -1;
+	        t_dir = 1;
+	    }
+	
+		var x_param = t;
+		var y_param = 0.5 * t * t - 1;
+
+		x = origin_x + x_param;
+		y = origin_y + y_param;
+	}
+}else if parent_player.state == CARD_STATE.ATTACK {
+	anim_timer = 0
+	x = origin_x;
+	y = origin_y;
+	t = 0;
+	t_dir = 1;
+}
+
 if produce_gem{
 	if not first_produce{
 		if timer mod first_produce_delay == 0{
@@ -26,8 +136,8 @@ if produce_gem{
 }
 if slow_down_gem{
 	if timer mod slow_down_cycle == 0{
-		var start_pos_x = x + 10 - global.grid_cell_size_x
-		var start_pos_y = y - 35 - global.grid_cell_size_y
+		var start_pos_x = player_x + 10 - global.grid_cell_size_x
+		var start_pos_y = player_y - 35 - global.grid_cell_size_y
 		for(var i = 0; i < 3;i++){
 			for(var j= 0 ; j < 3;j++){
 				var grid_pos = get_grid_position_from_world(start_pos_x + j * global.grid_cell_size_x,start_pos_y + i * global.grid_cell_size_y)
@@ -41,8 +151,8 @@ if slow_down_gem{
 }
 if bleed_gem{
 	if timer mod 60 == 0{
-			var _x = x;
-			var _y = y;
+			var _x = player_x;
+			var _y = player_y;
 			var _range = 250
 		with (obj_enemy_parent) {
 		
@@ -56,7 +166,7 @@ if bleed_gem{
 }
 if guard_gem || strength_gem{
 	with (obj_card_parent){
-		if(grid_row >= other.grid_row-1&&grid_row <= other.grid_row+1&&grid_col >= other.grid_col-1&&grid_col<=other.grid_col+1&&plant_id!="player"){
+		if(grid_row >= other.grid_row-1&&grid_row <= other.grid_row+1&&grid_col >= other.grid_col-1&&grid_col<=other.grid_col+1&&array_get_index(other.blacklist, plant_id) == -1){
 			if other.guard_gem{
 				if (array_get_index(other.hp_modified_card_list,id)==-1){
 					max_hp += other.max_hp_increase
@@ -81,3 +191,209 @@ if guard_gem || strength_gem{
 	}
 }
 
+// ━━━ gods_shield / master_shield 专属宝石效果 ━━━
+
+// 火焰宝石：每25产量创建一朵火苗
+if gods_flame_gem{
+	if !gods_flame_first{
+		if timer mod gods_flame_first_delay == 0{
+			var _cnt = floor(gods_flame_value / 25)
+			for(var fi = 0; fi < _cnt; fi++){
+				var f_inst = instance_create_depth(x+irandom_range(-15,15), y-50-irandom_range(0,25), -1300, obj_flame)
+				f_inst.value = 25
+			}
+			gods_flame_first = true
+		}
+	}
+	else{
+		if timer mod gods_flame_cycle == 0{
+			var _cnt = floor(gods_flame_value / 25)
+			for(var fi = 0; fi < _cnt; fi++){
+				var f_inst = instance_create_depth(x+irandom_range(-15,15), y-50-irandom_range(0,25), -1300, obj_flame)
+				f_inst.value = 25
+			}
+		}
+	}
+}
+
+// 伤害宝石：每2.5s造成 maxhp×rate+atk，上限max_damage
+if gods_damage_gem{
+	if timer mod 150 == 0{
+		var _dr = gods_damage_range
+		with(obj_enemy_parent){
+			if hp > 0
+			&& grid_row >= other.grid_row - _dr && grid_row <= other.grid_row + _dr
+			&& grid_col >= other.grid_col - _dr && grid_col <= other.grid_col + _dr{
+				var _dmg = round(maxhp * other.gods_damage_rate + other.gods_damage_atk)
+				if _dmg > other.gods_damage_max{ _dmg = other.gods_damage_max }
+				damage_amount = _dmg
+				damage_type = "normal"
+				event_user(0)
+				audio_play_sound(hit_sound,0,0)				
+			}
+		}
+	}
+}
+
+// 攻击力宝石：3×3内 ratio_inner，5×5外圈 ratio_outer
+if gods_buff_gem{
+	with(obj_card_parent){
+		if array_get_index(other.blacklist, plant_id) == -1
+		&& array_get_index(other.gods_buff_card_list, id) == -1{
+			var _in3x3 = (grid_row >= other.grid_row-1 && grid_row <= other.grid_row+1
+			           && grid_col >= other.grid_col-1 && grid_col <= other.grid_col+1)
+			var _in5x5 = (grid_row >= other.grid_row-2 && grid_row <= other.grid_row+2
+			           && grid_col >= other.grid_col-2 && grid_col <= other.grid_col+2)
+			var _ratio = 0
+			if _in3x3{ _ratio = other.gods_buff_inner }
+			else if _in5x5{ _ratio = other.gods_buff_outer }
+			if _ratio > 0{
+				atk = atk * (_ratio + 1)
+				array_push(other.gods_buff_card_list, id)
+			}
+		}
+	}
+}
+
+// 生命宝石：5×5范围内提升最大生命
+if gods_hp_gem{
+	with(obj_card_parent){
+		if array_get_index(other.blacklist, plant_id) == -1
+		&& array_get_index(other.gods_hp_card_list, id) == -1
+		&& grid_row >= other.grid_row-2 && grid_row <= other.grid_row+2
+		&& grid_col >= other.grid_col-2 && grid_col <= other.grid_col+2{
+			var _inc = round(max_hp * other.gods_hp_rate)
+			max_hp += _inc
+			hp += _inc
+			array_push(other.gods_hp_card_list, id)
+		}
+	}
+}
+
+// 神圣之眼：进入5×5范围时立即攻击一次，之后每10秒再次触发
+if master_eye_gem{
+	// 每60帧清理已死亡敌人的记录
+	if timer mod 60 == 0 && ds_exists(master_eye_hit_map, ds_type_map){
+		var _keys = ds_map_keys_to_array(master_eye_hit_map)
+		for(var ki = 0; ki < array_length(_keys); ki++){
+			if !instance_exists(_keys[ki]){
+				ds_map_delete(master_eye_hit_map, _keys[ki])
+			}
+		}
+	}
+	with(obj_enemy_parent){
+		if hp > 0
+		&& grid_row >= other.grid_row-2 && grid_row <= other.grid_row+2
+		&& grid_col >= other.grid_col-2 && grid_col <= other.grid_col+2{
+			var _last = other.master_eye_hit_map[? id]
+			// 首次进入范围或距上次命中已过600帧
+			if is_undefined(_last) || other.timer - _last >= 600{
+				damage_amount = other.master_eye_atk
+				damage_type = "normal"
+				ice_timer = other.master_eye_slow
+				is_slowdown = true
+				event_user(0)
+				audio_play_sound(hit_sound,0,0)
+				other.master_eye_hit_map[? id] = other.timer
+			}
+		}
+	}
+}
+
+// ━━━ rose_shield 专属宝石效果 ━━━
+
+// 玫瑰火焰宝石：每25产量一朵火苗
+if rose_flame_gem{
+	if !rose_flame_first{
+		if timer mod rose_flame_first_delay == 0{
+			var _cnt = floor(rose_flame_value / 25)
+			for(var fi = 0; fi < _cnt; fi++){
+				var f_inst = instance_create_depth(x+irandom_range(-15,15), y-50-irandom_range(0,25), -1300, obj_flame)
+				f_inst.value = 25
+			}
+			rose_flame_first = true
+		}
+	}
+	else{
+		if timer mod rose_flame_cycle == 0{
+			var _cnt = floor(rose_flame_value / 25)
+			for(var fi = 0; fi < _cnt; fi++){
+				var f_inst = instance_create_depth(x+irandom_range(-15,15), y-50-irandom_range(0,25), -1300, obj_flame)
+				f_inst.value = 25
+			}
+		}
+	}
+}
+
+// 玫瑰攻击宝石：7行5列内卡片获得攻击加成（不分内外圈）
+if rose_buff_gem{
+	with(obj_card_parent){
+		if array_get_index(other.blacklist, plant_id) == -1
+		&& array_get_index(other.rose_buff_card_list, id) == -1
+		&& grid_row >= other.grid_row-3 && grid_row <= other.grid_row+3
+		&& grid_col >= other.grid_col-2 && grid_col <= other.grid_col+2{
+			atk = atk * (other.rose_buff_ratio + 1)
+			array_push(other.rose_buff_card_list, id)
+		}
+	}
+}
+
+// 玫瑰荆棘宝石：每周期向8方向发射穿刺弹（同方向子弹间隔4帧）
+if rose_needle_gem{
+	if timer mod rose_needle_cycle == 0{
+		rose_needle_wave = 0
+		rose_needle_cd = 0
+	}
+	if rose_needle_wave < rose_needle_count{
+		if rose_needle_cd <= 0{
+			var _dirs = [0, 45, 90, 135, 180, 225, 270, 315]
+			for(var d = 0; d < 8; d++){
+				var inst = instance_create_depth(x, y, depth-500, obj_rose_shield_bullet)
+				inst.damage = rose_needle_atk
+				inst.direction = _dirs[d]
+			}
+			rose_needle_wave++
+			rose_needle_cd = 4
+		}
+		else{ rose_needle_cd-- }
+	}
+}
+	
+// 玫瑰绞杀宝石：入范围即受 atk_f 一次，之后每2.5s受 atk+hp×rate 伤害（上限max_damage）
+if rose_dmg_gem{
+	if timer mod 60 == 0 && ds_exists(rose_dmg_fhit_map, ds_type_map){
+		var _keys = ds_map_keys_to_array(rose_dmg_fhit_map)
+		for(var ki = 0; ki < array_length(_keys); ki++){
+			if !instance_exists(_keys[ki]){
+				ds_map_delete(rose_dmg_fhit_map, _keys[ki])
+			}
+		}
+	}
+	with(obj_enemy_parent){
+		if hp > 0
+		&& grid_row >= other.grid_row-3 && grid_row <= other.grid_row+3
+		&& grid_col >= other.grid_col-2 && grid_col <= other.grid_col+2{
+			// 首击（每个敌人仅一次）
+			if is_undefined(other.rose_dmg_fhit_map[? id]){
+				damage_amount = other.rose_dmg_atk_f
+				damage_type = "normal"
+				event_user(0)
+				audio_play_sound(snd_rose_shield,0,0)
+				var effect_inst = instance_create_depth(x,y-20,depth,obj_xiaolongbao_bullet_effect)
+				effect_inst.sprite_index = spr_rose_shield_effect_1
+				other.rose_dmg_fhit_map[? id] = 1
+			}
+			// 每2.5s持续伤害
+			if other.timer mod 150 == 0{
+				var _dmg = round(other.rose_dmg_atk + hp * other.rose_dmg_rate)
+				if _dmg > other.rose_dmg_max{ _dmg = other.rose_dmg_max }
+				damage_amount = _dmg
+				damage_type = "normal"
+				event_user(0)
+				audio_play_sound(snd_rose_shield,0,0)
+				var effect_inst = instance_create_depth(x,y-20,depth,obj_xiaolongbao_bullet_effect)
+				effect_inst.sprite_index = spr_rose_shield_effect_1
+			}
+		}
+	}
+}

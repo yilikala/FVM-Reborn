@@ -204,9 +204,12 @@ for(var i = deck_first_slot_index; i < deck_first_slot_index+11;i++){
 	draw_set_valign(fa_bottom);
 	draw_set_font(font_yuan)
 	//绘制武器栏位
+	var _slot_id_list = ["main_weapon","secondary_weapon","super_weapon"]
 	for(var i = 0;i < 3; i++){
 		draw_sprite_ext(spr_package_weapon_bg,0,x+120,y+160+100*i,2,2,0,c_white,1)
-		for(var j = 0; j < 3 ; j++){
+		var _wid = variable_struct_get(global.save_data.equipped_items, _slot_id_list[i]).id
+		var _slot_limit = get_weapon_slot_limit(_wid)
+		for(var j = 0; j < _slot_limit ; j++){
 			draw_sprite_ext(spr_package_gem_bg,0,x+240+120*j,y+160+100*i,1.7,1.7,0,c_white,1)
 		}
 	}

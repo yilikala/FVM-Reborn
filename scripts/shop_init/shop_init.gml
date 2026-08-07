@@ -19,7 +19,6 @@ function shop_init(){
 	register_goods("card_slot_19",{"type":"item","cost":"50000","unlock_item_id":"card_slot_19","description":"解锁第19格卡槽","display_name":"卡槽第19格","spr":spr_slot_19})
 	register_goods("card_slot_20",{"type":"item","cost":"80000","unlock_item_id":"card_slot_20","description":"解锁第20格卡槽","display_name":"卡槽第20格","spr":spr_slot_20})
 	register_goods("card_slot_21",{"type":"item","cost":"100000","unlock_item_id":"card_slot_21","description":"解锁第21格卡槽","display_name":"卡槽第21格","spr":spr_slot_21})
-	register_goods("exchange_points",{"type":"item","cost":"10000","unlock_item_id":"exchange_points","description":"使用10000金币兑换100点券，不限次数","display_name":"兑换100D","spr":spr_coin})
 	
 	register_goods("howitzer",{"type":"weapon","cost":"20000","unlock_item_id":"howitzer","description":"榴弹炮：自动发射高伤害榴弹","display_name":"榴弹炮"})
 	register_goods("enhanced_howitzer",{"type":"weapon","cost":"50000","unlock_item_id":"enhanced_howitzer","description":"加强榴弹炮：自动发射两个高伤害榴弹","display_name":"加强榴弹炮"})
@@ -53,4 +52,5 @@ function shop_init(){
 	register_goods("player_attire_4",{"type":"player_attire","cost":"50000","unlock_item_id":"player_attire_4","description":"角色的公会制服时装","display_name":"公会制服"})
 	register_goods("player_attire_5",{"type":"player_attire","cost":"50000","unlock_item_id":"player_attire_5","description":"角色的龙族传说时装","display_name":"龙族传说"})
 	register_goods("player_attire_6",{"type":"player_attire","cost":"50000","unlock_item_id":"player_attire_6","description":"角色的神奇精灵时装","display_name":"神奇精灵"})
+	register_goods("player_attire_s",{"type":"player_attire","cost":"100000","unlock_item_id":"player_attire_s","description":"角色的星之焕变身时装","display_name":"星之焕"})
 }

@@ -174,4 +174,13 @@ function attire_init(){
 			"spr":spr_player_attire_6,
 		}
 	)
+	register_attire(
+		"player_attire_s",
+		{
+			"target_card":"player",
+			"name":"星之焕",
+			"icon":spr_player_attire_s_icon,
+			"spr":spr_player_attire_s,
+		}
+	)
 }

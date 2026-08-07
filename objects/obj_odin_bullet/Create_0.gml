@@ -1,0 +1,15 @@
+damage = 0
+move_speed = 0
+row = 0
+shape = 0
+damage_type = "normal"
+target_type = "normal"
+burnt = 0
+bounced = false
+brazier_list = ds_list_create()
+hit_enemy_list = ds_list_create()
+loki_burnt = false
+loki_shape = 0
+image_xscale = 1.8
+image_yscale = 1.8
+image_speed = 0

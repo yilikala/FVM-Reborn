@@ -96,10 +96,51 @@ function weapons_init(){
 										"slot":"main_weapon",
 										"atk":20,
 										"cycle":90,
-										"description":"海神镖枪：发射两个追踪飞镖攻击敌人",
+										"description":"海神镖枪：发射追踪飞镖攻击敌人",
 										"name":"海神镖枪",
-										"atk_impact":[24,28,32,36,40,44,52,64,80,110,140,170,200,230,260,290]
+										"atk_impact":[50,60,70,80,90,100,110,120,130,140,150,170,190,215,240,270],
+										"cycle_impact":[120,116,112,108,104,100,96,92,88,84,80,76,72,68,64,60],
+										"bullet_style_impact":[0,0,0,0,0,0,1,1,1,1,2,2,3,3,4,4],
+										"exclusive_gems":["poseidon_dart_gun_gem_1","poseidon_dart_gun_gem_2","poseidon_dart_gun_gem_3","poseidon_dart_gun_gem_4"]
 										})
+		register_weapon("zeus_bolt",{"sprite":spr_zeus_bolt,
+									"icon":spr_zeus_bolt_icon,
+									"obj":obj_zeus_bolt,
+									"slot":"main_weapon",
+									"exclusive_gems":["zeus_shadow_gem","zeus_power_gem","zeus_anger_gem","zeus_blade_gem"],
+									"atk":65,
+									"bullet_amount":2,
+									"bullet_style":0,
+									"splash_ratio":0,
+									"cycle":120,
+									"description":"宙斯神弩：高伤害全屏追踪攻击",
+									"name":"宙斯神弩",
+									"atk_impact":[80,90,105,120,140,155,170,180,205,210,230,260,290,320,360,410],
+									"bullet_count":[2,2,2,3,3,3,4,4,4,4,5,5,5,6,6,7],
+									"bullet_style_impact":[0,0,0,0,0,0,1,1,1,1,2,2,3,3,4,4],
+									"splash_ratio_impact":[15,16,18,20,23,26,29,32,35,40,45,50,55,65,75,90],
+									"cycle_impact":[120,116,112,108,104,100,96,92,88,84,80,76,72,68,64,60]
+									})
+		register_weapon("star_wand",{"sprite":spr_star_wand,
+									"icon":spr_star_wand_icon,
+									"obj":obj_star_wand,
+									"slot":"main_weapon",
+									"exclusive_gems":["star_wand_gem_1","star_wand_gem_2","star_wand_gem_3","star_wand_gem_4"],
+									"atk":125,
+									"bullet_amount":3,
+									"bullet_style":0,
+									"splash_ratio":0,
+									"diz_chance":0.10,
+									"cycle":180,
+									"description":"星之神杖：召唤星之力全屏攻击，几率造成眩晕",
+									"name":"星之神杖",
+									"splash_ratio_impact":[0.15,0.16,0.17,0.18,0.20,0.24,0.28,0.33,0.38,0.43,0.48,0.54,0.62,0.72,0.85,1],
+									"bullet_style_impact":[0,0,0,0,0,0,1,1,1,1,2,2,3,3,4,4],
+									"atk_impact":[150,175,200,225,250,275,300,325,350,375,400,437,475,512,562,625],
+									"bullet_count":[3,4,4,5,5,5,6,6,6,7,7,7,8,8,8,9],
+									"diz_chance_impact":[0.15,0.15,0.18,0.18,0.2,0.22,0.22,0.25,0.28,0.28,0.3,0.35,0.35,0.4,0.5,0.5],
+									"cycle_impact":[176,172,168,164,160,156,152,148,144,140,135,130,125,120,110,100]
+									})
 	}
 	{//注册所有副武器
 		register_weapon("cookie_shield",{"sprite":spr_cookie_shield_icon,
@@ -125,6 +166,33 @@ function weapons_init(){
 									"hp_increase":300,
 									"description":"切糕盾牌：增加300生命值",
 									"name":"切糕盾牌",
+									})
+		register_weapon("gods_shield",{"sprite":spr_gods_shield_icon,
+									"icon":spr_gods_shield_icon,
+									"obj":obj_player_shield,
+									"slot":"secondary_weapon",
+									"hp_increase":500,
+									"description":"诸神之盾：增加500生命值，镶嵌宝石时提供增益效果",
+									"name":"诸神之盾",
+									"exclusive_gems":["gods_shield_gem_1","gods_shield_gem_2","gods_shield_gem_3","gods_shield_gem_4"],
+									})
+		register_weapon("master_shield",{"sprite":spr_master_shield_icon,
+									"icon":spr_master_shield_icon,
+									"obj":obj_player_shield,
+									"slot":"secondary_weapon",
+									"hp_increase":700,
+									"description":"主宰之盾：增加700生命值，镶嵌宝石时提供强力增益效果",
+									"name":"主宰之盾",
+									"exclusive_gems":["master_shield_gem_1","master_shield_gem_2","master_shield_gem_3","master_shield_gem_4"],
+									})
+		register_weapon("rose_shield",{"sprite":spr_rose_shield_icon,
+									"icon":spr_rose_shield_icon,
+									"obj":obj_player_shield,
+									"slot":"secondary_weapon",
+									"hp_increase":1000,
+									"description":"荆棘玫瑰：增加1000生命值，镶嵌宝石时提供超强增益效果",
+									"name":"荆棘玫瑰",
+									"exclusive_gems":["rose_shield_gem_1","rose_shield_gem_2","rose_shield_gem_3","rose_shield_gem_4"],
 									})
 	}
 	{//注册所有超级武器
@@ -186,7 +254,7 @@ function weapons_init(){
 							"first_cooldown":90,
 							"cooldown":[300,280,260,240,220,200,190,180,170,160,150],
 							"range":[1,1,1,2,2,3,3,4,5,6,7]
-		})
+		})    
 		register_gem("freeze_gem",{"name":"冰冻宝石",
 					"description":"冰冻宝石：冰冻并减速全屏敌人",
 					"icon":spr_freeze_gem_icon,
@@ -289,5 +357,234 @@ function weapons_init(){
 									"obj":noone
 		})
 		
+
+
+
+		register_gem("poseidon_dart_gun_gem_1",{"name":"魔影圣衣",
+									"description":"魔影圣衣：增加海神标枪子弹溅射",
+									"icon":spr_poseidon_dart_gun_gem_1,
+									"slot":"main_weapon",
+									"exclusive_for":"poseidon_dart_gun",
+									"obj":obj_poseidon_dart_gun_gem_1,
+									"max_level":15,
+									"splash_ratio":[0.1,0.13,0.16,0.19,0.21,0.24,0.27,0.30,0.33,0.36,0.40,0.43,0.46,0.49,0.53,0.58]
+		})
+		register_gem("poseidon_dart_gun_gem_2",{"name":"魔影蛮力",
+									"description":"魔影蛮力：增加海神镖枪攻击力",
+									"icon":spr_poseidon_dart_gun_gem_2,
+									"slot":"main_weapon",
+									"exclusive_for":"poseidon_dart_gun",
+									"obj":obj_poseidon_dart_gun_gem_2,
+									"max_level":15
+		})
+		register_gem("poseidon_dart_gun_gem_3",{"name":"魔影超刃",
+									"description":"魔影超刃：增加海神标枪飞镖数量并小幅提升攻击力",
+									"icon":spr_poseidon_dart_gun_gem_3,
+									"slot":"main_weapon",
+									"exclusive_for":"poseidon_dart_gun",
+									"obj":obj_poseidon_dart_gun_gem_3,
+									"max_level":15,
+									"bullet_count":[2,2,2,3,3,3,4,4,4,4,5,5,5,6,6,7],
+									"atk_bonus":[0,15,20,25,30,35,10,15,20,25,10,25,35,10,40,30]
+		})
+		register_gem("poseidon_dart_gun_gem_4",{"name":"魔影迅疾",
+									"description":"魔影迅疾：增加海神镖枪攻击速度",
+									"icon":spr_poseidon_dart_gun_gem_4,
+									"slot":"main_weapon",
+									"exclusive_for":"poseidon_dart_gun",
+									"obj":obj_poseidon_dart_gun_gem_4,
+									"max_level":15
+		})
+		register_gem("zeus_shadow_gem",{"name":"天神之影",
+									"description":"天神之影：增加宙斯神弩子弹溅射",
+									"icon":spr_zeus_shadow_gem_icon,
+									"slot":"main_weapon",
+									"obj":obj_zeus_shadow_gem,
+									"exclusive_for":"zeus_bolt",
+									"max_level":15
+		})
+		register_gem("zeus_power_gem",{"name":"天神之力",
+									"description":"天神之力：增加宙斯神弩子弹伤害",
+									"icon":spr_zeus_power_gem_icon,
+									"slot":"main_weapon",
+									"obj":obj_zeus_power_gem,
+									"exclusive_for":"zeus_bolt",
+									"max_level":15
+		})
+		register_gem("zeus_anger_gem",{"name":"天神之怒",
+									"description":"天神之怒：增加宙斯神弩子弹数量",
+									"icon":spr_zeus_anger_gem_icon,
+									"slot":"main_weapon",
+									"obj":obj_zeus_anger_gem,
+									"exclusive_for":"zeus_bolt",
+									"max_level":15
+		})
+		register_gem("zeus_blade_gem",{"name":"天神之刃",
+									"description":"天神之刃：缩短宙斯神弩攻击间隔",
+									"icon":spr_zeus_blade_gem_icon,
+									"slot":"main_weapon",
+									"obj":obj_zeus_blade_gem,
+									"exclusive_for":"zeus_bolt",
+									"max_level":15
+		})
+		register_gem("star_wand_gem_1",{"name":"星之焕",
+									"description":"星之焕：增幅星之力的溅射比率\n并改变星之力的形态",
+									"icon":spr_star_wand_gem_1,
+									"slot":"main_weapon",
+									"obj":obj_star_wand_gem_1,
+									"exclusive_for":"star_wand",
+									"max_level":15
+		})
+		register_gem("star_wand_gem_2",{"name":"星之吻",
+									"description":"星之吻：增幅星之力的伤害",
+									"icon":spr_star_wand_gem_2,
+									"slot":"main_weapon",
+									"obj":obj_star_wand_gem_2,
+									"exclusive_for":"star_wand",
+									"max_level":15
+		})
+		register_gem("star_wand_gem_3",{"name":"星之雨",
+									"description":"星之雨：增幅召唤星之力的数量",
+									"icon":spr_star_wand_gem_3,
+									"slot":"main_weapon",
+									"obj":obj_star_wand_gem_3,
+									"exclusive_for":"star_wand",
+									"max_level":15
+		})
+		register_gem("star_wand_gem_4",{"name":"星之闪",
+									"description":"星之闪：增幅召唤星之力的速度\n并增加眩晕几率",
+									"icon":spr_star_wand_gem_4,
+									"slot":"main_weapon",
+									"obj":obj_star_wand_gem_4,
+									"exclusive_for":"star_wand",
+									"max_level":15
+		})
+		register_gem("gods_shield_gem_1",{"name":"光能之源",
+									"description":"光能之源：生产大量火苗",
+									"exclusive_for":"gods_shield",
+									"icon":spr_gods_shield_gem_1,
+									"slot":"secondary_weapon",
+									"obj":obj_gods_shield_gem_1,
+									"first_produce_delay":1,
+									"cycle":[15, 15, 15, 14, 14, 14, 13, 13, 12, 11, 10, 10, 10, 10, 10, 10],
+									"flame_value":[6, 12, 18, 24, 30, 36, 48, 60, 72, 96, 120, 130, 140, 150, 160, 180],
+									"max_level":15
+		})
+		register_gem("gods_shield_gem_2",{"name":"撕裂之源",
+									"description":"撕裂之源：撕裂3x3范围内的敌人",
+									"exclusive_for":"gods_shield",
+									"icon":spr_gods_shield_gem_2,
+									"slot":"secondary_weapon",
+									"obj":obj_gods_shield_gem_2,
+									"atk":[5,10,15,20,25,30,40,50,60,80,100,110,120,130,140,150],
+									"rate":[0.02, 0.03, 0.03, 0.04, 0.05, 0.06, 0.08, 0.10, 0.12, 0.15, 0.18, 0.19, 0.20, 0.23, 0.24, 0.26],
+									"max_damage":[100,200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200],
+									"max_level":15
+		})
+		register_gem("gods_shield_gem_3",{"name":"永恒之源",
+									"description":"永恒之源：为5×5范围内的卡片提升攻击力",
+									"exclusive_for":"gods_shield",
+									"icon":spr_gods_shield_gem_3,
+									"slot":"secondary_weapon",
+									"obj":obj_gods_shield_gem_3,
+									"ratio_inner":[0.05, 0.06, 0.07, 0.09, 0.11, 0.13, 0.16, 0.19, 0.22, 0.26, 0.30, 0.32, 0.34, 0.36, 0.38, 0.40],
+									"ratio_outer":[0.025, 0.03, 0.035, 0.045, 0.055, 0.065, 0.08, 0.095, 0.11, 0.13, 0.15, 0.16, 0.17, 0.18, 0.19, 0.20],
+									"max_level":15
+		})
+		register_gem("gods_shield_gem_4",{"name":"生命之源",
+									"description":"生命之源：提升5×5范围内卡片的最大生命值",
+									"exclusive_for":"gods_shield",
+									"icon":spr_gods_shield_gem_4,
+									"slot":"secondary_weapon",
+									"obj":obj_gods_shield_gem_4,
+									"max_hp_increase_rate":[0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 1.00],
+									"max_level":15
+		})
+		register_gem("master_shield_gem_1",{"name":"神佑之眼",
+									"description":"神佑之眼：生产巨量火苗",
+									"exclusive_for":"master_shield",
+									"icon":spr_master_shield_gem_1,
+									"slot":"secondary_weapon",
+									"obj":obj_master_shield_gem_1,
+									"first_produce_delay":1,
+									"cycle":[15, 15, 15, 14, 14, 14, 13, 13, 12, 11, 10, 10, 10, 10, 10, 10],
+									"flame_value":[20, 30, 40, 50, 60, 75, 90, 105, 120, 135, 150, 170, 190, 210, 230, 260],
+									"max_level":15
+		})
+		register_gem("master_shield_gem_2",{"name":"神忌之眼",
+									"description":"神忌之眼：撕裂5x5范围内的敌人",
+									"exclusive_for":"master_shield",
+									"icon":spr_master_shield_gem_2,
+									"slot":"secondary_weapon",
+									"obj":obj_master_shield_gem_2,
+									"atk":[8,16,24,32,40,50,60,75,90,105,120,140,160,180,200,220],
+									"rate":[0.02, 0.03, 0.03, 0.04, 0.05, 0.06, 0.08, 0.10, 0.12, 0.15, 0.18, 0.19, 0.20, 0.23, 0.24, 0.26],
+									"max_damage":[150,250,350,500,650,800,950,1100,1300,1500,1700,1950,2200,2500,2800,3200],
+									"max_level":15
+		})
+		register_gem("master_shield_gem_3",{"name":"神护之眼",
+									"description":"神护之眼：为5×5范围内的卡片大幅提升攻击力",
+									"exclusive_for":"master_shield",
+									"icon":spr_master_shield_gem_3,
+									"slot":"secondary_weapon",
+									"obj":obj_master_shield_gem_3,
+									"ratio_inner":[0.07, 0.08, 0.09, 0.11, 0.14, 0.17, 0.20, 0.23, 0.26, 0.29, 0.32, 0.35, 0.38, 0.42, 0.46, 0.50],
+									"ratio_outer":[0.035, 0.04, 0.045, 0.055, 0.07, 0.085, 0.10, 0.115, 0.13, 0.145, 0.16, 0.175, 0.19, 0.21, 0.23, 0.25],
+									"max_level":15
+		})
+		register_gem("master_shield_gem_4",{"name":"神圣之眼",
+									"description":"神圣之眼：减速5×5范围内敌人并造成高额伤害",
+									"exclusive_for":"master_shield",
+									"icon":spr_master_shield_gem_4,
+									"slot":"secondary_weapon",
+									"obj":obj_master_shield_gem_4,
+									"atk":[150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 850, 1000],
+									"ice_timer":[3, 3, 3, 3.5, 3.5, 3.5, 4, 4, 4, 4.5, 4.5, 4.5, 5, 5, 5, 6],
+									"max_level":15
+		})
+		register_gem("rose_shield_gem_1",{"name":"玫瑰之心",
+									"description":"玫瑰之心：生产极限量的火苗",
+									"exclusive_for":"rose_shield",
+									"icon":spr_rose_shield_gem_1,
+									"slot":"secondary_weapon",
+									"obj":obj_rose_shield_gem_1,
+									"first_produce_delay":1,
+									"cycle":[15, 15, 15, 14, 14, 14, 13, 13, 13, 12, 12, 11, 11, 10, 9, 8],
+									"flame_value":[30, 45, 60, 75, 90, 105, 120, 135, 150, 170, 190, 220, 260, 310, 360, 410],
+									"max_level":15
+		})
+		register_gem("rose_shield_gem_2",{"name":"玫瑰之刺",
+									"description":"玫瑰之刺：周期性向8个方向发射荆棘子弹",
+									"exclusive_for":"rose_shield",
+									"icon":spr_rose_shield_gem_2,
+									"slot":"secondary_weapon",
+									"obj":obj_rose_shield_gem_2,
+									"atk":[80, 90, 100, 110, 120, 130, 150, 170, 190, 210, 230, 260, 290, 320, 350, 385],
+									"bullet_count":[1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3],
+									"cycle":[20, 19.5, 19, 18.5, 18, 17.5, 17, 16.5, 16, 15, 14, 13, 12, 11, 10, 8],
+									"max_level":15
+		})
+		register_gem("rose_shield_gem_3",{"name":"玫瑰之护",
+									"description":"玫瑰之护：为5×7范围内的卡片巨幅提升攻击力",
+									"exclusive_for":"rose_shield",
+									"icon":spr_rose_shield_gem_3,
+									"slot":"secondary_weapon",
+									"obj":obj_rose_shield_gem_3,
+									"ratio":[0.30, 0.33, 0.35, 0.37, 0.39, 0.43, 0.47, 0.51, 0.55, 0.59, 0.63, 0.67, 0.71, 0.75, 0.80, 0.85],
+									"max_level":15
+		})
+		register_gem("rose_shield_gem_4",{"name":"玫瑰之绞",
+									"description":"玫瑰之绞：为5×7范围内的敌人造成巨额伤害",
+									"exclusive_for":"rose_shield",
+									"icon":spr_rose_shield_gem_4,
+									"slot":"secondary_weapon",
+									"obj":obj_rose_shield_gem_4,
+									"atk_f":[500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1700, 1900, 2100, 2300, 2500],
+									"atk":[20, 25, 30, 35, 40, 50, 60, 70, 80, 90, 100, 120, 140, 160, 180, 220],
+									"rate":[0.25, 0.26, 0.27, 0.28, 0.29, 0.30, 0.31, 0.32, 0.33, 0.34, 0.35, 0.36, 0.37, 0.38, 0.39, 0.40],
+									"max_damage":[300,500,700,1000,1300,1600,1900,2200,2600,3000,3400,3800,4300,4800,5400,6000],
+									"max_level":15
+		})
+
 	}
 }

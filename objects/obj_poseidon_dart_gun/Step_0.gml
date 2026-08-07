@@ -1,9 +1,8 @@
-// obj_plant_parent 的 Step 事件
+// obj_plant_parent �?Step 事件
 if global.is_paused{
 	exit
 }
-// 动画计时器
-
+// 动画计时�?
 	if timer < flash_speed - 1 {
 	    timer++;
 	} else {
@@ -24,10 +23,9 @@ if global.is_paused{
 
 
 
-// 计算深度值
-//var depth_value = -((y + depth_offset) * 10 + x);
+// 计算深度�?//var depth_value = -((y + depth_offset) * 10 + x);
 //depth = depth_value - depth_group * 100;
-depth = parent_player.depth-1
+depth = parent_player.depth-2
 
 //检测自身右方是否有敌人
 var has_enemy = false
@@ -39,18 +37,43 @@ with(obj_enemy_parent){
 }
 //攻击逻辑
 if (has_enemy) {
-    if (attack_timer <= cycle - attack_anim * flash_speed) {
-        attack_timer++;
-    } else if (attack_timer <= cycle) {
-        attack_timer++;
+
+    attack_timer++;
+
+    // 进入攻击阶段
+    if (attack_timer > cycle - attack_anim * flash_speed) {
         state = CARD_STATE.ATTACK;
-    } else {
-        event_user(1); // 发射子弹
+
+        // 发射逻辑
+        if (fire_count < bullet_count) {
+
+            if (fire_cd <= 0) {
+                event_user(1);   // 发射一�?
+
+                fire_count++;
+                fire_cd = 4;     // 间隔5tick
+            } else {
+                fire_cd--;
+            }
+
+        }
+
+    }
+
+    // 一个周期结�?
+    if (attack_timer > cycle) {
         attack_timer = 0;
         state = CARD_STATE.IDLE;
+
+        // 重置发射状�?
+        fire_count = 0;
+        fire_cd = 0;
     }
+
 } else {
-    // 没有符合条件的敌人，重置状态
     attack_timer = 0;
     state = CARD_STATE.IDLE;
+
+    fire_count = 0;
+    fire_cd = 0;
 }
