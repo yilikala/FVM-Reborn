@@ -253,7 +253,7 @@ function slots_init(){
 	register_card("dragon_fruit",obj_dragon_fruit,[
 	    {"shape":0, "sprite":spr_dragon_fruit, "cost":375, "cooldown":60*60, "description":"火龙果：灼烧3*3范围敌人","plant_type":"normal","feature_type":"normal","target_card":"none"},
 	    {"shape":1, "sprite":spr_dragon_fruit_1_icon, "cost":375, "cooldown":60*60, "description":"炎阳火龙果：灼烧3*3范围敌人","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_dragon_fruit_1},
-		{"shape":2, "sprite":spr_dragon_fruit_2, "cost":375, "cooldown":60*60, "description":"九天皓日火龙果：灼烧5*5范围敌人","plant_type":"normal","feature_type":"normal","target_card":"none"}
+		{"shape":2, "sprite":spr_dragon_fruit_2_icon, "cost":375, "cooldown":60*60, "description":"九天皓日火龙果：灼烧5*5范围敌人","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_dragon_fruit_2}
 	])
 	register_card("pineapple_explosive_bread",obj_pineapple_explosive_bread,[
 	    {"shape":0, "sprite":spr_pineapple_explosive_bread_0_0, "cost":150, "cooldown":50*60, "description":"菠萝爆炸面包：死亡后产生3*3范围爆炸","plant_type":"normal","feature_type":"normal","target_card":"none"},
@@ -273,7 +273,7 @@ function slots_init(){
 	register_card("bull_firework",obj_bull_firework,[
 	    {"shape":0, "sprite":spr_bull_firework, "cost":325, "cooldown":50*60, "description":"金牛烟花：召唤1只烟花牛冲撞敌人","plant_type":"normal","feature_type":"normal","target_card":"none"},
 	    {"shape":1, "sprite":spr_bull_firework_1, "cost":275, "cooldown":50*60, "description":"迷幻金牛烟花：召唤1只烟花牛冲撞敌人","plant_type":"normal","feature_type":"normal","target_card":"none"},
-		{"shape":2, "sprite":spr_bull_firework_2, "cost":275, "cooldown":50*60, "description":"璀璨金牛烟花：召唤3只烟花牛冲撞敌人","plant_type":"normal","feature_type":"normal","target_card":"none"}
+		{"shape":2, "sprite":spr_bull_firework_2, "cost":275, "cooldown":50*60, "description":"璀璨金牛烟花：召唤2只烟花牛冲撞敌人","plant_type":"normal","feature_type":"normal","target_card":"none"}
 	])
 	register_card("magic_chicken", obj_magic_chicken, [
 	    {"shape":0, "sprite":spr_magic_chicken_icon, "cost":0, "cooldown":7*60, "description":"幻幻鸡：复制成上一张放置的卡片","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_magic_chicken}
@@ -374,4 +374,14 @@ function slots_init(){
 	    {"shape":2, "sprite":spr_odin_2, "cost":230, "cooldown":7*60, "description":"主神·奥丁：发射直线穿透，威力巨大的长矛","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
 	    {"shape":3, "sprite":spr_odin_3, "cost":230, "cooldown":7*60, "description":"至尊主神：发射直线穿透，威力巨大的长矛","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1}
 	])
+	//register_card("coal_starfish", obj_coal_starfish, [
+	//    {"shape":0, "sprite":spr_coal_starfish, "cost":275, "cooldown":7*60, "description":"炭烧海星：向五个方向发射星星，陆地窒息","plant_type":"normal","feature_type":"amphi","target_card":"none"},
+	//	{"shape":1, "sprite":spr_coal_starfish_1, "cost":275, "cooldown":7*60, "description":"芝士焗海星：向五个方向发射星星","plant_type":"normal","feature_type":"amphi","target_card":"none"},
+	//	{"shape":2, "sprite":spr_coal_starfish_2_icon, "cost":325, "cooldown":7*60, "description":"芥末海星刺身：向五个方向发射两颗星星","plant_type":"normal","feature_type":"amphi","target_card":"none","place_preview":spr_coal_starfish_2}
+	//]);
+	//register_card("curry_lobster_cannon", obj_curry_lobster_cannon, [
+	//    {"shape":0, "sprite":spr_curry_lobster_cannon_icon, "cost":275, "cooldown":20*60, "description":"咖喱龙虾炮：发射两个追踪咖喱炮弹，陆地窒息","plant_type":"normal","feature_type":"amphi","target_card":"none","place_preview":spr_curry_lobster_cannon},
+	//	{"shape":1, "sprite":spr_curry_lobster_cannon_1_icon, "cost":275, "cooldown":20*60, "description":"麻辣龙虾炮：发射两个追踪咖喱炮弹","plant_type":"normal","feature_type":"amphi","target_card":"none","place_preview":spr_curry_lobster_cannon_1},
+	//	{"shape":2, "sprite":spr_curry_lobster_cannon_2_icon, "cost":275, "cooldown":20*60, "description":"加农龙虾炮：发射三个追踪咖喱炮弹","plant_type":"normal","feature_type":"amphi","target_card":"none","place_preview":spr_curry_lobster_cannon_2}
+	//]);
 }
