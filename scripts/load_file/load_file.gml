@@ -79,8 +79,8 @@ function reset_file(file_slot){
 				"name":"Player",
 				"total_time":0,
 				"wish_count":0,
-				"wish_spent":0
-				"crown_version":"0.0.0"
+				"wish_spent":0,
+				"crown_version":"0.0.0",
             },
             "unlocked_cards": [
                 {"id": "small_fire", "level": 0, "shape": 0,"skill":0,"max_level":0,"max_shape":0},
