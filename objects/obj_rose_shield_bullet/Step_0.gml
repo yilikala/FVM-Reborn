@@ -1,6 +1,8 @@
 if global.is_paused{
+	image_speed = 0
 	exit
 }
+image_speed = 1
 x += lengthdir_x(move_speed, direction)
 y += lengthdir_y(move_speed, direction)
 image_angle = direction

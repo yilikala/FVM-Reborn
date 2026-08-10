@@ -42,7 +42,7 @@ if not is_placed{
 				var gem_id = gem_list[i]
 				var gem_info = get_gem_info(gem_id)
 				if gem_info.obj != noone{
-					instance_create_depth(390,213+gem_index*80,-500,gem_info.obj)
+					instance_create_depth(310 + (gem_index div 6) * 80, 213 + (gem_index mod 6) * 80,-500,gem_info.obj)
 					gem_index++
 				}
 			}
@@ -65,7 +65,7 @@ if not is_placed{
 				var gem_id = s_gem_list[i]
 				var gem_info = get_gem_info(gem_id)
 				if gem_info.obj != noone{
-					instance_create_depth(390,213+gem_index*80,-500,gem_info.obj)
+					instance_create_depth(310 + (gem_index div 6) * 80, 213 + (gem_index mod 6) * 80,-500,gem_info.obj)
 					gem_index++
 				}
 			}
@@ -76,6 +76,16 @@ if not is_placed{
 			main_weapon_inst.parent_player = id
 			main_weapon_inst.grid_row = grid_row
 			main_weapon_inst.grid_col = grid_col
+			// 超级武器专属宝石图标
+			var s_gem_list = global.save_data.equipped_items.super_weapon.gems
+			for(var i = 0 ; i < array_length(s_gem_list);i++){
+				var gem_id = s_gem_list[i]
+				var gem_info = get_gem_info(gem_id)
+				if gem_info.obj != noone{
+					instance_create_depth(310 + (gem_index div 6) * 80, 213 + (gem_index mod 6) * 80,-500,gem_info.obj)
+					gem_index++
+				}
+			}
 		}
 	}
 	

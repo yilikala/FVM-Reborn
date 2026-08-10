@@ -3,7 +3,7 @@ image_yscale = 1.8
 image_speed = 0
 
 on_click = false
-gem_id = "zeus_shadow_gem"
+gem_id = "zeus_bolt_gem_1"
 gem_info = get_gem_info(gem_id)
 gem_level = get_gem_level(gem_id)
 

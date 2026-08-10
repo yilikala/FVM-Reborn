@@ -1,7 +1,7 @@
 // 切换状态
 if room != room_battle{
 	if config_key == "difficulty"{
-		if state < 3{
+		if state < 4{
 			state ++
 		}
 		else{

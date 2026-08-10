@@ -11,8 +11,8 @@ weapon_id = "hades_scythe"
 weapon_info = get_weapon_info(weapon_id)
 ghost_shape = weapon_info.ghost_shape
 
-if get_gem_index("ghost_strike_gem")!= -1{
-	ghost_shape = weapon_info.ghost_shape_impact[get_gem_level("ghost_strike_gem")]
+if get_gem_index("hades_scythe_gem_1")!= -1{
+	ghost_shape = weapon_info.ghost_shape_impact[get_gem_level("hades_scythe_gem_1")]
 }
 
 switch(ghost_shape) {

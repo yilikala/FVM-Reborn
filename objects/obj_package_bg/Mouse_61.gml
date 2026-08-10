@@ -1,4 +1,4 @@
-// 鼠标滚轮下滚：卡片栏内容向下滚动（y_offset 增大，受最大偏移限制）
+// 鼠标滚轮下滚
 if package_button_select == 1 && !is_submenu_opened{
 	var _total_cards = ds_list_size(global.player_deck) / 2
 	var _total_rows = max(8, ceil(_total_cards / package_rows))
@@ -8,5 +8,16 @@ if package_button_select == 1 && !is_submenu_opened{
 	}
 	else{
 		y_offset = _max_offset
+	}
+}
+else if package_button_select == 2 && !is_submenu_opened{
+	var _total_w = array_length(global.save_data.unlocked_weapons) + array_length(global.save_data.unlocked_gems)
+	var _total_rows = max(8, ceil(_total_w / package_rows) + 4)
+	var _max_offset = max(0, _total_rows * 88 - weapon_surface_h)
+	if weapon_y_offset < _max_offset - 40{
+		weapon_y_offset += 40
+	}
+	else{
+		weapon_y_offset = _max_offset
 	}
 }

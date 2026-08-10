@@ -34,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_ghost_pact_gem",
-    "path":"sprites/spr_ghost_pact_gem/spr_ghost_pact_gem.yy",
+    "name":"spr_ghost_pact_gem_effect",
+    "path":"sprites/spr_ghost_pact_gem_effect/spr_ghost_pact_gem_effect.yy",
   },
   "spriteMaskId":null,
   "visible":true,

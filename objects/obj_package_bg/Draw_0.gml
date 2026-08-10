@@ -280,147 +280,118 @@ if package_button_select == 1 {
     }
 }
 else if package_button_select == 2 {
-    // 绘制武器背包
-    for(var i = 0 ; i < package_rows ; i++){
-        for(var j = 0 ; j < package_cols ; j++){
-            draw_sprite_ext(spr_package_slot_bg,1,x-354+i*84,y - 368 + 88 * j,1.8,1.8,0,c_white,1)
+    // 武器栏表面（裁剪溢出 + 滚轮）
+    if (!surface_exists(weapon_surface)) {
+        weapon_surface = surface_create(weapon_surface_w, weapon_surface_h)
+    }
+    var _surf_x = x - 354 - 42
+    var _surf_y = y - 359 - 48
+    var _gw = package_rows
+
+    // 预先统计总行数用于限位
+    var _est = array_length(global.save_data.unlocked_weapons) + array_length(global.save_data.unlocked_gems)
+    var _total_rows = max(8, ceil(_est / _gw) + 4)
+    var _max_offset = max(0, _total_rows * 88 - weapon_surface_h)
+    weapon_y_offset = clamp(weapon_y_offset, 0, _max_offset)
+
+    hover_weapon_index = -1
+    hover_gem_index = -1
+
+    surface_set_target(weapon_surface)
+    draw_clear_alpha(c_black, 0)
+
+    var weapon_index = 0
+
+    // ===== 普通武器 =====
+    for(var i = 0; i < array_length(global.save_data.unlocked_weapons); i++){
+        var _wid = global.save_data.unlocked_weapons[i].id
+        var _wdata = global.weapon_pool[? _wid]
+        if (is_undefined(_wdata) || is_weapon_exclusive(_wid)) continue
+
+        var _col = weapon_index mod _gw
+        var _row = weapon_index div _gw
+        var _cx = 42 + _col * 84
+        var _cy = 48 + _row * 88 - weapon_y_offset
+        var _eq = is_weapon_equipped(_wid)
+        draw_sprite_ext(spr_package_slot_bg,1,_cx,_cy,1.8,1.8,0,_eq?c_yellow:c_white,1)
+        draw_sprite_ext(_wdata.icon,0,_cx,_cy,1,1,0,c_white,1)
+        if (point_in_rectangle(mouse_x,mouse_y,_surf_x+_cx-42,_surf_y+_cy-44,_surf_x+_cx+42,_surf_y+_cy+44)){
+            hover_weapon_index = i
+        }
+        weapon_index++
+    }
+
+    // ===== 换行 =====
+    weapon_index = ceil(weapon_index / _gw) * _gw
+
+    // ===== 普通宝石 =====
+    for(var i = 0; i < array_length(global.save_data.unlocked_gems); i++){
+        var _gid = global.save_data.unlocked_gems[i].id
+        var _gdata = get_gem_info(_gid)
+        if (is_undefined(_gdata) || is_gem_exclusive(_gid)) continue
+
+        var _col = weapon_index mod _gw
+        var _row = weapon_index div _gw
+        var _cx = 42 + _col * 84
+        var _cy = 48 + _row * 88 - weapon_y_offset
+        var _eq = (get_gem_index(_gid) != -1)
+        draw_sprite_ext(spr_package_slot_bg,1,_cx,_cy,1.8,1.8,0,_eq?c_yellow:c_white,1)
+        draw_sprite_ext(_gdata.icon,0,_cx,_cy,1.4,1.4,0,c_white,1)
+        if (get_gem_level(_gid) > 0){
+            draw_sprite_ext(spr_star_slot,get_gem_level(_gid)-1,_cx-28,_cy-30,1.4,1.4,0,c_white,1)
+        }
+        if (point_in_rectangle(mouse_x,mouse_y,_surf_x+_cx-42,_surf_y+_cy-44,_surf_x+_cx+42,_surf_y+_cy+44)){
+            hover_gem_index = i
+        }
+        weapon_index++
+    }
+
+    // ===== 专属武器（每个独占一行，宝石跟在同一行） =====
+    for(var i = 0; i < array_length(global.save_data.unlocked_weapons); i++){
+        var _wid = global.save_data.unlocked_weapons[i].id
+        var _wdata = global.weapon_pool[? _wid]
+        if (is_undefined(_wdata) || !is_weapon_exclusive(_wid)) continue
+
+        weapon_index = ceil(weapon_index / _gw) * _gw  // 独占新行
+        var _row = weapon_index div _gw
+        var _col = weapon_index mod _gw
+        var _cx = 42 + _col * 84
+        var _cy = 48 + _row * 88 - weapon_y_offset
+        var _eq = is_weapon_equipped(_wid)
+        draw_sprite_ext(spr_package_slot_bg,1,_cx,_cy,1.8,1.8,0,_eq?c_yellow:c_white,1)
+        draw_sprite_ext(_wdata.icon,0,_cx,_cy,1,1,0,c_white,1)
+        if (point_in_rectangle(mouse_x,mouse_y,_surf_x+_cx-42,_surf_y+_cy-44,_surf_x+_cx+42,_surf_y+_cy+44)){
+            hover_weapon_index = i
+        }
+        weapon_index++
+
+        // 该武器的专属宝石
+        for(var j = 0; j < array_length(global.save_data.unlocked_gems); j++){
+            var _gid = global.save_data.unlocked_gems[j].id
+            var _gdata = get_gem_info(_gid)
+            if (is_undefined(_gdata)) continue
+            if (!is_gem_exclusive(_gid) || _gdata.exclusive_for != _wid) continue
+
+            var _col2 = weapon_index mod _gw
+            var _row2 = weapon_index div _gw
+            var _cx2 = 42 + _col2 * 84
+            var _cy2 = 48 + _row2 * 88 - weapon_y_offset
+            var _eq2 = (get_gem_index(_gid) != -1)
+            draw_sprite_ext(spr_package_slot_bg,1,_cx2,_cy2,1.8,1.8,0,_eq2?c_yellow:c_white,1)
+            draw_sprite_ext(_gdata.icon,0,_cx2,_cy2,1.4,1.4,0,c_white,1)
+            if (get_gem_level(_gid) > 0){
+                draw_sprite_ext(spr_star_slot,get_gem_level(_gid)-1,_cx2-28,_cy2-30,1.4,1.4,0,c_white,1)
+            }
+            if (point_in_rectangle(mouse_x,mouse_y,_surf_x+_cx2-42,_surf_y+_cy2-44,_surf_x+_cx2+42,_surf_y+_cy2+44)){
+                hover_gem_index = j
+            }
+            weapon_index++
         }
     }
-    
-    // 绘制所有已解锁的武器（普通武器在前，专属武器在后）
-    var weapon_index = 0;
-    hover_weapon_index = -1; // 重置悬停武器索引
-    
-    // 第一遍：普通武器
-    for(var i = 0; i < array_length(global.save_data.unlocked_weapons); i++) {
-        var weapon_id = global.save_data.unlocked_weapons[i].id;
-        var weapon_data = global.weapon_pool[? weapon_id];
-        if (is_undefined(weapon_data) || is_weapon_exclusive(weapon_id)) continue;
-        
-        var row = weapon_index div package_rows;
-        var col = weapon_index mod package_rows;
-        gem_start_line = weapon_index div package_rows;
-        if (row < package_rows) {
-            var weapon_x = x - 354 + col * 84;
-            var weapon_y = y - 368 + row * 88;
-            var is_equipped = is_weapon_equipped(weapon_id);
-            if (is_equipped) {
-                draw_sprite_ext(spr_package_slot_bg, 1, weapon_x, weapon_y, 1.8, 1.8, 0, c_yellow, 1);
-                draw_sprite_ext(weapon_data.icon, 0, weapon_x, weapon_y, 1, 1, 0, c_white, 1);
-            } else {
-                draw_sprite_ext(spr_package_slot_bg, 1, weapon_x, weapon_y, 1.8, 1.8, 0, c_white, 1);
-                draw_sprite_ext(weapon_data.icon, 0, weapon_x, weapon_y, 1, 1, 0, c_white, 1);
-            }
-            var spr_width = 84;
-            var spr_height = 88;
-            if (point_in_rectangle(mouse_x, mouse_y, 
-                                  weapon_x - spr_width/2, weapon_y - spr_height/2,
-                                  weapon_x + spr_width/2, weapon_y + spr_height/2)) {
-                hover_weapon_index = i;
-            }
-            weapon_index++;
-        }
-    }
-    // 第二遍：专属武器
-    for(var i = 0; i < array_length(global.save_data.unlocked_weapons); i++) {
-        var weapon_id = global.save_data.unlocked_weapons[i].id;
-        var weapon_data = global.weapon_pool[? weapon_id];
-        if (is_undefined(weapon_data) || !is_weapon_exclusive(weapon_id)) continue;
-        
-        var row = weapon_index div package_rows;
-        var col = weapon_index mod package_rows;
-        gem_start_line = weapon_index div package_rows;
-        if (row < package_rows) {
-            var weapon_x = x - 354 + col * 84;
-            var weapon_y = y - 368 + row * 88;
-            var is_equipped = is_weapon_equipped(weapon_id);
-            if (is_equipped) {
-                draw_sprite_ext(spr_package_slot_bg, 1, weapon_x, weapon_y, 1.8, 1.8, 0, c_yellow, 1);
-                draw_sprite_ext(weapon_data.icon, 0, weapon_x, weapon_y, 1, 1, 0, c_white, 1);
-            } else {
-                draw_sprite_ext(spr_package_slot_bg, 1, weapon_x, weapon_y, 1.8, 1.8, 0, c_white, 1);
-                draw_sprite_ext(weapon_data.icon, 0, weapon_x, weapon_y, 1, 1, 0, c_white, 1);
-            }
-            var spr_width = 84;
-            var spr_height = 88;
-            if (point_in_rectangle(mouse_x, mouse_y, 
-                                  weapon_x - spr_width/2, weapon_y - spr_height/2,
-                                  weapon_x + spr_width/2, weapon_y + spr_height/2)) {
-                hover_weapon_index = i;
-            }
-            weapon_index++;
-        }
-    }
-	
-	//绘制已解锁的宝石图标（普通宝石在前，专属宝石在后）
-	var gem_index = 0
-	hover_gem_index = -1
-	
-	// 第一遍：普通宝石
-	for(var i = 0; i < array_length(global.save_data.unlocked_gems); i++) {
-        var weapon_id = global.save_data.unlocked_gems[i].id;
-        var weapon_data = get_gem_info(weapon_id)
-        if (is_undefined(weapon_data) || is_gem_exclusive(weapon_id)) continue;
-        
-        var row = (gem_index div package_rows) + gem_start_line + 1;
-        var col = gem_index mod package_rows;
-        if (row < package_rows) {
-            var weapon_x = x - 354 + col * 84;
-            var weapon_y = y - 368 + row * 88;
-            var is_equipped = (get_gem_index(weapon_id) != -1)
-            if (is_equipped) {
-                draw_sprite_ext(spr_package_slot_bg, 1, weapon_x, weapon_y, 1.8, 1.8, 0, c_yellow, 1);
-                draw_sprite_ext(weapon_data.icon, 0, weapon_x, weapon_y, 1.4, 1.4, 0, c_white, 1);
-            } else {
-                draw_sprite_ext(spr_package_slot_bg, 1, weapon_x, weapon_y, 1.8, 1.8, 0, c_white, 1);
-                draw_sprite_ext(weapon_data.icon, 0, weapon_x, weapon_y, 1.4, 1.4, 0, c_white, 1);
-            }
-			if get_gem_level(weapon_id) > 0{
-				draw_sprite_ext(spr_star_slot,get_gem_level(weapon_id)-1,weapon_x-28,weapon_y-30,1.4,1.4,0,c_white,1)
-			}
-            var spr_width = 84;
-            var spr_height = 88;
-            if (point_in_rectangle(mouse_x, mouse_y, 
-                                  weapon_x - spr_width/2, weapon_y - spr_height/2,
-                                  weapon_x + spr_width/2, weapon_y + spr_height/2)) {
-                hover_gem_index = i;
-            }
-            gem_index++;
-        }
-    }
-	// 第二遍：专属宝石
-	for(var i = 0; i < array_length(global.save_data.unlocked_gems); i++) {
-        var weapon_id = global.save_data.unlocked_gems[i].id;
-        var weapon_data = get_gem_info(weapon_id)
-        if (is_undefined(weapon_data) || !is_gem_exclusive(weapon_id)) continue;
-        
-        var row = (gem_index div package_rows) + gem_start_line + 1;
-        var col = gem_index mod package_rows;
-        if (row < package_rows) {
-            var weapon_x = x - 354 + col * 84;
-            var weapon_y = y - 368 + row * 88;
-            var is_equipped = (get_gem_index(weapon_id) != -1)
-            if (is_equipped) {
-                draw_sprite_ext(spr_package_slot_bg, 1, weapon_x, weapon_y, 1.8, 1.8, 0, c_yellow, 1);
-                draw_sprite_ext(weapon_data.icon, 0, weapon_x, weapon_y, 1.4, 1.4, 0, c_white, 1);
-            } else {
-                draw_sprite_ext(spr_package_slot_bg, 1, weapon_x, weapon_y, 1.8, 1.8, 0, c_white, 1);
-                draw_sprite_ext(weapon_data.icon, 0, weapon_x, weapon_y, 1.4, 1.4, 0, c_white, 1);
-            }
-			if get_gem_level(weapon_id) > 0{
-				draw_sprite_ext(spr_star_slot,get_gem_level(weapon_id)-1,weapon_x-28,weapon_y-30,1.4,1.4,0,c_white,1)
-			}
-            var spr_width = 84;
-            var spr_height = 88;
-            if (point_in_rectangle(mouse_x, mouse_y, 
-                                  weapon_x - spr_width/2, weapon_y - spr_height/2,
-                                  weapon_x + spr_width/2, weapon_y + spr_height/2)) {
-                hover_gem_index = i;
-            }
-            gem_index++;
-        }
-    }
-    
+
+    surface_reset_target()
+    draw_surface(weapon_surface, _surf_x, _surf_y)
+
     // 绘制悬停提示
     if (hover_weapon_index != -1) {
         var weapon_id = global.save_data.unlocked_weapons[hover_weapon_index].id;

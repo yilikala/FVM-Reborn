@@ -7,3 +7,6 @@ obj_world_map_button.world_map = 0
 if surface_exists(card_surface){
 	surface_free(card_surface)
 }
+if surface_exists(weapon_surface){
+	surface_free(weapon_surface)
+}

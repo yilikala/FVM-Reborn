@@ -46,6 +46,12 @@ card_surface = -1
 card_surface_w = 768
 card_surface_h = 815
 
+// 武器栏滚动相关
+weapon_y_offset = 0
+weapon_surface = -1
+weapon_surface_w = 768
+weapon_surface_h = 815
+
 // 卡片栏拖拽相关
 drag_state = 0 // 0=空闲 1=按下中 2=拖拽中
 drag_hold_timer = 0

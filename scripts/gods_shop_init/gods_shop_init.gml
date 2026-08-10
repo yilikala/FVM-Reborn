@@ -39,6 +39,9 @@ function gods_shop_init(){
     register_gods_goods("loki_3",    {"type":"shape","cost":"120","unlock_item_id":"loki",    "target_shape":3,"description":"至尊火神：巨额增加穿过子弹的伤害",	   "display_name":"火神终转凭证",      "spr":spr_c_loki_3})
     register_gods_goods("hera_3",    {"type":"shape","cost":"120","unlock_item_id":"hera",    "target_shape":3,"description":"至尊天后：保护被罩住的卡片，摧毁时爆炸",        "display_name":"天后终转凭证",      "spr":spr_c_hera_3})
     register_gods_goods("odin_3",    {"type":"shape","cost":"180","unlock_item_id":"odin",    "target_shape":3,"description":"至尊主神：发射直线穿透，威力巨大的长矛",      "display_name":"主神终转凭证",      "spr":spr_c_odin_3})
+	
+	register_gods_goods("coal_starfish_real_1",   {"type":"shape","cost":"0","unlock_item_id":"coal_starfish_real",   "target_shape":1,"description":"海星大帝神力的一部分，为什么会出现在这里？",    "display_name":"芝士焗海星(真）",      "spr":spr_c_coal_starfish_real_1})
+	register_gods_goods("coal_starfish_real_2",   {"type":"shape","cost":"0","unlock_item_id":"coal_starfish_real",   "target_shape":2,"description":"海星大帝神力的全部，为什么会出现在这里？",    "display_name":"芥末海星刺身（真）",      "spr":spr_c_coal_starfish_real_2})
 
 	register_gods_goods("s_clover", {"type":"item","cost":"1","unlock_item_id":"clover_S","description":"S级四叶草：提升强化概率至3倍","display_name":"S级四叶草","spr":spr_craft_material,"spr_index":12})
 	register_gods_goods("ss_clover", {"type":"item","cost":"2","unlock_item_id":"clover_SS","description":"SS四叶草：提升强化概率至3.3倍","display_name":"SS四叶草","spr":spr_craft_material,"spr_index":13})

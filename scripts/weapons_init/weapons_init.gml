@@ -107,7 +107,7 @@ function weapons_init(){
 									"icon":spr_zeus_bolt_icon,
 									"obj":obj_zeus_bolt,
 									"slot":"main_weapon",
-									"exclusive_gems":["zeus_shadow_gem","zeus_power_gem","zeus_anger_gem","zeus_blade_gem"],
+									"exclusive_gems":["zeus_bolt_gem_1","zeus_bolt_gem_2","zeus_bolt_gem_3","zeus_bolt_gem_4"],
 									"atk":65,
 									"bullet_amount":2,
 									"bullet_style":0,
@@ -217,6 +217,65 @@ function weapons_init(){
 									"name":"加强榴弹炮",
 									"atk_impact":[220,240,260,280,320,360,400,440,480,540,600,640,680,720,760,800],
 									"cycle_impact":[19.8*60,19.4*60,19*60,18.6*60,17.8*60,17*60,16.2*60,15*60,13.8*60,12.6*60,11*60,10*60,9*60,8*60,7*60,6*60]
+									})
+		register_weapon("death_scythe",{"sprite":spr_death_scythe_icon,
+									"icon":spr_death_scythe_icon,
+									"obj":obj_death_scythe_enter,
+									"slot":"super_weapon",
+									"exclusive_gems":["death_scythe_gem_1","death_scythe_gem_2","death_scythe_gem_3","death_scythe_gem_4"],
+									"atk":200,
+									"cycle":15*60,
+									"ghost_shape":0,
+									"bullet_shape":0,
+									"bullet_amount":1,
+									"description":"死神镰刀：O形轨迹发射旋转镰刀",
+									"name":"死神镰刀",
+									"atk_impact":[260, 300, 340, 380, 440, 500, 560, 640, 720, 800, 900, 950, 1000, 1050, 1100, 1200],
+									"cycle_impact":[14.7*60, 14.25*60, 13.8*60, 13.35*60, 12.75*60, 12.15*60, 11.55*60, 10.65*60, 9.75*60, 8.25*60, 6.75*60, 6.6*60, 6.45*60, 6.25*60, 6*60, 5.7*60],
+									"bullet_amount_impact":[1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4],
+									"bullet_shape_impact":[0,0,0,0,0,0,1,1,1,1,2,2,2,3,3,3],
+									"ghost_shape_impact":[0,0,0,0,0,0,1,1,1,1,1,2,2,2,2,2],
+									"atk_bonus_impact":[50, 60, 70, 80, 90, 100, 120, 150, 180, 210, 300, 350, 370, 390, 410, 450]
+									})
+		register_weapon("hades_scythe",{"sprite":spr_hades_scythe_icon,
+									"icon":spr_hades_scythe_icon,
+									"obj":obj_hades_scythe_enter,
+									"slot":"super_weapon",
+									"exclusive_gems":["hades_scythe_gem_1","hades_scythe_gem_2","hades_scythe_gem_3","hades_scythe_gem_4"],
+									"atk":230,
+									"cycle":15*60,
+									"ghost_shape":0,
+									"bullet_shape":0,
+									"bullet_amount":1,
+									"description":"冥王战镰：∞形轨迹发射旋转镰刀",
+									"name":"冥王战镰",
+									"atk_impact":[356,414,471,529,609,690,782,908,1035,1161,1380,1495,1575,1656,1736,1897],
+									"cycle_impact":[13.45*60,13*60,12.55*60,12.1*60,11.5*60,10.9*60,10.3*60,9.4*60,8.5*60,8*60,6.5*60,6.25*60,6*60,5.75*60,5.5*60,5*60],
+									"bullet_amount_impact":[1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,5],
+									"bullet_shape_impact":[0,0,0,0,0,0,1,1,1,1,2,2,3,3,4,4],
+									"ghost_shape_impact":[0,0,0,0,0,0,0,0,0,0,0,0,1,1,2,2],
+									"ice_timer":[3, 3, 3, 3.5, 3.5, 3.5, 4, 4, 4, 4.5, 4.5, 4.5, 5, 5, 5, 6],
+									"splash_ratio_impact":[0.15, 0.17, 0.19, 0.21, 0.23, 0.25, 0.27, 0.29, 0.31, 0.33, 0.35, 0.37, 0.39, 0.41, 0.44, 0.50]
+									})
+			register_weapon("aladdin_lamp",{"sprite":spr_aladdin_lamp_icon,
+									"icon":spr_aladdin_lamp_icon,
+									"obj":obj_aladdin_lamp_enter,
+									"slot":"super_weapon",
+									"exclusive_gems":["aladdin_lamp_gem_1","aladdin_lamp_gem_2","aladdin_lamp_gem_3","aladdin_lamp_gem_4"],
+									"atk":500,
+									"cycle":15*60,
+									"ghost_shape":0,
+									"bullet_shape":0,
+									"bullet_amount":2,
+									"description":"阿拉丁神灯：驱动灯神之力朝固定轨迹飞行",
+									"name":"阿拉丁神灯",
+									"atk_impact":[700, 750, 800, 850, 900, 950, 1000, 1050, 1150, 1250, 1350, 1500, 1700, 1900, 2200, 2600],
+									"ghost_shape_impact":[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2],
+									"cycle_impact":[14.5*60, 14*60, 13.5*60, 13*60, 12.5*60, 12*60, 11.5*60, 11*60, 10.5*60, 10*60, 9.5*60, 9*60, 8*60, 7*60, 6*60, 5*60],
+									"bullet_amount_impact":[2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4],
+									"bullet_trace_impact":[0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3],
+									"bullet_shape_impact":[1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4],
+									"splash_ratio_impact":[0.15, 0.16, 0.17, 0.18, 0.19, 0.20, 0.21, 0.22, 0.23, 0.24, 0.25, 0.27, 0.29, 0.32, 0.37, 0.45]
 									})
 	}
 	{//注册所有宝石
@@ -395,7 +454,7 @@ function weapons_init(){
 									"obj":obj_poseidon_dart_gun_gem_4,
 									"max_level":15
 		})
-		register_gem("zeus_shadow_gem",{"name":"天神之影",
+		register_gem("zeus_bolt_gem_1",{"name":"天神之影",
 									"description":"天神之影：增加宙斯神弩子弹溅射",
 									"icon":spr_zeus_shadow_gem_icon,
 									"slot":"main_weapon",
@@ -403,7 +462,7 @@ function weapons_init(){
 									"exclusive_for":"zeus_bolt",
 									"max_level":15
 		})
-		register_gem("zeus_power_gem",{"name":"天神之力",
+		register_gem("zeus_bolt_gem_2",{"name":"天神之力",
 									"description":"天神之力：增加宙斯神弩子弹伤害",
 									"icon":spr_zeus_power_gem_icon,
 									"slot":"main_weapon",
@@ -411,7 +470,7 @@ function weapons_init(){
 									"exclusive_for":"zeus_bolt",
 									"max_level":15
 		})
-		register_gem("zeus_anger_gem",{"name":"天神之怒",
+		register_gem("zeus_bolt_gem_3",{"name":"天神之怒",
 									"description":"天神之怒：增加宙斯神弩子弹数量",
 									"icon":spr_zeus_anger_gem_icon,
 									"slot":"main_weapon",
@@ -419,7 +478,7 @@ function weapons_init(){
 									"exclusive_for":"zeus_bolt",
 									"max_level":15
 		})
-		register_gem("zeus_blade_gem",{"name":"天神之刃",
+		register_gem("zeus_bolt_gem_4",{"name":"天神之刃",
 									"description":"天神之刃：缩短宙斯神弩攻击间隔",
 									"icon":spr_zeus_blade_gem_icon,
 									"slot":"main_weapon",
@@ -482,7 +541,7 @@ function weapons_init(){
 									"max_level":15
 		})
 		register_gem("gods_shield_gem_3",{"name":"永恒之源",
-									"description":"永恒之源：为5×5范围内的卡片提升攻击力",
+									"description":"永恒之源：为5x5范围内的卡片提升攻击力",
 									"exclusive_for":"gods_shield",
 									"icon":spr_gods_shield_gem_3,
 									"slot":"secondary_weapon",
@@ -492,7 +551,7 @@ function weapons_init(){
 									"max_level":15
 		})
 		register_gem("gods_shield_gem_4",{"name":"生命之源",
-									"description":"生命之源：提升5×5范围内卡片的最大生命值",
+									"description":"生命之源：提升5x5范围内卡片的最大生命值",
 									"exclusive_for":"gods_shield",
 									"icon":spr_gods_shield_gem_4,
 									"slot":"secondary_weapon",
@@ -561,7 +620,7 @@ function weapons_init(){
 									"obj":obj_rose_shield_gem_2,
 									"atk":[80, 90, 100, 110, 120, 130, 150, 170, 190, 210, 230, 260, 290, 320, 350, 385],
 									"bullet_count":[1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3],
-									"cycle":[20, 19.5, 19, 18.5, 18, 17.5, 17, 16.5, 16, 15, 14, 13, 12, 11, 10, 8],
+									"cycle":[16, 15.5, 15, 14.5, 14, 13.5, 13, 12.5, 12, 11.5, 11, 10, 9, 8, 7, 5],
 									"max_level":15
 		})
 		register_gem("rose_shield_gem_3",{"name":"玫瑰之护",
@@ -583,6 +642,102 @@ function weapons_init(){
 									"atk":[20, 25, 30, 35, 40, 50, 60, 70, 80, 90, 100, 120, 140, 160, 180, 220],
 									"rate":[0.25, 0.26, 0.27, 0.28, 0.29, 0.30, 0.31, 0.32, 0.33, 0.34, 0.35, 0.36, 0.37, 0.38, 0.39, 0.40],
 									"max_damage":[300,500,700,1000,1300,1600,1900,2200,2600,3000,3400,3800,4300,4800,5400,6000],
+									"max_level":15
+		})
+		register_gem("death_scythe_gem_1",{"name":"死神一击",
+									"description":"死神一击：增加死神镰刀伤害",
+									"icon":spr_death_scythe_gem_1,
+									"slot":"super_weapon",
+									"obj":obj_death_scythe_gem_1,
+									"exclusive_for":"death_scythe",
+									"max_level":15
+		})
+		register_gem("death_scythe_gem_2",{"name":"死神收割",
+									"description":"死神收割：增加死神镰刀攻速",
+									"icon":spr_death_scythe_gem_2,
+									"slot":"super_weapon",
+									"obj":obj_death_scythe_gem_2,
+									"exclusive_for":"death_scythe",
+									"max_level":15
+		})
+		register_gem("death_scythe_gem_3",{"name":"死神苏醒",
+									"description":"死神苏醒：增加死神镰刀子弹数量",
+									"icon":spr_death_scythe_gem_3,
+									"slot":"super_weapon",
+									"obj":obj_death_scythe_gem_3,
+									"exclusive_for":"death_scythe",
+									"max_level":15
+		})
+		register_gem("death_scythe_gem_4",{"name":"死神意志",
+									"description":"死神意志：额外增加死神镰刀攻击并改变子弹形态",
+									"icon":spr_death_scythe_gem_4,
+									"slot":"super_weapon",
+									"obj":obj_death_scythe_gem_4,
+									"exclusive_for":"death_scythe",
+									"max_level":15
+		})
+		register_gem("hades_scythe_gem_1",{"name":"亡灵强袭",
+									"description":"亡灵强袭：增加冥王战镰伤害",
+									"icon":spr_ghost_strike_gem,
+									"slot":"super_weapon",
+									"obj":obj_ghost_strike_gem,
+									"exclusive_for":"hades_scythe",
+									"max_level":15
+		})
+		register_gem("hades_scythe_gem_2",{"name":"亡灵契约",
+									"description":"亡灵契约：增加冥王战镰子弹数量",
+									"icon":spr_ghost_pact_gem,
+									"slot":"super_weapon",
+									"obj":obj_ghost_pact_gem,
+									"exclusive_for":"hades_scythe",
+									"max_level":15
+		})
+		register_gem("hades_scythe_gem_3",{"name":"亡灵星火",
+									"description":"亡灵星火：增加冥王战镰攻速",
+									"icon":spr_ghost_spark_gem,
+									"slot":"super_weapon",
+									"obj":obj_ghost_spark_gem,
+									"exclusive_for":"hades_scythe",
+									"max_level":15
+		})
+		register_gem("hades_scythe_gem_4",{"name":"亡灵裁决",
+									"description":"亡灵裁决：增加冥王战镰子弹溅射并附带减速",
+									"icon":spr_ghost_ruling_gem,
+									"slot":"super_weapon",
+									"obj":obj_ghost_ruling_gem,
+									"exclusive_for":"hades_scythe",
+									"max_level":15
+		})
+		register_gem("aladdin_lamp_gem_1",{"name":"灯神原力",
+									"description":"灯神原力：增加阿拉丁神灯的伤害",
+									"icon":spr_aladdin_lamp_gem_1,
+									"slot":"super_weapon",
+									"obj":obj_aladdin_lamp_gem_1,
+									"exclusive_for":"aladdin_lamp",
+									"max_level":15
+		})
+		register_gem("aladdin_lamp_gem_2",{"name":"灯神疾速",
+									"description":"灯神疾速：增加阿拉丁神灯的攻击速度",
+									"icon":spr_aladdin_lamp_gem_2,
+									"slot":"super_weapon",
+									"obj":obj_aladdin_lamp_gem_2,
+									"exclusive_for":"aladdin_lamp",
+									"max_level":15
+		})
+		register_gem("aladdin_lamp_gem_3",{"name":"灯神召唤",
+									"description":"灯神召唤：增加阿拉丁神灯的子弹数量",
+									"icon":spr_aladdin_lamp_gem_3,
+									"slot":"super_weapon",
+									"obj":obj_aladdin_lamp_gem_3,
+									"exclusive_for":"aladdin_lamp",
+									"max_level":15
+		})
+		register_gem("aladdin_lamp_gem_4",{"name":"灯神迷雾",
+									"description":"灯神迷雾：增加阿拉丁神灯的子弹溅射并改变子弹形态",
+									"icon":spr_aladdin_lamp_gem_4,
+									"slot":"super_weapon",
+									"obj":obj_aladdin_lamp_gem_4,
+									"exclusive_for":"aladdin_lamp",
 									"max_level":15
 		})
 

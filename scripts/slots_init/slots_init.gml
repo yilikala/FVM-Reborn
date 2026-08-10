@@ -374,6 +374,11 @@ function slots_init(){
 	    {"shape":2, "sprite":spr_odin_2, "cost":230, "cooldown":7*60, "description":"主神·奥丁：发射直线穿透，威力巨大的长矛","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
 	    {"shape":3, "sprite":spr_odin_3, "cost":230, "cooldown":7*60, "description":"至尊主神：发射直线穿透，威力巨大的长矛","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1}
 	])
+	register_card("coal_starfish_real", obj_coal_starfish_real, [
+	    {"shape":0, "sprite":spr_coal_starfish, "cost":175, "cooldown":7*60, "description":"炭烧海星（真）：向五个方向发射威！力！巨！大！的星星，陆地窒息","plant_type":"normal","feature_type":"amphi","target_card":"none"},
+		{"shape":1, "sprite":spr_coal_starfish_1, "cost":175, "cooldown":7*60, "description":"芝士焗海星(真）：向五个方向发射威！力！巨！大！的星星","plant_type":"normal","feature_type":"amphi","target_card":"none"},
+		{"shape":2, "sprite":spr_coal_starfish_2_icon, "cost":175, "cooldown":7*60, "description":"芥末海星刺身（真）：向五个方向发射威！力！巨！大！的两颗星星","plant_type":"normal","feature_type":"amphi","target_card":"none","place_preview":spr_coal_starfish_2}
+	]);
 	//register_card("coal_starfish", obj_coal_starfish, [
 	//    {"shape":0, "sprite":spr_coal_starfish, "cost":275, "cooldown":7*60, "description":"炭烧海星：向五个方向发射星星，陆地窒息","plant_type":"normal","feature_type":"amphi","target_card":"none"},
 	//	{"shape":1, "sprite":spr_coal_starfish_1, "cost":275, "cooldown":7*60, "description":"芝士焗海星：向五个方向发射星星","plant_type":"normal","feature_type":"amphi","target_card":"none"},

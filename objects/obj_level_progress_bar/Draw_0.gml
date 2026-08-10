@@ -90,4 +90,9 @@ else if global.difficulty == 3{
 	draw_set_colour(c_purple)
 }
 
+else if global.difficulty == 4{
+	diff_text = "永恒"
+	draw_set_colour(c_black)
+}
+
 draw_text(x-230+string_width(level_text),y-42,diff_text)

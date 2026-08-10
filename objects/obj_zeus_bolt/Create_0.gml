@@ -23,18 +23,18 @@ splash_ratio = 0
 fire_count = 0;
 fire_cd = 25;
 
-if get_gem_index("zeus_shadow_gem")!= -1{
-	bullet_style = weapon_info.bullet_style_impact[get_gem_level("zeus_shadow_gem")]
-	splash_ratio = (weapon_info.splash_ratio_impact[get_gem_level("zeus_shadow_gem")])/100
+if get_gem_index("zeus_bolt_gem_1")!= -1{
+	bullet_style = weapon_info.bullet_style_impact[get_gem_level("zeus_bolt_gem_1")]
+	splash_ratio = (weapon_info.splash_ratio_impact[get_gem_level("zeus_bolt_gem_1")])/100
 }
-if get_gem_index("zeus_power_gem")!= -1{
-	atk = weapon_info.atk_impact[get_gem_level("zeus_power_gem")]
+if get_gem_index("zeus_bolt_gem_2")!= -1{
+	atk = weapon_info.atk_impact[get_gem_level("zeus_bolt_gem_2")]
 }
-if get_gem_index("zeus_anger_gem")!= -1{
-	bullet_count = weapon_info.bullet_count[get_gem_level("zeus_anger_gem")]
+if get_gem_index("zeus_bolt_gem_3")!= -1{
+	bullet_count = weapon_info.bullet_count[get_gem_level("zeus_bolt_gem_3")]
 }
-if get_gem_index("zeus_blade_gem")!= -1{
-	cycle = weapon_info.cycle_impact[get_gem_level("zeus_blade_gem")]
+if get_gem_index("zeus_bolt_gem_4")!= -1{
+	cycle = weapon_info.cycle_impact[get_gem_level("zeus_bolt_gem_4")]
 }
 
 bullet_shape = noone

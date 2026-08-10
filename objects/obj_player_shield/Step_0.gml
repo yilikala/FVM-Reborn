@@ -7,6 +7,16 @@ grid_row = parent_player.grid_row
 grid_col = parent_player.grid_col
 depth = parent_player.depth-1
 
+// 跟随玩家（浮动平台移动时需同步位置）
+origin_x = parent_player.x + 20
+origin_y = parent_player.y - 35
+
+// 同步特效实例位置
+for(var ei = 0; ei < array_length(shield_vfx_insts); ei++){
+	shield_vfx_insts[ei].x = parent_player.x + shield_vfx_insts[ei].rel_x
+	shield_vfx_insts[ei].y = parent_player.y + shield_vfx_insts[ei].rel_y
+}
+
 timer++
 
 if !aura_created{
@@ -16,24 +26,32 @@ if !aura_created{
 			_eff.sprite_index = spr_gods_shield_effect_1
 			_eff.depth = parent_player.depth - 3
 			array_push(shield_vfx_insts, _eff)
+			_eff.rel_x = _eff.x - parent_player.x
+			_eff.rel_y = _eff.y - parent_player.y
 		}
 		if gods_damage_gem{
 			var _eff = instance_create_depth(spawn_x-15, spawn_y-5, 0, obj_shield_aura)
 			_eff.sprite_index = spr_gods_shield_effect_2
 			_eff.depth = parent_player.depth + 149
 			array_push(shield_vfx_insts, _eff)
+			_eff.rel_x = _eff.x - parent_player.x
+			_eff.rel_y = _eff.y - parent_player.y
 		}
 		if gods_buff_gem{
 			var _eff = instance_create_depth(spawn_x-15, spawn_y-5, 0, obj_shield_aura)
 			_eff.sprite_index = spr_gods_shield_effect_3
 			_eff.depth = parent_player.depth + 150
 			array_push(shield_vfx_insts, _eff)
+			_eff.rel_x = _eff.x - parent_player.x
+			_eff.rel_y = _eff.y - parent_player.y
 		}
 		if gods_hp_gem{
 			var _eff = instance_create_depth(spawn_x-15, spawn_y-5, 0, obj_shield_aura)
 			_eff.sprite_index = spr_gods_shield_effect_4
 			_eff.depth = parent_player.depth + 148
 			array_push(shield_vfx_insts, _eff)
+			_eff.rel_x = _eff.x - parent_player.x
+			_eff.rel_y = _eff.y - parent_player.y
 		}
 	}
 	else if is_master_shield{
@@ -42,24 +60,32 @@ if !aura_created{
 			_eff.sprite_index = spr_master_shield_effect_1
 			_eff.depth = parent_player.depth - 3
 			array_push(shield_vfx_insts, _eff)
+			_eff.rel_x = _eff.x - parent_player.x
+			_eff.rel_y = _eff.y - parent_player.y
 		}
 		if gods_damage_gem{
 			var _eff = instance_create_depth(spawn_x-15, spawn_y-5, 0, obj_shield_aura)
 			_eff.sprite_index = spr_master_shield_effect_2
 			_eff.depth = parent_player.depth + 149
 			array_push(shield_vfx_insts, _eff)
+			_eff.rel_x = _eff.x - parent_player.x
+			_eff.rel_y = _eff.y - parent_player.y
 		}
 		if gods_buff_gem{
 			var _eff = instance_create_depth(spawn_x-15, spawn_y-5, 0, obj_shield_aura)
 			_eff.sprite_index = spr_master_shield_effect_3
 			_eff.depth = parent_player.depth + 150
 			array_push(shield_vfx_insts, _eff)
+			_eff.rel_x = _eff.x - parent_player.x
+			_eff.rel_y = _eff.y - parent_player.y
 		}
 		if master_eye_gem{
 			var _eff = instance_create_depth(spawn_x-15, spawn_y-5, 0, obj_shield_aura)
 			_eff.sprite_index = spr_master_shield_effect_4
 			_eff.depth = parent_player.depth + 148
 			array_push(shield_vfx_insts, _eff)
+			_eff.rel_x = _eff.x - parent_player.x
+			_eff.rel_y = _eff.y - parent_player.y
 		}
 	}
 	else if is_rose_shield{
@@ -68,18 +94,24 @@ if !aura_created{
 			_eff.sprite_index = spr_rose_shield_effect_5
 			_eff.depth = parent_player.depth +148
 			array_push(shield_vfx_insts, _eff)
+			_eff.rel_x = _eff.x - parent_player.x
+			_eff.rel_y = _eff.y - parent_player.y
 		}
 		if rose_buff_gem{
 			var _eff = instance_create_depth(spawn_x-15, spawn_y-5, 0, obj_shield_aura)
 			_eff.sprite_index = spr_rose_shield_effect_3
 			_eff.depth = parent_player.depth + 150
 			array_push(shield_vfx_insts, _eff)
+			_eff.rel_x = _eff.x - parent_player.x
+			_eff.rel_y = _eff.y - parent_player.y
 		}
 		if rose_dmg_gem{
-			var _eff = instance_create_depth(spawn_x-15, spawn_y-5, 0, obj_shield_aura)
+			var _eff = instance_create_depth(spawn_x-17, spawn_y-5, 0, obj_shield_aura)
 			_eff.sprite_index = spr_rose_shield_effect_4
 			_eff.depth = parent_player.depth + 149
 			array_push(shield_vfx_insts, _eff)
+			_eff.rel_x = _eff.x - parent_player.x
+			_eff.rel_y = _eff.y - parent_player.y
 		}
 	}
 	aura_created = true
@@ -348,9 +380,10 @@ if rose_needle_gem{
 		if rose_needle_cd <= 0{
 			var _dirs = [0, 45, 90, 135, 180, 225, 270, 315]
 			for(var d = 0; d < 8; d++){
-				var inst = instance_create_depth(x, y, depth-500, obj_rose_shield_bullet)
-				inst.damage = rose_needle_atk
-				inst.direction = _dirs[d]
+			var inst = instance_create_depth(x, y, depth-500, obj_rose_shield_bullet)
+			inst.damage = rose_needle_atk
+			inst.direction = _dirs[d]
+			inst.row = grid_row
 			}
 			rose_needle_wave++
 			rose_needle_cd = 4

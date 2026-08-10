@@ -12,6 +12,7 @@ grid_row = -2
 var pos = get_world_position_from_grid(grid_row, grid_col)
 x = pos.x
 y = pos.y
+x += 200     // 整体右移
 
 flash_speed = 5
 attack_anim = 16
@@ -31,17 +32,23 @@ bullet_shape = weapon_info.bullet_shape
 ghost_shape = weapon_info.ghost_shape
 
 target_enemy = noone
+splash_ratio = 0
+ice_timer = 0
 
-if get_gem_index("ghost_strike_gem")!= -1{
-	atk = weapon_info.atk_impact[get_gem_level("ghost_strike_gem")];
-	bullet_shape = weapon_info.bullet_shape_impact[get_gem_level("ghost_strike_gem")];
-	ghost_shape = weapon_info.ghost_shape_impact[get_gem_level("ghost_strike_gem")]
+if get_gem_index("hades_scythe_gem_1")!= -1{
+	atk = weapon_info.atk_impact[get_gem_level("hades_scythe_gem_1")];
+	bullet_shape = weapon_info.bullet_shape_impact[get_gem_level("hades_scythe_gem_1")];
+	ghost_shape = weapon_info.ghost_shape_impact[get_gem_level("hades_scythe_gem_1")]
 }
-if get_gem_index("ghost_pact_gem")!= -1{
-	bullet_amount = weapon_info.bullet_amount_impact[get_gem_level("ghost_pact_gem")]
+if get_gem_index("hades_scythe_gem_2")!= -1{
+	bullet_amount = weapon_info.bullet_amount_impact[get_gem_level("hades_scythe_gem_2")]
 }
-if get_gem_index("ghost_spark_gem")!= -1{
-	cycle = weapon_info.cycle_impact[get_gem_level("ghost_spark_gem")]
+if get_gem_index("hades_scythe_gem_3")!= -1{
+	cycle = weapon_info.cycle_impact[get_gem_level("hades_scythe_gem_3")]
+}
+if get_gem_index("hades_scythe_gem_4")!= -1{
+	splash_ratio = weapon_info.splash_ratio_impact[get_gem_level("hades_scythe_gem_4")]
+	ice_timer = weapon_info.ice_timer[get_gem_level("hades_scythe_gem_4")] * 60
 }
 
 switch(ghost_shape) {

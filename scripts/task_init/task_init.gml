@@ -1047,6 +1047,14 @@ function task_init(){
 				"task_unlock":"main_level_28",
 				"requirements":[
 					{
+						"type":"level_complete",
+						"target_level":"jam_tribe_daytime",
+						"desc":"通关一次果酱部落（夜）",
+						"require":1,
+					}
+				],
+				"rewards":[
+					{
 						"type":"item",
 						"item_id":"secret_spices",
 						"amount":50

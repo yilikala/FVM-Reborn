@@ -1,6 +1,7 @@
 damage = 0
 move_speed = 8
 bounced = false
+row = 0
 direction = 0
 damage_type = "normal"
 can_ignite = false

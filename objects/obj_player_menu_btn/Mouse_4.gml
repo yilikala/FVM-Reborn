@@ -39,4 +39,9 @@ if obj_player_info_ui.menu_type == 0{
 		obj_player_info_ui.menu_type = 4
 		obj_world_map_button.world_map = 2
 	} 
+	else if target_screen == "charge"{
+		instance_create_depth(room_width/2,room_height/2,-5,obj_charge)
+		obj_player_info_ui.menu_type = 4
+		obj_world_map_button.world_map = 2
+	}
 }

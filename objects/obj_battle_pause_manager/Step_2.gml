@@ -2,9 +2,11 @@
 if (keyboard_check_pressed(vk_space)) {	
     //if global.selected_slot == noone {
         if (!global.is_paused) {
-            // 空格暂停：只暂停不显示菜单
-            global.is_paused = true;
-            global.show_menu = false;
+            // 空格暂停：只暂停不显示菜单（难度4禁用暂停）
+            if global.difficulty < 4{
+                global.is_paused = true;
+                global.show_menu = false;
+            }
         }
         else if (global.is_paused && !global.show_menu) {
             // 取消暂停
@@ -112,7 +114,7 @@ if (keyboard_check_pressed(vk_space)) {
     //}
 }
 
-if (keyboard_check_pressed(vk_escape)) {
+if (keyboard_check_pressed(vk_escape) && global.difficulty < 4) {
     if (!global.is_paused) {
         // ESC暂停：暂停并显示菜单
         global.is_paused = true;
