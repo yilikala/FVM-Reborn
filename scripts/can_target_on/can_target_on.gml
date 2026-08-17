@@ -29,6 +29,12 @@ function can_target_on(card_target_type,enemy_target_type){
 			return true
 		}
 	}
+	if card_target_type == "split"{
+		if enemy_target_type == "normal" || enemy_target_type == "air" || enemy_target_type == "underground"{
+			return true
+		}
+		return false
+	}
 	if card_target_type == "all"{
 		return true
 	}

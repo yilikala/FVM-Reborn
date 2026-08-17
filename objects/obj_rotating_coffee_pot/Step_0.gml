@@ -51,6 +51,9 @@ var has_enemy = false
 	if shape == 2{
 		_range = 350
 	}
+	if card_equipped_attire_id(plant_id) == "rotate_leo" && shape == 0{
+		_range = 350
+	}
 
 	with (obj_enemy_parent) {
 		

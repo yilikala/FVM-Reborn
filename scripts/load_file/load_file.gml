@@ -59,6 +59,9 @@ function load_file(file_slot) {
 				global.save_data.player.crown_version = "0.0.0"
 				global.save_data.version = 1.7
 			}
+			if !variable_struct_exists(global.save_data, "deck_order"){
+				global.save_data.deck_order = []
+			}
 		}
         return true;
     } catch(e) {
@@ -155,7 +158,8 @@ function reset_file(file_slot){
 				}
 			],
 			"completed_tasks":[],
-			"attires":[]
+			"attires":[],
+			"deck_order":[]
         };
 	save_file(file_slot)
 }

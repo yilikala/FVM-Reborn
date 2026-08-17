@@ -1,0 +1,4 @@
+sprite_index = spr_donut_bullet_effect
+image_xscale = 1.8
+image_yscale = 1.8
+image_speed = 1

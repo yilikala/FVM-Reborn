@@ -27,3 +27,13 @@ flash_speed = 5
 plant_type = "normal"
 is_slowdown = false
 
+// 金牛座精灵：shape>0攻击力+0.5，shape2再×1.12
+if card_equipped_attire_id(plant_id) == "brazier_taurus"{
+	if shape > 0{
+		atk += 0.5
+	}
+	if shape == 2{
+		atk = round(atk * 1.12 * 100) / 100
+	}
+}
+

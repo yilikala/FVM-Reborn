@@ -27,7 +27,7 @@ image_xscale = 0.33
 image_yscale = 0.33
 image_speed = 0
 
-cooldown_ignore_list = ["ice_cream","magic_chicken"]
+cooldown_ignore_list = ["ice_cream","magic_chicken","brahma"]
 
 //选择卡槽逻辑
 function select_slot(){

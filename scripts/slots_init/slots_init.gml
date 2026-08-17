@@ -319,6 +319,18 @@ function slots_init(){
 	    {"shape":1, "sprite":spr_pan_fried_bun_1, "cost":175, "cooldown":7*60, "description":"水煎包锅：投掷十字范围灼烧的生煎包","plant_type":"normal","feature_type":"normal","target_card":"none"},
 		{"shape":2, "sprite":spr_pan_fried_bun_2, "cost":225, "cooldown":7*60, "description":"驴肉火烧锅：投掷3*3范围灼烧的生煎包","plant_type":"normal","feature_type":"normal","target_card":"none"}
 	])
+	register_card("coal_starfish_real", obj_coal_starfish_real, [
+	    {"shape":0, "sprite":spr_coal_starfish, "cost":175, "cooldown":7*60, "description":"炭烧海星（真）：向五个方向发射威！力！巨！大！的星星，陆地窒息","plant_type":"normal","feature_type":"amphi","target_card":"none"},
+		{"shape":1, "sprite":spr_coal_starfish_1, "cost":175, "cooldown":7*60, "description":"芝士焗海星(真）：向五个方向发射威！力！巨！大！的星星","plant_type":"normal","feature_type":"amphi","target_card":"none"},
+		{"shape":2, "sprite":spr_coal_starfish_2_icon, "cost":175, "cooldown":7*60, "description":"芥末海星刺身（真）：向五个方向发射威！力！巨！大！的两颗星星","plant_type":"normal","feature_type":"amphi","target_card":"none","place_preview":spr_coal_starfish_2}
+	]);
+	
+	register_card("donut_cold_brew", obj_donut_cold_brew, [
+	    {"shape":0, "sprite":spr_donut_cold_brew, "cost":295, "cooldown":15*60, "description":"多拿滋冷萃机：全屏发射18枚多拿滋","plant_type":"normal","feature_type":"normal","target_card":"none","is_fusion":1},
+	]);	
+	register_card("egg_god", obj_egg_god, [
+	    {"shape":0, "sprite":spr_egg_god_icon, "cost":325, "cooldown":7*60, "description":"什锦煮蛋器：投掷两发概率定身，可弹射，附带毒雾的溅射鸡蛋","plant_type":"normal","feature_type":"normal","target_card":"none","is_fusion":1,"place_preview":spr_egg_god},
+	]);	
 	
 	register_card("apollo", obj_apollo, [
 	    {"shape":0, "sprite":spr_apollo, "cost":200, "cooldown":50*60, "description":"阿波罗神使：生产巨量火苗","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
@@ -374,10 +386,17 @@ function slots_init(){
 	    {"shape":2, "sprite":spr_odin_2, "cost":230, "cooldown":7*60, "description":"主神·奥丁：发射直线穿透，威力巨大的长矛","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
 	    {"shape":3, "sprite":spr_odin_3, "cost":230, "cooldown":7*60, "description":"至尊主神：发射直线穿透，威力巨大的长矛","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1}
 	])
-	register_card("coal_starfish_real", obj_coal_starfish_real, [
-	    {"shape":0, "sprite":spr_coal_starfish, "cost":175, "cooldown":7*60, "description":"炭烧海星（真）：向五个方向发射威！力！巨！大！的星星，陆地窒息","plant_type":"normal","feature_type":"amphi","target_card":"none"},
-		{"shape":1, "sprite":spr_coal_starfish_1, "cost":175, "cooldown":7*60, "description":"芝士焗海星(真）：向五个方向发射威！力！巨！大！的星星","plant_type":"normal","feature_type":"amphi","target_card":"none"},
-		{"shape":2, "sprite":spr_coal_starfish_2_icon, "cost":175, "cooldown":7*60, "description":"芥末海星刺身（真）：向五个方向发射威！力！巨！大！的两颗星星","plant_type":"normal","feature_type":"amphi","target_card":"none","place_preview":spr_coal_starfish_2}
+	register_card("aurora", obj_aurora, [
+	    {"shape":0, "sprite":spr_aurora, "cost":190, "cooldown":1800, "description":"欧若拉神使：为本行投掷类卡片增伤","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1,"place_preview":spr_aurora},
+		{"shape":1, "sprite":spr_aurora_1, "cost":190, "cooldown":1800, "description":"欧若拉圣神：为本行投掷类卡片增伤，死亡后爆炸","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1,"place_preview":spr_aurora_1},
+		{"shape":2, "sprite":spr_aurora_2, "cost":190, "cooldown":1800, "description":"曙光女神·欧若拉：为本行投掷类卡片增伤，死亡后爆炸","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1,"place_preview":spr_aurora_2},
+		{"shape":3, "sprite":spr_aurora_3, "cost":190, "cooldown":1800, "description":"至尊曙光女神：为本行及相邻行投掷类卡片增伤，死亡后爆炸","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1,"place_preview":spr_aurora_3}
+	])
+	register_card("brahma", obj_brahma, [
+	    {"shape":0, "sprite":spr_brahma, "cost":325, "cooldown":55*60, "description":"梵天神使：变身出多个上一次种下的卡片","plant_type":"coffee","feature_type":"normal","target_card":"none","is_gold":1},
+		{"shape":1, "sprite":spr_brahma_1, "cost":325, "cooldown":55*60, "description":"梵天圣神：变身出多个上一次种下的卡片","plant_type":"coffee","feature_type":"normal","target_card":"none","is_gold":1},
+		{"shape":2, "sprite":spr_brahma_2, "cost":325, "cooldown":55*60, "description":"创造神·梵天：变身出多个上一次种下的卡片","plant_type":"coffee","feature_type":"normal","target_card":"none","is_gold":1},
+		{"shape":3, "sprite":spr_brahma_3, "cost":325, "cooldown":55*60, "description":"至尊创造神：变身出多个上一次种下的卡片","plant_type":"coffee","feature_type":"normal","target_card":"none","is_gold":1}
 	]);
 	//register_card("coal_starfish", obj_coal_starfish, [
 	//    {"shape":0, "sprite":spr_coal_starfish, "cost":275, "cooldown":7*60, "description":"炭烧海星：向五个方向发射星星，陆地窒息","plant_type":"normal","feature_type":"amphi","target_card":"none"},

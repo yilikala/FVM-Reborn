@@ -32,9 +32,9 @@ function gods_hall_get_random_reward() {
 	
 	var r = irandom(999); // 0~999
 
-	if (r < 100) return ["金币", 10000];      // 10%
-	else if (r < 180) return ["金币", 20000]; // 8%
-	else if (r < 200) return ["金币", 100000];// 2%
+	if (r < 100) return ["金币", 20000];      // 10%
+	else if (r < 180) return ["金币", 50000]; // 8%
+	else if (r < 200) return ["金币", 200000];// 2%
 	else if (r < 320) return ["天然香料", 100]; // 12%
 	else if (r < 400) return ["秘制香料", 50]; // 8%
 	else if (r < 460) return ["皇室香料", 20];// 6%

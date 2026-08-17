@@ -72,6 +72,8 @@ function skill_init(){
 	register_card_skill("coal_starfish","cycle",[1.3*60,1.25*60,1.2*60,1.15*60,1.1*60,1.05*60,1*60,0.9*60,0.8*60])
 	register_card_skill("coal_starfish_real","cycle",[1.3*60,1.25*60,1.2*60,1.15*60,1.1*60,1.05*60,1*60,0.9*60,0.8*60])
 	register_card_skill("curry_lobster_cannon","cycle",[6*60,5.8*60,5.6*60,5.4*60,5.2*60,5*60,4.8*60,4.6*60,4.35*60])
+	register_card_skill("donut_cold_brew","cycle",[6*60,5.8*60,5.6*60,5.4*60,5.2*60,5*60,4.8*60,4.6*60,4.3*60])
+	register_card_skill("egg_god","cycle",[3*60,2.9*60,2.8*60,2.7*60,2.6*60,2.4*60,2.2*60,2*60,1.8*60])
 	
 	register_card_skill("thor","cycle",[2.5*60,2.4*60,2.3*60,2.2*60,2.1*60,2.0*60,1.9*60,1.8*60,1.7*60])
 	register_card_skill("odin","cycle",[1.3*60,1.25*60,1.2*60,1.15*60,1.1*60,1.05*60,1*60,0.9*60,0.8*60])
@@ -82,4 +84,6 @@ function skill_init(){
 	register_card_skill("diana","cycle",[1.5*60,1.45*60,1.4*60,1.35*60,1.3*60,1.25*60,1.2*60,1.15*60,1.1*60])
 	register_card_skill("hera","cooldown",[20*60,19*60,18*60,17*60,16*60,15*60,14*60,12*60,10*60])
 	register_card_skill("loki","cooldown",[7*60,6.7*60,6.4*60,6*60,5.7*60,5.4*60,5*60,4.6*60,4*60])
+	register_card_skill("aurora","cooldown",[30*60,28*60,26*60,23*60,20*60,17*60,14*60,11*60,7*60])
+	register_card_skill("brahma","atk",[900,950,1000,1050,1100,1150,1200,1250,1300])
 }

@@ -27,3 +27,8 @@ flash_speed = 5
 plant_type = "normal"
 is_slowdown = false
 
+// 玉蜀黍时装：shape0时cycle减少0.2秒（12帧）
+if card_equipped_attire_id(plant_id) == "gatling_popcorn" && shape == 0{
+	cycle -= 0.2*60
+}
+

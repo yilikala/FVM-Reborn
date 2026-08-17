@@ -25,11 +25,21 @@ function attire_init(){
 	register_attire(
 		"ice_egg_pisces",
 		{
-			"target_card":"ice_egg_boiler_pult",
+			"target_card":"egg_boiler_pult",
 			"name":"双鱼座精灵",
 			"icon":spr_ice_egg_pisces_icon,
 			"spr":[spr_ice_egg_pisces,spr_ice_egg_pisces_1,spr_ice_egg_pisces_2],
-			"card_slot_icon":[spr_ice_egg_pisces_icon,spr_ice_egg_pisces_icon_1,spr_ice_egg_pisces_icon_2]
+			"card_slot_icon":[spr_ice_egg_pisces_icon,spr_ice_egg_pisces_icon_1,spr_ice_egg_pisces_icon_2],
+			"card_overrides":{
+				"0":{"cost":200,"is_special":1,"description":"双鱼座精灵：投掷冰鱼并产生溅射伤害，威力强大！"},
+				"1":{"cost":200,"is_special":1,"description":"双鱼座战将：投掷强力冰鱼并产生溅射伤害，威力强大！"},
+				"2":{"cost":200,"is_special":1,"description":"双鱼座星宿：投掷两发强力冰鱼并产生溅射伤害，威力强大！"}
+			},
+			"name_overrides":{
+				"0":"双鱼座精灵",
+				"1":"双鱼座战将",
+				"2":"双鱼座星宿"
+			}
 		}
 	)
 	register_attire(
@@ -39,7 +49,17 @@ function attire_init(){
 			"name":"天秤座精灵",
 			"icon":spr_water_pipe_libra,
 			"spr":[spr_water_pipe_libra,spr_water_pipe_libra_1,spr_water_pipe_libra_2],
-			"card_slot_icon":[spr_water_pipe_libra,spr_water_pipe_libra_1,spr_water_pipe_libra_2]
+			"card_slot_icon":[spr_water_pipe_libra,spr_water_pipe_libra_1,spr_water_pipe_libra_2],
+			"card_overrides":{
+				"0":{"cost":150,"is_special":1,"description":"天秤座精灵：对前后方各发射3发子弹，威力与实力的象征！"},
+				"1":{"cost":150,"is_special":1,"description":"天秤座战将：对前后方各发射3发强力子弹，威力与实力的象征！"},
+				"2":{"cost":150,"is_special":1,"description":"天秤座星宿：对前后方各发射4发强力子弹，威力与实力的象征！"}
+			},
+			"name_overrides":{
+				"0":"天秤座精灵",
+				"1":"天秤座战将",
+				"2":"天秤座星宿"
+			}
 		}
 	)
 	register_attire(
@@ -49,7 +69,17 @@ function attire_init(){
 			"name":"射手座精灵",
 			"icon":spr_wine_rack_sagittarius_icon,
 			"spr":[spr_wine_rack_sagittarius,spr_wine_rack_sagittarius_1,spr_wine_rack_sagittarius_2],
-			"card_slot_icon":[spr_wine_rack_sagittarius_icon,spr_wine_rack_sagittarius_icon_1,spr_wine_rack_sagittarius_icon_2]
+			"card_slot_icon":[spr_wine_rack_sagittarius_icon,spr_wine_rack_sagittarius_icon_1,spr_wine_rack_sagittarius_icon_2],
+			"card_overrides":{
+				"0":{"cost":300,"is_special":1,"description":"射手座精灵：向正前方三行射出4发子弹，威力巨大！"},
+				"1":{"cost":300,"is_special":1,"description":"射手座战将：向正前方三行射出4发子弹，威力巨大！"},
+				"2":{"cost":300,"is_special":1,"description":"射手座星宿：向正前方三行射出6发子弹，威力巨大！"}
+			},
+			"name_overrides":{
+				"0":"射手座精灵",
+				"1":"射手座战将",
+				"2":"射手座星宿"
+			}
 		}
 	)
 	register_attire(
@@ -59,7 +89,17 @@ function attire_init(){
 			"name":"金牛座精灵",
 			"icon":spr_brazier_taurus,
 			"spr":[spr_brazier_taurus,spr_brazier_taurus_1,spr_brazier_taurus_2],
-			"card_slot_icon":[spr_brazier_taurus,spr_brazier_taurus_1,spr_brazier_taurus_2]
+			"card_slot_icon":[spr_brazier_taurus,spr_brazier_taurus_1,spr_brazier_taurus_2],
+		"card_overrides":{
+				"0":{"cost":225,"is_special":1,"description":"金牛座精灵：点燃子弹，威力大幅提升"},
+				"1":{"cost":175,"is_special":1,"description":"金牛座战将：点燃子弹，威力大幅提升"},
+				"2":{"cost":175,"is_special":1,"description":"金牛座星宿：点燃子弹，威力大幅提升"}
+			},
+			"name_overrides":{
+				"0":"金牛座精灵",
+				"1":"金牛座战将",
+				"2":"金牛座星宿"
+			}
 		}
 	)
 	register_attire(
@@ -69,7 +109,17 @@ function attire_init(){
 			"name":"双子座精灵",
 			"icon":spr_large_fire_gemini_icon,
 			"spr":[spr_large_fire_gemini,spr_large_fire_gemini_1,spr_large_fire_gemini_2],
-			"card_slot_icon":[spr_large_fire_gemini_icon,spr_large_fire_gemini_icon_1,spr_large_fire_gemini_icon_2]
+			"card_slot_icon":[spr_large_fire_gemini_icon,spr_large_fire_gemini_icon_1,spr_large_fire_gemini_icon_2],
+			"card_overrides":{
+				"0":{"cost":200,"is_special":1,"description":"双子座精灵：能量产生近乎达到极限，可同时产出4朵火苗"},
+				"1":{"cost":200,"is_special":1,"description":"双子座战将：能量产生近乎达到极限，可同时产出4朵火苗","cooldown":15*60},
+				"2":{"cost":200,"is_special":1,"description":"双子座星宿：能量产生近乎达到极限，可同时产出6朵火苗","cooldown":15*60}
+			},
+			"name_overrides":{
+				"0":"双子座精灵",
+				"1":"双子座战将",
+				"2":"双子座星宿"
+			}
 		}
 	)
 	register_attire(
@@ -79,7 +129,17 @@ function attire_init(){
 			"name":"巨蟹座精灵",
 			"icon":spr_takoyaki_cancer_icon,
 			"spr":[spr_takoyaki_cancer,spr_takoyaki_cancer_1,spr_takoyaki_cancer_2],
-			"card_slot_icon":[spr_takoyaki_cancer_icon,spr_takoyaki_cancer_icon_1,spr_takoyaki_cancer_icon_2]
+			"card_slot_icon":[spr_takoyaki_cancer_icon,spr_takoyaki_cancer_icon_1,spr_takoyaki_cancer_icon_2],
+			"card_overrides":{
+				"0":{"cost":225,"is_special":1,"description":"巨蟹座精灵：扔出4发大钳子，全屏跟踪，无死角攻击！"},
+				"1":{"cost":225,"is_special":1,"description":"巨蟹座战将：扔出4发强力大钳子，全屏跟踪，无死角攻击！"},
+				"2":{"cost":225,"is_special":1,"description":"巨蟹座星宿：扔出6发强力大钳子，全屏跟踪，无死角攻击！"}
+			},
+			"name_overrides":{
+				"0":"巨蟹座精灵",
+				"1":"巨蟹座战将",
+				"2":"巨蟹座星宿"
+			}
 		}
 	)
 	register_attire(
@@ -89,7 +149,17 @@ function attire_init(){
 			"name":"玉蜀黍",
 			"icon":spr_gatling_popcorn_icon,
 			"spr":[spr_gatling_popcorn,spr_gatling_popcorn_1,spr_gatling_popcorn_2],
-			"card_slot_icon":[spr_gatling_popcorn_icon,spr_gatling_popcorn_icon_1,spr_gatling_popcorn_icon_2]
+			"card_slot_icon":[spr_gatling_popcorn_icon,spr_gatling_popcorn_icon_1,spr_gatling_popcorn_icon_2],
+		"card_overrides":{
+				"0":{"cost":250,"is_special":1,"description":"玉蜀黍：射速极高的机枪"},
+				"1":{"cost":250,"is_special":1,"description":"奶油玉蜀黍：射速极高的机枪"},
+				"2":{"cost":250,"is_special":1,"description":"加农玉蜀黍：射速极高的机枪"}
+			},
+			"name_overrides":{
+				"0":"玉蜀黍",
+				"1":"奶油玉蜀黍",
+				"2":"加农玉蜀黍"
+			}
 		}
 	)
 	register_attire(
@@ -99,7 +169,17 @@ function attire_init(){
 			"name":"狮子座精灵",
 			"icon":spr_rotate_leo_icon,
 			"spr":[spr_rotate_leo,spr_rotate_leo_1,spr_rotate_leo_2],
-			"card_slot_icon":[spr_rotate_leo_icon,spr_rotate_leo_icon_1,spr_rotate_leo_icon_2]
+			"card_slot_icon":[spr_rotate_leo_icon,spr_rotate_leo_icon_1,spr_rotate_leo_icon_2],
+			"card_overrides":{
+				"0":{"cost":275,"is_special":1,"description":"狮子座精灵：连续快速向周边发出猛烈攻击，海陆空交通管制！"},
+				"1":{"cost":275,"is_special":1,"description":"狮子座战将：连续快速向周边发出猛烈攻击，海陆空交通管制！"},
+				"2":{"cost":275,"is_special":1,"description":"狮子座星宿：连续快速向周边发出猛烈攻击，海陆空交通管制！","cooldown":30*60}
+			},
+			"name_overrides":{
+				"0":"狮子座精灵",
+				"1":"狮子座战将",
+				"2":"狮子座星宿"
+			}
 		}
 	)
 	register_attire(
@@ -115,7 +195,17 @@ function attire_init(){
 				[spr_melon_virgo_2_outer_1,spr_melon_virgo_2_outer_2,spr_melon_virgo_2_outer_3]
 			],
 			"card_slot_icon":[spr_melon_virgo_icon,spr_melon_virgo_icon_1,spr_melon_virgo_icon_2],
-			"inner_spr":[spr_melon_virgo_inner_1,spr_melon_virgo_inner_2,spr_melon_virgo_inner_3]
+			"inner_spr":[spr_melon_virgo_inner_1,spr_melon_virgo_inner_2,spr_melon_virgo_inner_3],
+			"card_overrides":{
+				"0":{"cost":200,"is_special":1,"description":"处女座精灵：保护被它罩住的卡片，体力更高！"},
+				"1":{"cost":200,"is_special":1,"description":"处女座战将：保护被它罩住的卡片，体力更高！"},
+				"2":{"cost":200,"is_special":1,"description":"处女座星宿：保护被它罩住的卡片，体力更高！"}
+			},
+			"name_overrides":{
+				"0":"处女座精灵",
+				"1":"处女座战将",
+				"2":"处女座星宿"
+			}
 		}
 	)
 	
@@ -172,6 +262,24 @@ function attire_init(){
 			"name":"神奇精灵",
 			"icon":spr_player_attire_6_icon,
 			"spr":spr_player_attire_6,
+		}
+	)
+	register_attire(
+		"player_attire_a",
+		{
+			"target_card":"player",
+			"name":"星轨织梦",
+			"icon":spr_player_attire_a_icon,
+			"spr":spr_player_attire_a,
+		}
+	)
+	register_attire(
+		"player_attire_b",
+		{
+			"target_card":"player",
+			"name":"红桃爱丽丝",
+			"icon":spr_player_attire_b_icon,
+			"spr":spr_player_attire_b,
 		}
 	)
 	register_attire(

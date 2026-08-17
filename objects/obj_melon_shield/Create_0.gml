@@ -43,3 +43,10 @@ bleed_damage = 0
 current_hp = hp
 attack_timer = 0
 heal_wait = 60
+
+// 处女座精灵：shape0时hp增加60%
+if card_equipped_attire_id(plant_id) == "melon_virgo" && shape == 0{
+	hp = round(hp * 1.6)
+	max_hp = hp
+	current_hp = hp
+}

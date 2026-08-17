@@ -1,0 +1,11 @@
+damage = 0
+target_enemy = noone
+row = 0
+fall_speed = 10
+hit = false
+pred_row = 0
+damage_type = "split"
+target_type = "split"
+image_xscale = 1.8
+image_yscale = 1.8
+image_speed = 0

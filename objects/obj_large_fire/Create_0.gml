@@ -13,11 +13,9 @@ event_user(0)
 attack_anim = 18;
 idle_anim = 11
 if card_equipped_attire_id(plant_id) == "large_fire_gemini"{
-	idle_anim = 7
-	attack_anim = 19
-	if shape >= 1{
-		attack_anim = 33
-	}
+	idle_anim = 12
+	attack_anim = 14
+	if shape>1 attack_anim = 17
 }
 flash_speed = 6
 first_produce_delay = 60;

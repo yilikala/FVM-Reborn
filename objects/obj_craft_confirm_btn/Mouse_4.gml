@@ -64,7 +64,14 @@ if obj_craft_bg.button_select == 2{
 					// 合成失败
 					if is_insured{
 						show_notice("不够好运，合成失败",120)
-						obj_craft_bg.insured = false
+						// 自动勾选保险并重填上次四叶草（除非四叶草不足也继续勾选保险）
+						obj_craft_bg.insured = true
+						if obj_craft_bg.syn_input_clover_id != "" && get_material_amount(obj_craft_bg.syn_input_clover_id) >= 1{
+							// 四叶草仍有库存，保持
+						}
+						else{
+							obj_craft_bg.syn_input_clover_id = ""
+						}
 					}
 					else{
 						add_material_amount(_id, -_rule.required)
@@ -86,7 +93,14 @@ if obj_craft_bg.button_select == 2{
 						else{
 							obj_craft_bg.syn_input_clover_id = ""
 						}
-						obj_craft_bg.insured = false
+						// 自动勾选保险并重填上次四叶草（除非四叶草不足也继续勾选保险）
+						obj_craft_bg.insured = true
+						if obj_craft_bg.syn_input_clover_id != "" && get_material_amount(obj_craft_bg.syn_input_clover_id) >= 1{
+							// 四叶草仍有库存，保持
+						}
+						else{
+							obj_craft_bg.syn_input_clover_id = ""
+						}
 					}
 				}
 			}
@@ -175,9 +189,14 @@ if target_id != ""{
 								add_material_amount(obj_craft_bg.input_clover_id, -1)
 							}
 							show_notice("不够好运，强化失败",120)
-							// 重置四叶草
-							obj_craft_bg.input_clover_id = ""
-							obj_craft_bg.insured = false
+							// 自动勾选保险并重填上次四叶草（除非四叶草不足也继续勾选保险）
+							obj_craft_bg.insured = true
+							if obj_craft_bg.input_clover_id != "" && get_material_amount(obj_craft_bg.input_clover_id) >= 1{
+								// 四叶草仍有库存，保持
+							}
+							else{
+								obj_craft_bg.input_clover_id = ""
+							}
 						}
 						else{
 							// 消耗所有投入香料和四叶草，>5星降1星
@@ -189,8 +208,8 @@ if target_id != ""{
 								upgrade_card(target_id, current_level - 1)
 							}
 							show_notice("不够好运，强化失败",120)
-							// 从当前星级刷新香料投入
-							var _nl = (current_level >= 5) ? (current_level - 1) : current_level
+							// 从当前星级刷新香料投入（降级条件与上面一致：>5才降级）
+							var _nl = (current_level > 5) ? (current_level - 1) : current_level
 							if _nl <= 15{
 								var _nr = get_card_craft_rule(string(_nl + 1))
 								obj_craft_bg.input_spice_id = _nr.spices_require
@@ -202,8 +221,14 @@ if target_id != ""{
 								obj_craft_bg.input_spice_id = ""
 								obj_craft_bg.input_spice_count = 0
 							}
-							obj_craft_bg.input_clover_id = ""
-							obj_craft_bg.insured = false
+							// 自动勾选保险并重填上次四叶草（除非四叶草不足也继续勾选保险）
+							obj_craft_bg.insured = true
+							if obj_craft_bg.input_clover_id != "" && get_material_amount(obj_craft_bg.input_clover_id) >= 1{
+								// 四叶草仍有库存，保持
+							}
+							else{
+								obj_craft_bg.input_clover_id = ""
+							}
 						}
 					}
 				}
@@ -289,9 +314,14 @@ if target_id != ""{
 								add_material_amount(obj_craft_bg.input_clover_id, -1)
 							}
 							show_notice("不够好运，强化失败",120)
-							// 重置四叶草
-							obj_craft_bg.input_clover_id = ""
-							obj_craft_bg.insured = false
+							// 自动勾选保险并重填上次四叶草（除非四叶草不足也继续勾选保险）
+							obj_craft_bg.insured = true
+							if obj_craft_bg.input_clover_id != "" && get_material_amount(obj_craft_bg.input_clover_id) >= 1{
+								// 四叶草仍有库存，保持
+							}
+							else{
+								obj_craft_bg.input_clover_id = ""
+							}
 						}
 						else{
 							// 消耗投入水晶和四叶草，≥5星降1星
@@ -316,8 +346,14 @@ if target_id != ""{
 								obj_craft_bg.input_crystal_id = ""
 								obj_craft_bg.input_crystal_count = 0
 							}
-							obj_craft_bg.input_clover_id = ""
-							obj_craft_bg.insured = false
+							// 自动勾选保险并重填上次四叶草（除非四叶草不足也继续勾选保险）
+							obj_craft_bg.insured = true
+							if obj_craft_bg.input_clover_id != "" && get_material_amount(obj_craft_bg.input_clover_id) >= 1{
+								// 四叶草仍有库存，保持
+							}
+							else{
+								obj_craft_bg.input_clover_id = ""
+							}
 						}
 					}
 				}

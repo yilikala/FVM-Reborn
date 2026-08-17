@@ -15,7 +15,9 @@ function shop_init(){
 	register_goods("magic_chicken",{"type":"card","cost":"80000","unlock_item_id":"magic_chicken","description":"幻幻鸡：复制成上一张放置的卡片","display_name":"幻幻鸡"})
 	register_goods("bull_firework",{"type":"card","cost":"50000","unlock_item_id":"bull_firework","description":"金牛烟花：召唤1只烟花牛冲撞敌人","display_name":"金牛烟花"})
 	register_goods("coal_starfish_real",{"type":"card","cost":"1","unlock_item_id":"coal_starfish_real","description":"海星大帝：孩子们想我了吗","display_name":"炭烧海星（真）"})
-	
+	register_goods("donut_cold_brew",{"type":"card","cost":"200000","unlock_item_id":"donut_cold_brew","description":"多拿滋冷萃机：全屏发射18枚多拿滋","display_name":"多拿滋冷萃机"})
+	register_goods("egg_god",{"type":"card","cost":"200000","unlock_item_id":"egg_god","description":"什锦煮蛋器：投掷两发概率定身，可弹射，附带毒雾的溅射鸡蛋","display_name":"什锦煮蛋器"})
+
 	register_goods("card_slot_plus",{"type":"item","cost":"20000","unlock_item_id":"card_slot","description":"增加一格卡槽，仅可在卡槽数小于18时使用","display_name":"卡槽+1","spr":spr_slot_plus})
 	register_goods("card_slot_19",{"type":"item","cost":"50000","unlock_item_id":"card_slot_19","description":"解锁第19格卡槽","display_name":"卡槽第19格","spr":spr_slot_19})
 	register_goods("card_slot_20",{"type":"item","cost":"80000","unlock_item_id":"card_slot_20","description":"解锁第20格卡槽","display_name":"卡槽第20格","spr":spr_slot_20})
@@ -67,5 +69,7 @@ function shop_init(){
 	register_goods("player_attire_4",{"type":"player_attire","cost":"50000","unlock_item_id":"player_attire_4","description":"角色的公会制服时装","display_name":"公会制服"})
 	register_goods("player_attire_5",{"type":"player_attire","cost":"50000","unlock_item_id":"player_attire_5","description":"角色的龙族传说时装","display_name":"龙族传说"})
 	register_goods("player_attire_6",{"type":"player_attire","cost":"50000","unlock_item_id":"player_attire_6","description":"角色的神奇精灵时装","display_name":"神奇精灵"})
-	register_goods("player_attire_s",{"type":"player_attire","cost":"100000","unlock_item_id":"player_attire_s","description":"角色的星之焕变身时装","display_name":"星之焕"})
+	register_goods("player_attire_a",{"type":"player_attire","cost":"100000","unlock_item_id":"player_attire_a","description":"角色的命运女神时装","display_name":"星轨织梦"})
+	register_goods("player_attire_b",{"type":"player_attire","cost":"100000","unlock_item_id":"player_attire_b","description":"角色的红桃爱丽丝时装","display_name":"红桃爱丽丝"})
+	register_goods("player_attire_s",{"type":"player_attire","cost":"200000","unlock_item_id":"player_attire_s","description":"角色的星之焕变身时装","display_name":"星之焕"})
 }

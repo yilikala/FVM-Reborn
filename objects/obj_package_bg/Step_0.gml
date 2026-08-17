@@ -47,6 +47,14 @@ else if drag_state == 2 {
             global.player_deck[| _s1]     = _id0
             global.player_deck[| _s1 + 1] = _data0
             audio_play_sound(snd_button, 0, 0)
+            // 持久化新顺序到存档
+            var _new_order = []
+            var _deck_size = ds_list_size(global.player_deck)
+            for (var _oi = 0; _oi < _deck_size; _oi += 2) {
+                array_push(_new_order, global.player_deck[| _oi])
+            }
+            global.save_data.deck_order = _new_order
+            save_file(global.save_slot)
         }
         drag_state = 0
         drag_card_index = -1

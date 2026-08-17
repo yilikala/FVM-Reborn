@@ -2,6 +2,44 @@ if global.is_paused{
 	exit
 }
 
+if ds_list_size(global.buff_sources) > 0 {
+	with(obj_card_parent){
+		if variable_instance_exists(id, "atk_base"){ atk = atk_base }
+	}
+	var _sz = ds_list_size(global.buff_sources)
+	with(obj_card_parent){
+		var _same_amp = 0
+		var _adj_count = 0
+		var _buff_atk = 1
+		for (var _i = 0; _i < _sz; _i++){
+			var _aur = ds_list_find_value(global.buff_sources, _i)
+			if !instance_exists(_aur) continue
+			var _wl = _aur.atk_whitelist
+			if !is_array(_wl) continue
+			var _found = false
+			for (var _j = 0; _j < array_length(_wl); _j++){
+				if plant_id == _wl[_j]{ _found = true; break }
+			}
+			if !_found continue
+			_buff_atk = _aur.atk
+			if grid_row == _aur.grid_row {
+				if _same_amp == 0 {
+					var _on_edge = (_aur.shape >= 3 && (_aur.grid_row == 0 || _aur.grid_row == global.grid_rows - 1))
+					_same_amp = _on_edge ? 1.2 : 1.0
+				}
+			}
+			if _aur.shape >= 3 && abs(grid_row - _aur.grid_row) == 1 {
+				_adj_count++
+			}
+		}
+		var _amp = _same_amp + _adj_count * 0.2
+		if _amp > 0 {
+			if !variable_instance_exists(id, "atk_base"){ atk_base = atk }
+			atk = round(atk_base * (1 + _amp * (_buff_atk - 1)))
+		}
+	}
+}
+
 if global.lose_focus_pause{
 	if !window_has_focus() && !global.is_paused{
 		global.is_paused = true

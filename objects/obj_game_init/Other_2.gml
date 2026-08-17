@@ -1,5 +1,6 @@
 Enum_Init()
 deck_init()
+buff_init()
 slots_init()
 skill_registry_init();
 skill_init()
@@ -39,8 +40,54 @@ global.player_sprite = noone;
 load_file(global.save_slot)
 //reset_file(global.save_slot)
 
+// 按存档中记录的顺序重排卡片栏（未记录的卡片保留默认注册顺序）
+if variable_struct_exists(global.save_data, "deck_order") && is_array(global.save_data.deck_order) {
+	var _saved_order = global.save_data.deck_order
+	var _deck_size = ds_list_size(global.player_deck)
+	var _pairs_id = []
+	var _pairs_data = []
+	var _by_id = ds_map_create()
+	for (var i = 0; i < _deck_size; i += 2) {
+		var _id = global.player_deck[| i]
+		var _data = global.player_deck[| i + 1]
+		array_push(_pairs_id, _id)
+		array_push(_pairs_data, _data)
+		_by_id[? _id] = _data
+	}
+	ds_list_clear(global.player_deck)
+	var _used = ds_map_create()
+	for (var i = 0; i < array_length(_saved_order); i++) {
+		var _id = _saved_order[i]
+		if ds_map_exists(_by_id, _id) && !ds_map_exists(_used, _id) {
+			ds_list_add(global.player_deck, _id, _by_id[? _id])
+			_used[? _id] = true
+		}
+	}
+	for (var i = 0; i < array_length(_pairs_id); i++) {
+		var _id = _pairs_id[i]
+		if !ds_map_exists(_used, _id) {
+			ds_list_add(global.player_deck, _id, _pairs_data[i])
+			_used[? _id] = true
+		}
+	}
+	ds_map_destroy(_by_id)
+	ds_map_destroy(_used)
+}
+
+//应用时装卡片数据覆盖（cost/卡槽贴图/名称/描述）
+apply_attire_card_overrides("double_water_pipe")
+apply_attire_card_overrides("triple_wine_rack")
+apply_attire_card_overrides("brazier")
+apply_attire_card_overrides("takoyaki")
+apply_attire_card_overrides("gatlin_long_bao")
+apply_attire_card_overrides("large_fire")
+apply_attire_card_overrides("rotating_coffee_pot")
+apply_attire_card_overrides("melon_shield")
+apply_attire_card_overrides("egg_boiler_pult")
+
 
 //{//测试版设置初始存档
+//unlock_card("brahma",16,3,8)
 //	unlock_card("toast_bread",13,0,8)
 //unlock_card("small_fire",13,2,8)
 //	unlock_card("xiao_long_bao",13,0,8)
@@ -69,10 +116,10 @@ load_file(global.save_slot)
 //	unlock_card("rotating_coffee_pot",13,2,8)
 ///	unlock_card("takoyaki",13,2,8)
 //unlock_card("wine_bottle_bomb",13,2,8)
-//	unlock_card("egg_boiler_pult",13,2,8)
+//unlock_card("egg_boiler_pult",13,2,8)
 //	unlock_card("double_water_pipe",13,2,8)
 //unlock_card("melon_shield",13,2,8)
-//	unlock_card("ice_egg_boiler_pult",13,2,8)
+//unlock_card("ice_egg_boiler_pult",13,2,8)
 //	unlock_card("coffee_grounds",13,2,8)
 //	unlock_card("hamburger",13,2,8)
 //	unlock_card("steel_wool",13,0,8)

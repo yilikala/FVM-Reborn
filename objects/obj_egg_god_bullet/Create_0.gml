@@ -1,0 +1,16 @@
+damage = 0
+move_speed = 0
+cvspeed = 0
+cgravity = 0
+row = 0
+thrower_y = 0
+target_enemy = noone
+bounced = false
+hitted_enemy = ds_list_create()
+shape = 0
+damage_type = "throw"
+target_type = "throw"
+splash_ratio = 0.5
+image_angle = -45
+image_xscale = 1.8
+image_yscale = 1.8

@@ -23,13 +23,18 @@ if card_equipped_attire_id(plant_id) != -1{
 // ========== 特定属性默认值 ==========
 
 if global.level_file.level_time_feature == "daytime" && shape < 2{
-	state = CARD_STATE.SLEEP
-	if card_equipped_attire_id(plant_id) == -1{
-		if shape == 0{
-			sprite_index = spr_rotating_coffee_pot_sleep
-		}
-		else{
-			sprite_index = spr_rotating_coffee_pot_sleep_1
+	if card_equipped_attire_id(plant_id) == "rotate_leo" && shape == 0{
+		// 狮子座精灵shape0无需唤醒
+	}
+	else{
+		state = CARD_STATE.SLEEP
+		if card_equipped_attire_id(plant_id) == -1{
+			if shape == 0{
+				sprite_index = spr_rotating_coffee_pot_sleep
+			}
+			else{
+				sprite_index = spr_rotating_coffee_pot_sleep_1
+			}
 		}
 	}
 }

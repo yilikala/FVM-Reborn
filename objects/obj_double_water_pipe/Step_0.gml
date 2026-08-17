@@ -29,14 +29,33 @@ if (has_enemy) {
         state = CARD_STATE.IDLE;
 		b_count = 0
     }
-	if (attack_timer == cycle - 7*flash_speed){
-		event_user(1);
+	var _has_attire = (card_equipped_attire_id(plant_id) != -1)
+	if _has_attire {
+		//时装装备时：shape0前后各3发，shape1前后各3发(攻击力+20%)，shape2前后各4发
+		if (attack_timer == cycle - 8*flash_speed) && shape == 2{
+			event_user(1);
+		}
+		if (attack_timer == cycle - 6*flash_speed){
+			event_user(1);
+		}
+		if (attack_timer == cycle - 4*flash_speed){
+			event_user(1)
+		}
+		if (attack_timer == cycle - 2*flash_speed){
+			event_user(1);
+		}
 	}
-	if (attack_timer == cycle - 4*flash_speed){
-		event_user(1)
-	}
-	if (attack_timer == cycle - 1*flash_speed) && shape >= 2{
-		event_user(1); // 发射子弹
+	else {
+		//无时装时：保持原始攻击模式
+		if (attack_timer == cycle - 7*flash_speed){
+			event_user(1);
+		}
+		if (attack_timer == cycle - 4*flash_speed){
+			event_user(1)
+		}
+		if (attack_timer == cycle - 1*flash_speed) && shape >= 2{
+			event_user(1);
+		}
 	}
 } else {
     // 没有符合条件的敌人，重置状态

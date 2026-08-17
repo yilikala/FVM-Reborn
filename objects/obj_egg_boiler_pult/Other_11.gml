@@ -1,13 +1,27 @@
 // 用户事件1 - 发射子弹
-var inst = instance_create_depth(x-40, y-125, depth-500, obj_eggboilerpult_bullet)
-if shape >= 2{
+var _has_pisces = (card_equipped_attire_id(plant_id) == "ice_egg_pisces")
+var _atk = atk
+if _has_pisces && shape > 1{
+	_atk = round(atk * 1.35)
+}
+
+var _bullet_obj = obj_eggboilerpult_bullet
+if _has_pisces{
+	_bullet_obj = obj_iceeggboilerpult_bullet
+}
+
+var inst = instance_create_depth(x-40, y-125, depth-500, _bullet_obj)
+if shape >= 2 && !_has_pisces{
 	inst.sprite_index = spr_eggboilerpult_bullet_2
+}
+if _has_pisces{
+	inst.sprite_index = spr_ice_egg_pisces_bullet
 }
 audio_play_sound(snd_throw, 0, 0)
 
 // 基本属性
-inst.damage = atk
-inst.original_damage = atk // 保存原始伤害值用于溅射计算
+inst.damage = _atk
+inst.original_damage = _atk // 保存原始伤害值用于溅射计算
 inst.row = grid_row
 inst.thrower_y = y // 记录投手的Y坐标用于地面破裂判断
 
@@ -17,25 +31,25 @@ if (target_instance != noone && instance_exists(target_instance)) {
     var enemy_x = target_instance.x
     var enemy_y = target_instance.y
     var enemy_speed = target_instance.move_speed // 假设敌人有move_speed属性
-    
+
     // 计算子弹飞行时间（基于水平距离和预设速度）
     var distance_x = enemy_x - inst.x
     var flight_time = clamp(30 + (distance_x/1000) * 45, 30, 75)
-    
+
     // 预测敌人未来位置（考虑敌人速度）
     var predicted_x = enemy_x - enemy_speed * flight_time - 50
 	if predicted_x < x predicted_x = x
-    
+
     // 计算子弹所需的速度向量
     var total_distance_x = predicted_x - inst.x
     var total_distance_y = 600//enemy_y - inst.y
-    
+
     // 抛物线运动参数计算:cite[6]
     inst.move_speed = total_distance_x / flight_time
 	inst.cgravity = (2 * total_distance_y) / (flight_time * flight_time)
     inst.cvspeed = (total_distance_y - 0 * inst.cgravity * flight_time * flight_time) / flight_time
-    
-    
+
+
     // 存储目标信息
     inst.target_enemy = target_instance
     inst.has_target = true
