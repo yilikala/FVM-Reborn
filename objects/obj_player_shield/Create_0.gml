@@ -33,7 +33,7 @@ strength_gem = false
 hp_modified_card_list = []
 atk_modified_card_list = []
 
-blacklist = ["loki","player","cherry_pudding","brazier"];
+blacklist = ["loki","aurora","player","cherry_pudding","brazier"];
 
 origin_x = x;
 origin_y = y;

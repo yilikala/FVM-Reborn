@@ -4,7 +4,15 @@ image_yscale = 1.8
 target_card_index = -1
 target_current_info = ds_map_create()
 info_got = 0
+
+// 从选中卡片的实际数据获取最大转职数
 view_max_shape = 0
+if obj_info_island_bg.select_card_index != -1{
+	var _card_id = global.player_deck[| obj_info_island_bg.select_card_index * 2]
+	var _deck_entry = global.player_deck[| obj_info_island_bg.select_card_index * 2 + 1]
+	var _card_data_shapes = _deck_entry[? "shapes"]
+	view_max_shape = ds_list_size(_card_data_shapes) - 1
+}
 
 //target_current_level = 9
 //target_current_shape = 0

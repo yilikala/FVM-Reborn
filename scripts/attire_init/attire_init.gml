@@ -197,9 +197,9 @@ function attire_init(){
 			"card_slot_icon":[spr_melon_virgo_icon,spr_melon_virgo_icon_1,spr_melon_virgo_icon_2],
 			"inner_spr":[spr_melon_virgo_inner_1,spr_melon_virgo_inner_2,spr_melon_virgo_inner_3],
 			"card_overrides":{
-				"0":{"cost":200,"is_special":1,"description":"处女座精灵：保护被它罩住的卡片，体力更高！"},
+				"0":{"cost":175,"is_special":1,"description":"处女座精灵：保护被它罩住的卡片，体力更高！"},
 				"1":{"cost":200,"is_special":1,"description":"处女座战将：保护被它罩住的卡片，体力更高！"},
-				"2":{"cost":200,"is_special":1,"description":"处女座星宿：保护被它罩住的卡片，体力更高！"}
+				"2":{"cost":225,"is_special":1,"description":"处女座星宿：保护被它罩住的卡片，体力更高！"}
 			},
 			"name_overrides":{
 				"0":"处女座精灵",
@@ -299,6 +299,9 @@ function attire_init(){
 			"name":"星之焕",
 			"icon":spr_player_attire_s_icon,
 			"spr":spr_player_attire_s,
+		}
+	)
+	register_attire(
 		"player_attire_7",
 		{
 			"target_card":"player",

@@ -2910,18 +2910,18 @@
     ],
     "rewards": [
         {
-            "gold": 5000.0,
+            "gold": 15000.0,
             "items": [
                 {
                     "id": "secret_spices",
-                    "amount": 200.0
+                    "amount": 40.0
                 },
                 {
                     "id": "middle_crystal",
-                    "amount": 150.0
+                    "amount": 25.0
                 },
                 {
-                    "id": "clover_1",
+                    "id": "clover_3",
                     "amount": 1.0
                 }
             ]
@@ -2932,18 +2932,18 @@
             "gem_unlock": [],
             "player_level": 0.0,
             "skill_level": 0.0,
-            "gold": 5000.0,
+            "gold": 15000.0,
             "items": [
                 {
                     "id": "secret_spices",
-                    "amount": 200.0
+                    "amount": 40.0
                 },
                 {
                     "id": "middle_crystal",
-                    "amount": 150.0
+                    "amount": 25.0
                 },
                 {
-                    "id": "clover_1",
+                    "id": "clover_3",
                     "amount": 1.0
                 }
             ]
@@ -2954,4 +2954,4 @@
             "id": "full_seawater"
         }
     ]
-} 
+}

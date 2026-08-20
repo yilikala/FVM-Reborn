@@ -117,7 +117,7 @@ if package_button_select == 1 {
     }
     // 根据当前卡片总数计算可滚动范围，并将 y_offset 夹到合法区间
     var _total_cards = ds_list_size(global.player_deck) / 2
-    var _total_rows = max(8, ceil(_total_cards / package_rows))
+    var _total_rows = max(8, ceil(_total_cards / package_cols))
     var _max_offset = max(0, _total_rows * 96 - card_surface_h)
     y_offset = clamp(y_offset, 0, _max_offset)
     // 表面在屏幕上的起点（surface 内坐标 (0,0) 对应此处屏幕坐标）
@@ -134,7 +134,7 @@ if package_button_select == 1 {
     draw_clear_alpha(c_black, 0)
 
     // 绘制背包格子背景
-    for(var i = 0 ; i < package_rows ; i++){
+    for(var i = 0 ; i < package_cols ; i++){
         for(var j = 0 ; j < _total_rows ; j++){
             draw_sprite_ext(spr_package_slot_bg,0,42+i*84,48+96*j-y_offset,1.8,1.8,0,c_white,1)
         }
@@ -166,8 +166,8 @@ if package_button_select == 1 {
         }
 
         // 计算卡片位置（surface 内坐标，仅已解锁卡片参与排版）
-        var col = card_index mod package_rows
-        var row = card_index div package_rows
+        var col = card_index mod package_cols
+        var row = card_index div package_cols
         var _cx = 42 + col * 84
         var _cy = 48 + row * 96 - y_offset
 
@@ -234,8 +234,8 @@ if package_button_select == 1 {
     if (drag_state == 2 && !is_undefined(drag_card_data)) {
         // 高亮目标格
         if (hover_card_index != -1 && hover_card_index != drag_card_index && hover_deck_slot != -1) {
-            var _hcol = hover_card_index mod package_rows
-            var _hrow = hover_card_index div package_rows
+            var _hcol = hover_card_index mod package_cols
+            var _hrow = hover_card_index div package_cols
             var _hx = x - 354 + _hcol * 84
             var _hy = y - 359 + _hrow * 96 - y_offset
             draw_set_color(c_yellow)
@@ -286,7 +286,7 @@ else if package_button_select == 2 {
     }
     var _surf_x = x - 354 - 42
     var _surf_y = y - 359 - 48
-    var _gw = package_rows
+    var _gw = package_cols
 
     // 预先统计总行数用于限位
     var _est = array_length(global.save_data.unlocked_weapons) + array_length(global.save_data.unlocked_gems)
@@ -299,6 +299,13 @@ else if package_button_select == 2 {
 
     surface_set_target(weapon_surface)
     draw_clear_alpha(c_black, 0)
+
+    // 绘制武器栏背景网格（空槽位）
+    for(var i = 0; i < _gw; i++){
+        for(var j = 0; j < _total_rows; j++){
+            draw_sprite_ext(spr_package_slot_bg,1,42+i*84,48+88*j-weapon_y_offset,1.8,1.8,0,c_white,1)
+        }
+    }
 
     var weapon_index = 0
 
@@ -365,12 +372,23 @@ else if package_button_select == 2 {
         }
         weapon_index++
 
-        // 该武器的专属宝石
-        for(var j = 0; j < array_length(global.save_data.unlocked_gems); j++){
-            var _gid = global.save_data.unlocked_gems[j].id
+        // 该武器的专属宝石（遍历武器的 exclusive_gems 列表，未解锁的也绘制空槽）
+        var _excl_gems = _wdata.exclusive_gems
+        for(var j = 0; j < array_length(_excl_gems); j++){
+            var _gid = _excl_gems[j]
             var _gdata = get_gem_info(_gid)
             if (is_undefined(_gdata)) continue
-            if (!is_gem_exclusive(_gid) || _gdata.exclusive_for != _wid) continue
+
+            // 检查该宝石是否已解锁
+            var _gem_unlocked = false
+            var _unlock_idx = -1
+            for(var _u = 0; _u < array_length(global.save_data.unlocked_gems); _u++){
+                if global.save_data.unlocked_gems[_u].id == _gid {
+                    _gem_unlocked = true
+                    _unlock_idx = _u
+                    break
+                }
+            }
 
             var _col2 = weapon_index mod _gw
             var _row2 = weapon_index div _gw
@@ -378,12 +396,14 @@ else if package_button_select == 2 {
             var _cy2 = 48 + _row2 * 88 - weapon_y_offset
             var _eq2 = (get_gem_index(_gid) != -1)
             draw_sprite_ext(spr_package_slot_bg,1,_cx2,_cy2,1.8,1.8,0,_eq2?c_yellow:c_white,1)
-            draw_sprite_ext(_gdata.icon,0,_cx2,_cy2,1.4,1.4,0,c_white,1)
-            if (get_gem_level(_gid) > 0){
-                draw_sprite_ext(spr_star_slot,get_gem_level(_gid)-1,_cx2-28,_cy2-30,1.4,1.4,0,c_white,1)
-            }
-            if (point_in_rectangle(mouse_x,mouse_y,_surf_x+_cx2-42,_surf_y+_cy2-44,_surf_x+_cx2+42,_surf_y+_cy2+44)){
-                hover_gem_index = j
+            if _gem_unlocked {
+                draw_sprite_ext(_gdata.icon,0,_cx2,_cy2,1.4,1.4,0,c_white,1)
+                if (get_gem_level(_gid) > 0){
+                    draw_sprite_ext(spr_star_slot,get_gem_level(_gid)-1,_cx2-28,_cy2-30,1.4,1.4,0,c_white,1)
+                }
+                if (point_in_rectangle(mouse_x,mouse_y,_surf_x+_cx2-42,_surf_y+_cy2-44,_surf_x+_cx2+42,_surf_y+_cy2+44)){
+                    hover_gem_index = _unlock_idx
+                }
             }
             weapon_index++
         }

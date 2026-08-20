@@ -188,9 +188,9 @@ function slots_init(){
 		{"shape":2, "sprite":spr_chocolate_cannon_2, "cost":300, "cooldown":50*60, "description":"死神大炮：发射两个3*3范围爆炸的巧克力球","plant_type":"normal","feature_type":"normal","target_card":"none"}
 	]);
 	register_card("firework_dragon", obj_firework_dragon, [
-	    {"shape":0, "sprite":spr_firework_dragon, "cost":50, "cooldown":75*60, "description":"花火龙：立即生产6朵火苗","plant_type":"normal","feature_type":"normal","target_card":"none"},
-	    {"shape":1, "sprite":spr_firework_dragon_1, "cost":0, "cooldown":75*60, "description":"灼灼花火龙：立即生产6朵火苗","plant_type":"normal","feature_type":"normal","target_card":"none"},
-		{"shape":2, "sprite":spr_firework_dragon_icon_2, "cost":0, "cooldown":75*60, "description":"炽焰花火龙：立即生产12朵火苗","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_firework_dragon_2}
+	    {"shape":0, "sprite":spr_firework_dragon, "cost":50, "cooldown":75*60, "description":"花火龙：立即生产6朵火苗","plant_type":"normal","feature_type":"normal","target_card":"none","is_special":1,},
+	    {"shape":1, "sprite":spr_firework_dragon_1, "cost":0, "cooldown":75*60, "description":"灼灼花火龙：立即生产6朵火苗","plant_type":"normal","feature_type":"normal","target_card":"none","is_special":1,},
+		{"shape":2, "sprite":spr_firework_dragon_icon_2, "cost":0, "cooldown":75*60, "description":"炽焰花火龙：立即生产12朵火苗","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_firework_dragon_2,"is_special":1,}
 	]);
 	register_card("double_ice_long_bao",obj_double_ice_long_bao,[
 	    {"shape":0, "sprite":spr_double_ice_long_bao, "cost":225, "cooldown":7*60, "description":"双层冰冻小笼包：发射两发冰包子","plant_type":"normal","feature_type":"bun","target_card":"none"}
@@ -210,14 +210,14 @@ function slots_init(){
 	    {"shape":0, "sprite":spr_gatlin_ice_long_bao, "cost":300, "cooldown":50*60, "description":"机枪冰冻小笼包：发射四发冰包子","plant_type":"normal","feature_type":"upgrade","target_card":"double_ice_long_bao"}
 	])
 	register_card("aquarius_elve",obj_aquarius_elve,[
-	    {"shape":0, "sprite":spr_aquarius_elve, "cost":150, "cooldown":30*60, "description":"水瓶座精灵：本行5格和本列5格范围爆炸","plant_type":"normal","feature_type":"normal","target_card":"none"},
-	    {"shape":1, "sprite":spr_aquarius_elve_1, "cost":200, "cooldown":30*60, "description":"水瓶座战将：本行5格和本列5格范围爆炸","plant_type":"normal","feature_type":"normal","target_card":"none"},
-		{"shape":2, "sprite":spr_aquarius_elve_2, "cost":250, "cooldown":30*60, "description":"水瓶座星宿：一列和本行5格范围爆炸","plant_type":"normal","feature_type":"normal","target_card":"none"}
+	    {"shape":0, "sprite":spr_aquarius_elve, "cost":150, "cooldown":30*60, "description":"水瓶座精灵：本行5格和本列5格范围爆炸","plant_type":"normal","feature_type":"normal","target_card":"none","is_special":1,},
+	    {"shape":1, "sprite":spr_aquarius_elve_1, "cost":200, "cooldown":30*60, "description":"水瓶座战将：本行5格和本列5格范围爆炸","plant_type":"normal","feature_type":"normal","target_card":"none","is_special":1,},
+		{"shape":2, "sprite":spr_aquarius_elve_2, "cost":250, "cooldown":30*60, "description":"水瓶座星宿：一列和本行5格范围爆炸","plant_type":"normal","feature_type":"normal","target_card":"none","is_special":1,}
 	])
 	register_card("tar_sprayer", obj_tar_sprayer, [
-	    {"shape":0, "sprite":spr_tar_sprayer, "cost":150, "cooldown":7*60, "description":"焦油喷壶：穿透攻击四格内敌人","plant_type":"normal","feature_type":"normal","target_card":"none"},
-	    {"shape":1, "sprite":spr_tar_sprayer_1, "cost":150, "cooldown":7*60, "description":"强力焦油喷壶：穿透攻击六格内敌人","plant_type":"normal","feature_type":"normal","target_card":"none"},
-		{"shape":2, "sprite":spr_tar_sprayer_2, "cost":150, "cooldown":7*60, "description":"祝融喷壶：穿透攻击六格内敌人","plant_type":"normal","feature_type":"normal","target_card":"none"}
+	    {"shape":0, "sprite":spr_tar_sprayer, "cost":150, "cooldown":7*60, "description":"焦油喷壶：穿透攻击四格内敌人","plant_type":"normal","feature_type":"normal","target_card":"none","is_special":1,},
+	    {"shape":1, "sprite":spr_tar_sprayer_1, "cost":150, "cooldown":7*60, "description":"强力焦油喷壶：穿透攻击六格内敌人","plant_type":"normal","feature_type":"normal","target_card":"none","is_special":1,},
+		{"shape":2, "sprite":spr_tar_sprayer_2, "cost":150, "cooldown":7*60, "description":"祝融喷壶：穿透攻击六格内敌人","plant_type":"normal","feature_type":"normal","target_card":"none","is_special":1,}
 	]);
 	register_card("triple_long_bao", obj_triple_long_bao, [
 	    {"shape":0, "sprite":spr_triple_long_bao, "cost":125, "cooldown":7*60, "description":"三向小笼包：向三个方向发射包子","plant_type":"normal","feature_type":"tbun","target_card":"none"}
@@ -246,14 +246,14 @@ function slots_init(){
 		{"shape":2, "sprite":spr_cotton_candy_2_0, "cost":0, "cooldown":10*60, "description":"彩虹棉花糖：在空中和岩浆上承载卡片","plant_type":"coffee","feature_type":"normal","target_card":"none"}
 	])
 	register_card("durian",obj_durian,[
-	    {"shape":0, "sprite":spr_durian, "cost":375, "cooldown":90*60, "description":"榴莲：伤害3*3范围敌人","plant_type":"normal","feature_type":"normal","target_card":"none"},
-	    {"shape":1, "sprite":spr_durian_1, "cost":375, "cooldown":90*60, "description":"雪山榴莲：伤害并减速3*3范围敌人","plant_type":"normal","feature_type":"normal","target_card":"none"},
-		{"shape":2, "sprite":spr_durian_2, "cost":375, "cooldown":90*60, "description":"冰河世纪榴莲：伤害并减速5*5范围敌人","plant_type":"normal","feature_type":"normal","target_card":"none"}
+	    {"shape":0, "sprite":spr_durian, "cost":375, "cooldown":90*60, "description":"榴莲：伤害3*3范围敌人","plant_type":"normal","feature_type":"normal","target_card":"none","is_special":1,},
+	    {"shape":1, "sprite":spr_durian_1, "cost":375, "cooldown":90*60, "description":"雪山榴莲：伤害并减速3*3范围敌人","plant_type":"normal","feature_type":"normal","target_card":"none","is_special":1,},
+		{"shape":2, "sprite":spr_durian_2, "cost":375, "cooldown":90*60, "description":"冰河世纪榴莲：伤害并减速5*5范围敌人","plant_type":"normal","feature_type":"normal","target_card":"none","is_special":1,}
 	])
 	register_card("dragon_fruit",obj_dragon_fruit,[
-	    {"shape":0, "sprite":spr_dragon_fruit, "cost":375, "cooldown":60*60, "description":"火龙果：灼烧3*3范围敌人","plant_type":"normal","feature_type":"normal","target_card":"none"},
-	    {"shape":1, "sprite":spr_dragon_fruit_1_icon, "cost":375, "cooldown":60*60, "description":"炎阳火龙果：灼烧3*3范围敌人","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_dragon_fruit_1},
-		{"shape":2, "sprite":spr_dragon_fruit_2_icon, "cost":375, "cooldown":60*60, "description":"九天皓日火龙果：灼烧5*5范围敌人","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_dragon_fruit_2}
+	    {"shape":0, "sprite":spr_dragon_fruit, "cost":375, "cooldown":60*60, "description":"火龙果：灼烧3*3范围敌人","plant_type":"normal","feature_type":"normal","target_card":"none","is_special":1,},
+	    {"shape":1, "sprite":spr_dragon_fruit_1_icon, "cost":375, "cooldown":60*60, "description":"炎阳火龙果：灼烧3*3范围敌人","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_dragon_fruit_1,"is_special":1,},
+		{"shape":2, "sprite":spr_dragon_fruit_2_icon, "cost":375, "cooldown":60*60, "description":"九天皓日火龙果：灼烧5*5范围敌人","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_dragon_fruit_2,"is_special":1,}
 	])
 	register_card("pineapple_explosive_bread",obj_pineapple_explosive_bread,[
 	    {"shape":0, "sprite":spr_pineapple_explosive_bread_0_0, "cost":150, "cooldown":50*60, "description":"菠萝爆炸面包：死亡后产生3*3范围爆炸","plant_type":"normal","feature_type":"normal","target_card":"none"},
@@ -261,9 +261,9 @@ function slots_init(){
 		{"shape":2, "sprite":spr_pineapple_explosive_bread_2_icon, "cost":150, "cooldown":50*60, "description":"皇冠菠萝面包：死亡后产生5*5范围爆炸","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_pineapple_explosive_bread_2_0}
 	])
 	register_card("ice_cream",obj_ice_cream,[
-	    {"shape":0, "sprite":spr_ice_cream_icon, "cost":100, "cooldown":60*60, "description":"冰激凌：冷却本格卡片","plant_type":"coffee","feature_type":"normal","target_card":"none"},
-	    {"shape":1, "sprite":spr_ice_cream_icon_1, "cost":150, "cooldown":60*60, "description":"果蔬冰激凌：冷却3*3范围卡片","plant_type":"coffee","feature_type":"normal","target_card":"none"},
-		{"shape":2, "sprite":spr_ice_cream_icon_2, "cost":350, "cooldown":60*60, "description":"极寒冰沙：冷却全体卡片","plant_type":"coffee","feature_type":"normal","target_card":"none"}
+	    {"shape":0, "sprite":spr_ice_cream_icon, "cost":100, "cooldown":60*60, "description":"冰激凌：冷却本格卡片","plant_type":"coffee","feature_type":"normal","target_card":"none","is_special":1,},
+	    {"shape":1, "sprite":spr_ice_cream_icon_1, "cost":150, "cooldown":60*60, "description":"果蔬冰激凌：冷却3*3范围卡片","plant_type":"coffee","feature_type":"normal","target_card":"none","is_special":1,},
+		{"shape":2, "sprite":spr_ice_cream_icon_2, "cost":350, "cooldown":60*60, "description":"极寒冰沙：冷却全体卡片","plant_type":"coffee","feature_type":"normal","target_card":"none","is_special":1,}
 	])
 	register_card("lightning_baguette",obj_lightning_baguette,[
 	    {"shape":0, "sprite":spr_lightning_baguette_icon, "cost":225, "cooldown":60*60, "description":"雷电长棍面包：同列的两根面包间会产生电流","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_lightning_baguette},
@@ -271,12 +271,12 @@ function slots_init(){
 		{"shape":2, "sprite":spr_lightning_baguette_2_icon, "cost":175, "cooldown":60*60, "description":"负离子面包：同列的两根面包间会产生两次电流","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_lightning_baguette_2}
 	])
 	register_card("bull_firework",obj_bull_firework,[
-	    {"shape":0, "sprite":spr_bull_firework, "cost":325, "cooldown":50*60, "description":"金牛烟花：召唤1只烟花牛冲撞敌人","plant_type":"normal","feature_type":"normal","target_card":"none"},
-	    {"shape":1, "sprite":spr_bull_firework_1, "cost":275, "cooldown":50*60, "description":"迷幻金牛烟花：召唤1只烟花牛冲撞敌人","plant_type":"normal","feature_type":"normal","target_card":"none"},
-		{"shape":2, "sprite":spr_bull_firework_2, "cost":275, "cooldown":50*60, "description":"璀璨金牛烟花：召唤2只烟花牛冲撞敌人","plant_type":"normal","feature_type":"normal","target_card":"none"}
+	    {"shape":0, "sprite":spr_bull_firework, "cost":325, "cooldown":50*60, "description":"金牛烟花：召唤1只烟花牛冲撞敌人","plant_type":"normal","feature_type":"normal","target_card":"none","is_special":1,},
+	    {"shape":1, "sprite":spr_bull_firework_1, "cost":275, "cooldown":50*60, "description":"迷幻金牛烟花：召唤1只烟花牛冲撞敌人","plant_type":"normal","feature_type":"normal","target_card":"none","is_special":1,},
+		{"shape":2, "sprite":spr_bull_firework_2, "cost":275, "cooldown":50*60, "description":"璀璨金牛烟花：召唤2只烟花牛冲撞敌人","plant_type":"normal","feature_type":"normal","target_card":"none","is_special":1,}
 	])
 	register_card("magic_chicken", obj_magic_chicken, [
-	    {"shape":0, "sprite":spr_magic_chicken_icon, "cost":0, "cooldown":7*60, "description":"幻幻鸡：复制成上一张放置的卡片","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_magic_chicken}
+	    {"shape":0, "sprite":spr_magic_chicken_icon, "cost":0, "cooldown":7*60, "description":"幻幻鸡：复制成上一张放置的卡片","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_magic_chicken,"is_special":1,}
 	]);
 	register_card("xinjiang_fried_noodles",obj_xinjiang_fried_noodles,[
 	    {"shape":0, "sprite":spr_xinjiang_fried_noodles, "cost":150, "cooldown":7*60, "description":"新疆炒面：攻击前方三格敌人","plant_type":"normal","feature_type":"normal","target_card":"none"},
@@ -337,10 +337,20 @@ function slots_init(){
 		{"shape":1, "sprite":spr_curry_lobster_cannon_1_icon, "cost":275, "cooldown":20*60, "description":"麻辣龙虾炮：发射两个追踪咖喱炮弹","plant_type":"normal","feature_type":"amphi","target_card":"none","place_preview":spr_curry_lobster_cannon_1},
 		{"shape":2, "sprite":spr_curry_lobster_cannon_2_icon, "cost":275, "cooldown":20*60, "description":"加农龙虾炮：发射三个追踪咖喱炮弹","plant_type":"normal","feature_type":"amphi","target_card":"none","place_preview":spr_curry_lobster_cannon_2}
 	]);
+	register_card("coal_starfish", obj_coal_starfish, [
+	    {"shape":0, "sprite":spr_coal_starfish, "cost":275, "cooldown":7*60, "description":"炭烧海星：向五个方向发射星星，陆地窒息","plant_type":"normal","feature_type":"amphi","target_card":"none"},
+		{"shape":1, "sprite":spr_coal_starfish_1, "cost":275, "cooldown":7*60, "description":"芝士焗海星：向五个方向发射星星","plant_type":"normal","feature_type":"amphi","target_card":"none"},
+		{"shape":2, "sprite":spr_coal_starfish_2_icon, "cost":275, "cooldown":7*60, "description":"芥末海星刺身：向五个方向发射两颗星星","plant_type":"normal","feature_type":"amphi","target_card":"none","place_preview":spr_coal_starfish_2}
+	]);
 	register_card("coal_starfish_real", obj_coal_starfish_real, [
-	    {"shape":0, "sprite":spr_coal_starfish, "cost":175, "cooldown":7*60, "description":"炭烧海星（真）：向五个方向发射威！力！巨！大！的星星，陆地窒息","plant_type":"normal","feature_type":"amphi","target_card":"none"},
-		{"shape":1, "sprite":spr_coal_starfish_1, "cost":175, "cooldown":7*60, "description":"芝士焗海星(真）：向五个方向发射威！力！巨！大！的星星","plant_type":"normal","feature_type":"amphi","target_card":"none"},
-		{"shape":2, "sprite":spr_coal_starfish_2_icon, "cost":175, "cooldown":7*60, "description":"芥末海星刺身（真）：向五个方向发射威！力！巨！大！的两颗星星","plant_type":"normal","feature_type":"amphi","target_card":"none","place_preview":spr_coal_starfish_2}
+	    {"shape":0, "sprite":spr_coal_starfish, "cost":175, "cooldown":7*60, "description":"炭烧海星（真）：向五个方向发射威！力！巨！大！的星星，陆地窒息","plant_type":"normal","feature_type":"amphi","target_card":"none","is_special":1,},
+		{"shape":1, "sprite":spr_coal_starfish_1, "cost":175, "cooldown":7*60, "description":"芝士焗海星(真）：向五个方向发射威！力！巨！大！的星星","plant_type":"normal","feature_type":"amphi","target_card":"none","is_special":1,},
+		{"shape":2, "sprite":spr_coal_starfish_2_icon, "cost":175, "cooldown":7*60, "description":"芥末海星刺身（真）：向五个方向发射威！力！巨！大！的两颗星星","plant_type":"normal","feature_type":"amphi","target_card":"none","place_preview":spr_coal_starfish_2,"is_special":1,}
+	]);
+	register_card("curry_lobster_cannon", obj_curry_lobster_cannon, [
+	    {"shape":0, "sprite":spr_curry_lobster_cannon_icon, "cost":275, "cooldown":20*60, "description":"咖喱龙虾炮：发射两个追踪咖喱炮弹，陆地窒息","plant_type":"normal","feature_type":"amphi","target_card":"none","place_preview":spr_curry_lobster_cannon},
+		{"shape":1, "sprite":spr_curry_lobster_cannon_1_icon, "cost":275, "cooldown":20*60, "description":"麻辣龙虾炮：发射两个追踪咖喱炮弹","plant_type":"normal","feature_type":"amphi","target_card":"none","place_preview":spr_curry_lobster_cannon_1},
+		{"shape":2, "sprite":spr_curry_lobster_cannon_2_icon, "cost":275, "cooldown":20*60, "description":"加农龙虾炮：发射三个追踪咖喱炮弹","plant_type":"normal","feature_type":"amphi","target_card":"none","place_preview":spr_curry_lobster_cannon_2}
 	]);
 	
 	register_card("donut_cold_brew", obj_donut_cold_brew, [
@@ -416,14 +426,4 @@ function slots_init(){
 		{"shape":2, "sprite":spr_brahma_2, "cost":325, "cooldown":55*60, "description":"创造神·梵天：变身出多个上一次种下的卡片","plant_type":"coffee","feature_type":"normal","target_card":"none","is_gold":1},
 		{"shape":3, "sprite":spr_brahma_3, "cost":325, "cooldown":55*60, "description":"至尊创造神：变身出多个上一次种下的卡片","plant_type":"coffee","feature_type":"normal","target_card":"none","is_gold":1}
 	]);
-	//register_card("coal_starfish", obj_coal_starfish, [
-	//    {"shape":0, "sprite":spr_coal_starfish, "cost":275, "cooldown":7*60, "description":"炭烧海星：向五个方向发射星星，陆地窒息","plant_type":"normal","feature_type":"amphi","target_card":"none"},
-	//	{"shape":1, "sprite":spr_coal_starfish_1, "cost":275, "cooldown":7*60, "description":"芝士焗海星：向五个方向发射星星","plant_type":"normal","feature_type":"amphi","target_card":"none"},
-	//	{"shape":2, "sprite":spr_coal_starfish_2_icon, "cost":325, "cooldown":7*60, "description":"芥末海星刺身：向五个方向发射两颗星星","plant_type":"normal","feature_type":"amphi","target_card":"none","place_preview":spr_coal_starfish_2}
-	//]);
-	//register_card("curry_lobster_cannon", obj_curry_lobster_cannon, [
-	//    {"shape":0, "sprite":spr_curry_lobster_cannon_icon, "cost":275, "cooldown":20*60, "description":"咖喱龙虾炮：发射两个追踪咖喱炮弹，陆地窒息","plant_type":"normal","feature_type":"amphi","target_card":"none","place_preview":spr_curry_lobster_cannon},
-	//	{"shape":1, "sprite":spr_curry_lobster_cannon_1_icon, "cost":275, "cooldown":20*60, "description":"麻辣龙虾炮：发射两个追踪咖喱炮弹","plant_type":"normal","feature_type":"amphi","target_card":"none","place_preview":spr_curry_lobster_cannon_1},
-	//	{"shape":2, "sprite":spr_curry_lobster_cannon_2_icon, "cost":275, "cooldown":20*60, "description":"加农龙虾炮：发射三个追踪咖喱炮弹","plant_type":"normal","feature_type":"amphi","target_card":"none","place_preview":spr_curry_lobster_cannon_2}
-	//]);
 }

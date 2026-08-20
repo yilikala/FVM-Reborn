@@ -5065,35 +5065,35 @@
     ],
     "rewards": [
         {
-            "gold": 12000.0,
+            "gold": 30000.0,
             "items": [
                 {
-                    "id": "secret_spices",
-                    "amount": 600.0
+                    "id": "royal_spices",
+                    "amount": 15.0
                 },
                 {
-                    "id": "middle_crystal",
-                    "amount": 500.0
+                    "id": "advanced_crystal",
+                    "amount": 10.0
                 },
                 {
-                    "id": "clover_1",
+                    "id": "clover_3",
                     "amount": 3.0
                 }
             ]
         },
         {
-            "gold": 12000.0,
+            "gold": 30000.0,
             "items": [
                 {
-                    "id": "secret_spices",
-                    "amount": 600.0
+                    "id": "royal_spices",
+                    "amount": 15.0
                 },
                 {
-                    "id": "middle_crystal",
-                    "amount": 500.0
+                    "id": "advanced_crystal",
+                    "amount": 10.0
                 },
                 {
-                    "id": "clover_1",
+                    "id": "clover_3",
                     "amount": 3.0
                 }
             ],
@@ -5109,4 +5109,4 @@
             "id": "full_seawater"
         }
     ]
-} 
+}

@@ -1,4 +1,3 @@
-show_notice("正在检查更新...",60);
 // 创建请求头 DS Map
 var headers = ds_map_create();
 // GitHub API 强制要求 User-Agent，这里填你的游戏名或仓库名

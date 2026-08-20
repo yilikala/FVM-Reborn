@@ -8607,36 +8607,36 @@
     ],
     "rewards": [
         {
-            "gold": 18000.0,
+            "gold": 50000.0,
             "items": [
                 {
-                    "id": "royal_spices",
-                    "amount": 1200.0
+                    "id": "magical_spices",
+                    "amount": 10.0
                 },
                 {
-                    "id": "middle_crystal",
-                    "amount": 1000.0
+                    "id": "advanced_crystal",
+                    "amount": 20.0
                 },
                 {
-                    "id": "clover_2",
-                    "amount": 3.0
+                    "id": "clover_5",
+                    "amount": 1.0
                 }
             ]
         },
         {
-            "gold": 18000.0,
+            "gold": 50000.0,
             "items": [
                 {
-                    "id": "royal_spices",
-                    "amount": 1200.0
+                    "id": "magical_spices",
+                    "amount": 10.0
                 },
                 {
-                    "id": "middle_crystal",
-                    "amount": 1000.0
+                    "id": "advanced_crystal",
+                    "amount": 20.0
                 },
                 {
-                    "id": "clover_2",
-                    "amount": 3.0
+                    "id": "clover_5",
+                    "amount": 1.0
                 }
             ],
             "card_unlock": [],
@@ -8651,4 +8651,4 @@
             "id": "full_seawater"
         }
     ]
-} 
+}

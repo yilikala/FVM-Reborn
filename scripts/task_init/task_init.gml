@@ -2172,11 +2172,11 @@ function task_init(){
 					{
 						"type":"item",
 						"item_id":"secret_spices",
-						"amount":50
+						"amount":30
 					},
 					{
 						"type":"gold",
-						"amount":5000
+						"amount":20000
 					}
 				]
 			}
