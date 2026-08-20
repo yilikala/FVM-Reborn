@@ -62,6 +62,7 @@ function shop_init(){
 	register_goods("gatling_popcorn",{"type":"card_attire","cost":"50000","unlock_item_id":"gatling_popcorn","description":"机枪小笼包的玉蜀黍时装","display_name":"机枪玉米时装"})
 	register_goods("rotate_leo",{"type":"card_attire","cost":"50000","unlock_item_id":"rotate_leo","description":"旋转咖啡喷壶的狮子座精灵时装","display_name":"旋转星座时装"})
 	register_goods("melon_virgo",{"type":"card_attire","cost":"50000","unlock_item_id":"melon_virgo","description":"瓜皮护罩的处女座精灵时装","display_name":"瓜皮星座时装"})
+	register_goods("bubble_maltose",{"type":"card_attire","cost":"50","unlock_item_id":"bubble_maltose","description":"保护视力的绝佳选择","display_name":"气泡麦芽糖时装"})
 	
 	register_goods("player_attire_1",{"type":"player_attire","cost":"50000","unlock_item_id":"player_attire_1","description":"角色的雪球兔兔时装","display_name":"雪球兔兔"})
 	register_goods("player_attire_2",{"type":"player_attire","cost":"50000","unlock_item_id":"player_attire_2","description":"角色的提拉米苏时装","display_name":"提拉米苏"})
@@ -72,4 +73,12 @@ function shop_init(){
 	register_goods("player_attire_a",{"type":"player_attire","cost":"100000","unlock_item_id":"player_attire_a","description":"角色的命运女神时装","display_name":"星轨织梦"})
 	register_goods("player_attire_b",{"type":"player_attire","cost":"100000","unlock_item_id":"player_attire_b","description":"角色的红桃爱丽丝时装","display_name":"红桃爱丽丝"})
 	register_goods("player_attire_s",{"type":"player_attire","cost":"200000","unlock_item_id":"player_attire_s","description":"角色的星之焕变身时装","display_name":"星之焕"})
+	register_goods("player_attire_7",{"type":"player_attire","cost":"50000","unlock_item_id":"player_attire_7","description":"角色的双子座情人时装","display_name":"双子座情人"})
+	register_goods("player_attire_8",{"type":"player_attire","cost":"50000","unlock_item_id":"player_attire_8","description":"角色的双子座情人时装","display_name":"双子座情人"})
+	register_goods("player_attire_9",{"type":"player_attire","cost":"50000","unlock_item_id":"player_attire_9","description":"角色的爱莎鼠同人时装","display_name":"爱莎鼠同人"})
+	register_goods("player_attire_10",{"type":"player_attire","cost":"50000","unlock_item_id":"player_attire_10","description":"角色的别西卜时装","display_name":"别西卜"})
+	register_goods("player_attire_11",{"type":"player_attire","cost":"50000","unlock_item_id":"player_attire_11","description":"角色的冰淇淋小姐时装","display_name":"冰淇淋小姐"})
+	register_goods("player_attire_12",{"type":"player_attire","cost":"50000","unlock_item_id":"player_attire_12","description":"角色的丁香绮缘时装","display_name":"丁香绮缘"})
+	register_goods("player_attire_13",{"type":"player_attire","cost":"50000","unlock_item_id":"player_attire_13","description":"角色的梦恋花语时装","display_name":"梦恋花语"})
+	register_goods("player_attire_14",{"type":"player_attire","cost":"50000","unlock_item_id":"player_attire_14","description":"角色的探险家时装","display_name":"探险家"})
 }

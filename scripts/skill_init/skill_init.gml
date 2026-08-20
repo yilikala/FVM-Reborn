@@ -86,4 +86,6 @@ function skill_init(){
 	register_card_skill("loki","cooldown",[7*60,6.7*60,6.4*60,6*60,5.7*60,5.4*60,5*60,4.6*60,4*60])
 	register_card_skill("aurora","cooldown",[30*60,28*60,26*60,23*60,20*60,17*60,14*60,11*60,7*60])
 	register_card_skill("brahma","atk",[900,950,1000,1050,1100,1150,1200,1250,1300])
+	register_card_skill("soda_bubble","cooldown",[10*60,9*60,8*60,7*60,6*60,5*60,4*60,3*60,2*60])
+	register_card_skill("horseshoe_crab_bread","cooldown",[30*60,28*60,26*60,24*60,22*60,20*60,18*60,15*60,12*60])
 }

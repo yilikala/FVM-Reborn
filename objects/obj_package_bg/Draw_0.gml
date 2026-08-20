@@ -467,10 +467,14 @@ else if package_button_select == 2 {
 
 }
 else if package_button_select == 3{
+	if surface_exists(package_surface){
+		surface_set_target(package_surface)
+		draw_clear_alpha(c_black,0)
+	}
 	// 绘制道具背包
-    for(var i = 0 ; i < package_rows ; i++){
-        for(var j = 0 ; j < package_cols ; j++){
-            draw_sprite_ext(spr_package_slot_bg,1,x-354+i*84,y - 368 + 88 * j,1.8,1.8,0,c_white,1)
+    for(var i = 0 ; i < package_cols ; i++){
+        for(var j = 0 ; j < package_rows ; j++){
+            draw_sprite_ext(spr_package_slot_bg,1,42+i*84,44 + 88 * j-y_offset,1.8,1.8,0,c_white,1)
         }
     }
 	// 绘制所有道具
@@ -488,8 +492,8 @@ else if package_button_select == 3{
             var col = material_data.pos_x;
             
             if (row < package_rows) {
-                var material_x = x - 354 + col * 84;
-                var material_y = y - 368 + row * 88;
+                var material_x = 42 + col * 84;
+                var material_y = 44 + row * 88 - y_offset;
                                
                 //draw_sprite_ext(spr_package_slot_bg, 1, weapon_x, weapon_y, 1.8, 1.8, 0, c_white, 1);
                 draw_sprite_ext(spr_craft_material,material_data.icon, material_x, material_y, 1.8, 1.8, 0, c_white, 1);
@@ -507,10 +511,15 @@ else if package_button_select == 3{
                 // 检查鼠标是否悬停在道具上
                 var spr_width = 84;
                 var spr_height = 88;
+				
+				var hover_material_x = x - 354 + col * 84;
+                var hover_material_y = y - 368 + row * 88 - y_offset;
                 
                 if (point_in_rectangle(mouse_x, mouse_y, 
-                                      material_x - spr_width/2, material_y - spr_height/2,
-                                      material_x + spr_width/2, material_y + spr_height/2)) {
+                                      hover_material_x - spr_width/2, hover_material_y - spr_height/2,
+                                      hover_material_x + spr_width/2, hover_material_y + spr_height/2))
+									  
+				&& mouse_y > y-405 && mouse_y < y + 385{
                     hover_material_index = i;
                 }
                 
@@ -518,6 +527,8 @@ else if package_button_select == 3{
             }
         }
     }
+	surface_reset_target()
+	draw_surface(package_surface,x-354-42,y-368-44)
 	// 绘制悬停提示
     if (hover_material_index != -1) {
 		var material_list = ds_map_keys_to_array(global.material_pool)

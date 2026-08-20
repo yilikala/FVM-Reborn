@@ -208,6 +208,16 @@ function attire_init(){
 			}
 		}
 	)
+	register_attire(
+		"bubble_maltose",
+		{
+			"target_card":"soda_bubble",
+			"name":"麦芽糖",
+			"icon":spr_bubble_maltose_icon,
+			"spr":[spr_bubble_maltose_0_0,spr_bubble_maltose_1_0],
+			"card_slot_icon":[spr_bubble_maltose_icon,spr_bubble_maltose_icon_1],
+		}
+	)
 	
 	//注册全部玩家时装
 	register_attire(
@@ -289,6 +299,75 @@ function attire_init(){
 			"name":"星之焕",
 			"icon":spr_player_attire_s_icon,
 			"spr":spr_player_attire_s,
+		"player_attire_7",
+		{
+			"target_card":"player",
+			"name":"双子座情人",
+			"icon":spr_player_attire_7_icon,
+			"spr":spr_player_attire_7,
+		}
+	)
+	register_attire(
+		"player_attire_8",
+		{
+			"target_card":"player",
+			"name":"双子座情人",
+			"icon":spr_player_attire_8_icon,
+			"spr":spr_player_attire_8,
+		}
+	)
+	register_attire(
+		"player_attire_9",
+		{
+			"target_card":"player",
+			"name":"爱莎鼠同人",
+			"icon":spr_player_attire_9_icon,
+			"spr":spr_player_attire_9,
+		}
+	)
+	register_attire(
+		"player_attire_10",
+		{
+			"target_card":"player",
+			"name":"别西卜",
+			"icon":spr_player_attire_10_icon,
+			"spr":spr_player_attire_10,
+		}
+	)
+	register_attire(
+		"player_attire_11",
+		{
+			"target_card":"player",
+			"name":"冰淇淋小姐",
+			"icon":spr_player_attire_11_icon,
+			"spr":spr_player_attire_11,
+		}
+	)
+	register_attire(
+		"player_attire_12",
+		{
+			"target_card":"player",
+			"name":"丁香绮缘",
+			"icon":spr_player_attire_12_icon,
+			"spr":spr_player_attire_12,
+		}
+	)
+	register_attire(
+		"player_attire_13",
+		{
+			"target_card":"player",
+			"name":"梦恋花语",
+			"icon":spr_player_attire_13_icon,
+			"spr":spr_player_attire_13,
+		}
+	)
+	register_attire(
+		"player_attire_14",
+		{
+			"target_card":"player",
+			"name":"探险家",
+			"icon":spr_player_attire_14_icon,
+			"spr":spr_player_attire_14,
 		}
 	)
 }
