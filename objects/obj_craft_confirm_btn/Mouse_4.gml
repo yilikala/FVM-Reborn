@@ -93,14 +93,7 @@ if obj_craft_bg.button_select == 2{
 						else{
 							obj_craft_bg.syn_input_clover_id = ""
 						}
-						// 自动勾选保险并重填上次四叶草（除非四叶草不足也继续勾选保险）
-						obj_craft_bg.insured = true
-						if obj_craft_bg.syn_input_clover_id != "" && get_material_amount(obj_craft_bg.syn_input_clover_id) >= 1{
-							// 四叶草仍有库存，保持
-						}
-						else{
-							obj_craft_bg.syn_input_clover_id = ""
-						}
+						obj_craft_bg.insured = false
 					}
 				}
 			}
@@ -198,38 +191,32 @@ if target_id != ""{
 								obj_craft_bg.input_clover_id = ""
 							}
 						}
-						else{
-							// 消耗所有投入香料和四叶草，>5星降1星
-							add_material_amount(obj_craft_bg.input_spice_id, -obj_craft_bg.input_spice_count)
-							if obj_craft_bg.input_clover_id != ""{
-								add_material_amount(obj_craft_bg.input_clover_id, -1)
-							}
-							if current_level > 5{
-								upgrade_card(target_id, current_level - 1)
-							}
-							show_notice("不够好运，强化失败",120)
-							// 从当前星级刷新香料投入（降级条件与上面一致：>5才降级）
-							var _nl = (current_level > 5) ? (current_level - 1) : current_level
-							if _nl <= 15{
-								var _nr = get_card_craft_rule(string(_nl + 1))
-								obj_craft_bg.input_spice_id = _nr.spices_require
-								obj_craft_bg.input_spice_base = _nr.spices_amount
-								obj_craft_bg.input_spice_max = _nr.spices_amount * 4
-								obj_craft_bg.input_spice_count = _nr.spices_amount
-							}
-							else{
-								obj_craft_bg.input_spice_id = ""
-								obj_craft_bg.input_spice_count = 0
-							}
-							// 自动勾选保险并重填上次四叶草（除非四叶草不足也继续勾选保险）
-							obj_craft_bg.insured = true
-							if obj_craft_bg.input_clover_id != "" && get_material_amount(obj_craft_bg.input_clover_id) >= 1{
-								// 四叶草仍有库存，保持
-							}
-							else{
-								obj_craft_bg.input_clover_id = ""
-							}
+					else{
+						// 消耗所有投入香料和四叶草，>=6星降1星
+						add_material_amount(obj_craft_bg.input_spice_id, -obj_craft_bg.input_spice_count)
+						if obj_craft_bg.input_clover_id != ""{
+							add_material_amount(obj_craft_bg.input_clover_id, -1)
 						}
+						if current_level >= 6{
+							upgrade_card(target_id, current_level - 1)
+						}
+						show_notice("不够好运，强化失败",120)
+						// 从当前星级刷新香料投入（降级条件与上面一致：>=6才降级）
+						var _nl = (current_level >= 6) ? (current_level - 1) : current_level
+						if _nl <= 15{
+							var _nr = get_card_craft_rule(string(_nl + 1))
+							obj_craft_bg.input_spice_id = _nr.spices_require
+							obj_craft_bg.input_spice_base = _nr.spices_amount
+							obj_craft_bg.input_spice_max = _nr.spices_amount * 4
+							obj_craft_bg.input_spice_count = _nr.spices_amount
+						}
+						else{
+							obj_craft_bg.input_spice_id = ""
+							obj_craft_bg.input_spice_count = 0
+						}
+						obj_craft_bg.input_clover_id = ""
+						obj_craft_bg.insured = false
+					}
 					}
 				}
 			}
@@ -323,38 +310,32 @@ if target_id != ""{
 								obj_craft_bg.input_clover_id = ""
 							}
 						}
-						else{
-							// 消耗投入水晶和四叶草，≥5星降1星
-							add_material_amount(obj_craft_bg.input_crystal_id, -obj_craft_bg.input_crystal_count)
-							if obj_craft_bg.input_clover_id != ""{
-								add_material_amount(obj_craft_bg.input_clover_id, -1)
-							}
-							if current_level >= 5{
-								edit_gem_max_level(target_id, current_level - 1)
-								edit_gem_level(target_id, get_gem_max_level(target_id))
-							}
-							show_notice("不够好运，强化失败",120)
-							// 从当前星级刷新水晶投入
-							var _nl = (current_level >= 5) ? (current_level - 1) : current_level
-							if _nl <= 14 && (array_get_index(level_10_gems, target_id) == -1 || _nl < 10){
-								var _nr = get_gem_craft_rule(string(_nl + 1))
-								obj_craft_bg.input_crystal_id = _nr.crystal_require
-								obj_craft_bg.input_crystal_count = _nr.crystal_amount
-								obj_craft_bg.input_crystal_max = _nr.crystal_amount
-							}
-							else{
-								obj_craft_bg.input_crystal_id = ""
-								obj_craft_bg.input_crystal_count = 0
-							}
-							// 自动勾选保险并重填上次四叶草（除非四叶草不足也继续勾选保险）
-							obj_craft_bg.insured = true
-							if obj_craft_bg.input_clover_id != "" && get_material_amount(obj_craft_bg.input_clover_id) >= 1{
-								// 四叶草仍有库存，保持
-							}
-							else{
-								obj_craft_bg.input_clover_id = ""
-							}
+					else{
+						// 消耗投入水晶和四叶草，>=6星降1星
+						add_material_amount(obj_craft_bg.input_crystal_id, -obj_craft_bg.input_crystal_count)
+						if obj_craft_bg.input_clover_id != ""{
+							add_material_amount(obj_craft_bg.input_clover_id, -1)
 						}
+						if current_level >= 6{
+							edit_gem_max_level(target_id, current_level - 1)
+							edit_gem_level(target_id, get_gem_max_level(target_id))
+						}
+						show_notice("不够好运，强化失败",120)
+						// 从当前星级刷新水晶投入
+						var _nl = (current_level >= 6) ? (current_level - 1) : current_level
+						if _nl <= 14 && (array_get_index(level_10_gems, target_id) == -1 || _nl < 10){
+							var _nr = get_gem_craft_rule(string(_nl + 1))
+							obj_craft_bg.input_crystal_id = _nr.crystal_require
+							obj_craft_bg.input_crystal_count = _nr.crystal_amount
+							obj_craft_bg.input_crystal_max = _nr.crystal_amount
+						}
+						else{
+							obj_craft_bg.input_crystal_id = ""
+							obj_craft_bg.input_crystal_count = 0
+						}
+						obj_craft_bg.input_clover_id = ""
+						obj_craft_bg.insured = false
+					}
 					}
 				}
 			}
