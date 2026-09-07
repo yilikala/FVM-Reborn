@@ -13,8 +13,8 @@
     "path":"folders/物体/Mod Cards & Weapons/Bullet/throw.yy",
   },
   "parentObjectId":{
-    "name":"obj_bullet_parent1",
-    "path":"objects/obj_bullet_parent1/obj_bullet_parent1.yy",
+    "name":"obj_bullet_parent",
+    "path":"objects/obj_bullet_parent/obj_bullet_parent.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

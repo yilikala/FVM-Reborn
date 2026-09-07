@@ -9,6 +9,9 @@ function gods_shop_init(){
     register_gods_goods("hera",    {"type":"card","cost":"30","unlock_item_id":"hera",    "description":"赫拉神使：保护被罩住的卡片，摧毁时爆炸",    "display_name":"赫拉神使"})
     register_gods_goods("odin",    {"type":"card","cost":"45","unlock_item_id":"odin",    "description":"奥丁神使：发射直线穿透，威力巨大的长矛",    "display_name":"奥丁神使"})
 	register_gods_goods("aurora",    {"type":"card","cost":"45","unlock_item_id":"aurora",    "description":"欧若拉神使：为本行投掷类卡片增伤",    "display_name":"欧若拉神使"})
+	register_gods_goods("gaia",    {"type":"card","cost":"45","unlock_item_id":"gaia",    "description":"盖娅神使：投射出威力巨大的岩石炸弹",    "display_name":"盖娅神使"})
+	register_gods_goods("rig",    {"type":"card","cost":"45","unlock_item_id":"rig",    "description":"里格神使：向前方五个方向发射强力子弹",    "display_name":"里格神使"})
+	register_gods_goods("zhurong",    {"type":"card","cost":"45","unlock_item_id":"zhurong",    "description":"祝融神使：向前方抛射火球，造成持续高额伤害",    "display_name":"赤帝神使"})
 	register_gods_goods("brahma",    {"type":"card","cost":"60","unlock_item_id":"brahma",    "description":"梵天神使：变身出多个上一次种下的卡片",    "display_name":"梵天神使"})
 
     register_gods_goods("apollo_1",  {"type":"shape","cost":"45","unlock_item_id":"apollo",  "target_shape":1,"description":"阿波罗圣神：生产巨量火苗",    "display_name":"太阳神三转凭证",    "spr":spr_c_apollo_1})
@@ -21,7 +24,11 @@ function gods_shop_init(){
     register_gods_goods("hera_1",    {"type":"shape","cost":"45","unlock_item_id":"hera",    "target_shape":1,"description":"赫拉圣神：保护被罩住的卡片，摧毁时爆炸",      "display_name":"天后三转凭证",      "spr":spr_c_hera_1})
     register_gods_goods("odin_1",    {"type":"shape","cost":"60","unlock_item_id":"odin",    "target_shape":1,"description":"奥丁圣神：发射直线穿透，威力巨大的长矛",      "display_name":"主神三转凭证",      "spr":spr_c_odin_1})
 	register_gods_goods("aurora_1",    {"type":"shape","cost":"60","unlock_item_id":"aurora",    "target_shape":1,"description":"欧若拉圣神：为本行投掷类卡片增伤，死亡后爆炸",      "display_name":"曙光女神三转凭证",      "spr":spr_c_aurora_1})
+	register_gods_goods("gaia_1",    {"type":"shape","cost":"60","unlock_item_id":"gaia",    "target_shape":1,"description":"盖娅圣神：投射出威力巨大的岩石炸弹",      "display_name":"大帝女神三转凭证",      "spr":spr_c_gaia_1})
+	register_gods_goods("zhurong_1",    {"type":"shape","cost":"60","unlock_item_id":"zhurong",    "target_shape":1,"description":"祝融圣神：向前方抛射火球，造成持续高额伤害",      "display_name":"赤帝三转凭证",      "spr":spr_c_zhurong_1})
+	register_gods_goods("rig_1",    {"type":"shape","cost":"60","unlock_item_id":"rig",    "target_shape":1,"description":"里格圣神：向前方五个方向发射强力子弹",      "display_name":"守护神三转凭证",      "spr":spr_c_rig_1})
 	register_gods_goods("brahma_1",    {"type":"shape","cost":"90","unlock_item_id":"brahma",    "target_shape":1,"description":"梵天圣神：变身出多个上一次种下的卡片",      "display_name":"创造神三转凭证",      "spr":spr_c_brahma_1})
+	
 
 
     register_gods_goods("apollo_2",  {"type":"shape","cost":"60","unlock_item_id":"apollo",  "target_shape":2,"description":"太阳神·阿波罗：生产巨量火苗",    "display_name":"太阳神四转凭证",    "spr":spr_c_apollo_2})
@@ -34,6 +41,9 @@ function gods_shop_init(){
     register_gods_goods("hera_2",    {"type":"shape","cost":"60","unlock_item_id":"hera",    "target_shape":2,"description":"天后·赫拉：保护被罩住的卡片，摧毁时爆炸",        "display_name":"天后四转凭证",      "spr":spr_c_hera_2})
     register_gods_goods("odin_2",    {"type":"shape","cost":"90","unlock_item_id":"odin",    "target_shape":2,"description":"主神·奥丁：发射直线穿透，威力巨大长矛",      "display_name":"主神四转凭证",      "spr":spr_c_odin_2})
 	register_gods_goods("aurora_2",    {"type":"shape","cost":"90","unlock_item_id":"aurora",    "target_shape":2,"description":"曙光女神·欧若拉：为本行投掷类卡片增伤，死亡后爆炸",      "display_name":"曙光女神四转凭证",      "spr":spr_c_aurora_2})
+	register_gods_goods("gaia_2",    {"type":"shape","cost":"90","unlock_item_id":"gaia",    "target_shape":2,"description":"大地女神·盖娅：投射出威力巨大的岩石炸弹",      "display_name":"大帝女神四转凭证",      "spr":spr_c_gaia_2})
+	register_gods_goods("zhurong_2",    {"type":"shape","cost":"90","unlock_item_id":"zhurong",    "target_shape":2,"description":"赤帝·祝融：向前方抛射火球，造成持续高额伤害",      "display_name":"赤帝四转凭证",      "spr":spr_c_zhurong_2})
+	register_gods_goods("rig_2",    {"type":"shape","cost":"90","unlock_item_id":"rig",    "target_shape":2,"description":"守护神·里格：向前方五个方向发射强力子弹",      "display_name":"守护神四转凭证",      "spr":spr_c_rig_2})
 	register_gods_goods("brahma_2",    {"type":"shape","cost":"120","unlock_item_id":"brahma",    "target_shape":2,"description":"创造神·梵天：变身出多个上一次种下的卡片",      "display_name":"创造神四转凭证",      "spr":spr_c_brahma_2})
 
     register_gods_goods("apollo_3",  {"type":"shape","cost":"120","unlock_item_id":"apollo",  "target_shape":3,"description":"至尊太阳神：生产巨量火苗",      "display_name":"太阳神终转凭证",    "spr":spr_c_apollo_3})
@@ -46,6 +56,9 @@ function gods_shop_init(){
     register_gods_goods("hera_3",    {"type":"shape","cost":"120","unlock_item_id":"hera",    "target_shape":3,"description":"至尊天后：保护被罩住的卡片，摧毁时爆炸",        "display_name":"天后终转凭证",      "spr":spr_c_hera_3})
     register_gods_goods("odin_3",    {"type":"shape","cost":"180","unlock_item_id":"odin",    "target_shape":3,"description":"至尊主神：发射直线穿透，威力巨大的长矛",      "display_name":"主神终转凭证",      "spr":spr_c_odin_3})
 	register_gods_goods("aurora_3",    {"type":"shape","cost":"180","unlock_item_id":"aurora",    "target_shape":3,"description":"至尊曙光女神：为本行及相邻行投掷类卡片增伤，死亡后爆炸",      "display_name":"曙光女神终转凭证",      "spr":spr_c_aurora_3})
+	register_gods_goods("gaia_3",    {"type":"shape","cost":"180","unlock_item_id":"gaia",    "target_shape":3,"description":"至尊大地女神：投射出威力巨大的岩石炸弹",      "display_name":"大帝女神终转凭证",      "spr":spr_c_gaia_3})
+	register_gods_goods("zhurong_3",    {"type":"shape","cost":"180","unlock_item_id":"zhurong",    "target_shape":3,"description":"至尊赤帝：向前方抛射火球，造成持续高额伤害",      "display_name":"赤帝终转凭证",      "spr":spr_c_zhurong_3})
+	register_gods_goods("rig_3",    {"type":"shape","cost":"180","unlock_item_id":"rig",    "target_shape":3,"description":"至尊守护神：向前方五个方向发射强力子弹",      "display_name":"守护神终转凭证",      "spr":spr_c_rig_3})
 	register_gods_goods("brahma_3",    {"type":"shape","cost":"240","unlock_item_id":"brahma",    "target_shape":3,"description":"至尊创造神：变身出多个上一次种下的卡片",      "display_name":"创造神终转凭证",      "spr":spr_c_brahma_3})
 	
 	register_gods_goods("coal_starfish_real_1",   {"type":"shape","cost":"0","unlock_item_id":"coal_starfish_real",   "target_shape":1,"description":"海星大帝神力的一部分，为什么会出现在这里？",    "display_name":"芝士焗海星(真）",      "spr":spr_c_coal_starfish_real_1})

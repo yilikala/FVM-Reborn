@@ -1,1 +1,0 @@
-flash_value = 150

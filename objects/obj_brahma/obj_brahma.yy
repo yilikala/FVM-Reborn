@@ -11,12 +11,12 @@
   "name":"obj_brahma",
   "overriddenProperties":[],
   "parent":{
-    "name":"Assistant",
-    "path":"folders/物体/Mod Cards & Weapons/Cards/Assistant.yy",
+    "name":"brahma",
+    "path":"folders/物体/new_cards/brahma.yy",
   },
   "parentObjectId":{
-    "name":"obj_card_parent1",
-    "path":"objects/obj_card_parent1/obj_card_parent1.yy",
+    "name":"obj_card_parent",
+    "path":"objects/obj_card_parent/obj_card_parent.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

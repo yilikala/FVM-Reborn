@@ -364,7 +364,7 @@ function slots_init(){
 	    {"shape":0, "sprite":spr_apollo, "cost":200, "cooldown":50*60, "description":"阿波罗神使：生产巨量火苗","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
 	    {"shape":1, "sprite":spr_apollo_1, "cost":200, "cooldown":40*60, "description":"阿波罗圣神：生产巨量火苗","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
 		{"shape":2, "sprite":spr_apollo_2, "cost":200, "cooldown":30*60, "description":"太阳神·阿波罗：生产巨量火苗","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
-		{"shape":3, "sprite":spr_apollo_3, "cost":25, "cooldown":15*60, "description":"至尊太阳神：生产巨量火苗","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1}
+		{"shape":3, "sprite":spr_apollo_icon, "cost":25, "cooldown":15*60, "description":"至尊太阳神：生产巨量火苗","plant_type":"normal","feature_type":"normal","target_card":"none","place_preview":spr_apollo_3,"is_gold":1}
 	]);	
 	register_card("ares",obj_ares,[
 	    {"shape":0, "sprite":spr_ares, "cost":150, "cooldown":7*60, "description":"阿瑞斯神使：向前后发射威力巨大的子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
@@ -425,5 +425,23 @@ function slots_init(){
 		{"shape":1, "sprite":spr_brahma_1, "cost":325, "cooldown":55*60, "description":"梵天圣神：变身出多个上一次种下的卡片","plant_type":"coffee","feature_type":"normal","target_card":"none","is_gold":1},
 		{"shape":2, "sprite":spr_brahma_2, "cost":325, "cooldown":55*60, "description":"创造神·梵天：变身出多个上一次种下的卡片","plant_type":"coffee","feature_type":"normal","target_card":"none","is_gold":1},
 		{"shape":3, "sprite":spr_brahma_3, "cost":325, "cooldown":55*60, "description":"至尊创造神：变身出多个上一次种下的卡片","plant_type":"coffee","feature_type":"normal","target_card":"none","is_gold":1}
+	]);
+	register_card("gaia", obj_gaia, [
+	    {"shape":0, "sprite":spr_gaia, "cost":350, "cooldown":35*60, "description":"盖亚神使：双连发射3*3范围爆炸的毁灭巨石","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+		{"shape":1, "sprite":spr_gaia_1, "cost":350, "cooldown":35*60, "description":"盖亚圣神：双连发射3*3范围爆炸的毁灭巨石","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+		{"shape":2, "sprite":spr_gaia_2, "cost":350, "cooldown":35*60, "description":"大地女神·盖亚：三连发射3*3范围爆炸的毁灭巨石","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+		{"shape":3, "sprite":spr_gaia_3, "cost":350, "cooldown":35*60, "description":"至尊大地女神：三连发射5*5范围爆炸的毁灭巨石","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1}
+	]);
+	register_card("zhurong", obj_zhurong, [
+	    {"shape":0, "sprite":spr_zhurong, "cost":245, "cooldown":7*60, "description":"祝融神使：点燃前方3x3区域，持续灼烧敌人","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":1, "sprite":spr_zhurong_1, "cost":245, "cooldown":7*60, "description":"祝融圣神：点燃前方3x3区域，持续灼烧敌人","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+		{"shape":2, "sprite":spr_zhurong_2, "cost":245, "cooldown":7*60, "description":"赤帝·祝融：点燃前方5x5区域，持续灼烧敌人","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+		{"shape":3, "sprite":spr_zhurong_3, "cost":245, "cooldown":7*60, "description":"至尊赤帝：点燃前方7x5区域，持续灼烧敌人","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1}
+	]);
+	register_card("rig", obj_rig, [
+	    {"shape":0, "sprite":spr_rig, "cost":185, "cooldown":7*60, "description":"里格神使：前方5方向发射穿透子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":1, "sprite":spr_rig_1, "cost":260, "cooldown":7*60, "description":"里格圣神：前方5方向发射穿透子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+		{"shape":2, "sprite":spr_rig_2, "cost":260, "cooldown":7*60, "description":"守护神·里格：前方5方向发射穿透子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+		{"shape":3, "sprite":spr_rig_icon_3, "cost":260, "cooldown":7*60, "description":"至尊守护神：前方5方向发射穿透子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1,"place_preview":spr_rig_3}
 	]);
 }

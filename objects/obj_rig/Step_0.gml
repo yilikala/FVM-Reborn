@@ -13,6 +13,15 @@ if is_slowdown{
 	current_flash_speed *= 2
 }
 
+if shape >= 2 {
+	var rig_count = 0
+	with(obj_rig){
+		rig_count++
+	}
+	var buff_rg = min(1+0.05*(rig_count -1), 1.45)
+	bullet_damage = atk * buff_rg;
+}
+
 //冷却计时器，没冷却完啥都不要干
 if cooldown_timer > 0{
 	cooldown_timer --;

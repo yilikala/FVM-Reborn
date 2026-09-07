@@ -1,6 +1,3 @@
-var buff_rg = min(1+0.05*(global.rig_count -1), 1.45)
-var bullet_damage = atk * ((shape >= 2 )?buff_rg: 1);
-
 var inst = instance_create_depth(x+60,y-40,depth-500,obj_rig_bullet)
 inst.damage = bullet_damage
 inst.move_speed_x = 8

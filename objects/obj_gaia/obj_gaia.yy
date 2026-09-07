@@ -10,12 +10,12 @@
   "name":"obj_gaia",
   "overriddenProperties":[],
   "parent":{
-    "name":"Boomer",
-    "path":"folders/物体/Mod Cards & Weapons/Cards/Boomer.yy",
+    "name":"gaia",
+    "path":"folders/物体/new_cards/gaia.yy",
   },
   "parentObjectId":{
-    "name":"obj_card_parent2",
-    "path":"objects/obj_card_parent2/obj_card_parent2.yy",
+    "name":"obj_card_parent",
+    "path":"objects/obj_card_parent/obj_card_parent.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

@@ -4,7 +4,7 @@ if shape >= 1{
 	_flame_count = 3
 }
 if _has_attire{
-	if shape == 0{
+	if shape >= 0{
 		_flame_count = 4
 	}
 	else if shape == 2{

@@ -87,7 +87,9 @@ apply_attire_card_overrides("egg_boiler_pult")
 
 
 //{//测试版设置初始存档
-//unlock_card("brahma",16,3,8)
+unlock_card("gaia",16,3,8)
+unlock_card("zhurong",16,3,8)
+unlock_card("rig",16,3,8)
 //	unlock_card("toast_bread",13,0,8)
 //unlock_card("small_fire",13,2,8)
 //	unlock_card("xiao_long_bao",13,0,8)

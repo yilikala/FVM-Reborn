@@ -22,7 +22,7 @@ plant_type = "normal"
 _r = 1
 is_slowdown = false
 
-atk_whitelist = ["thor","egg_god","chocolate_pult","ice_egg_boiler_pult","egg_boiler_pult","pan_fried_bun","salad_pult","stinky_tofu_pult"]
+atk_whitelist = ["thor","zhurong","gaia","egg_god","chocolate_pult","ice_egg_boiler_pult","egg_boiler_pult","pan_fried_bun","salad_pult","stinky_tofu_pult"]
 
 ds_list_add(global.buff_sources, id)
 global.buff_dirty = true

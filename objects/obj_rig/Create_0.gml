@@ -19,9 +19,8 @@ flash_speed = 5
 plant_type = "normal"
 is_slowdown = false
 target_type = "pierce"
+bullet_damage = atk
 
 cooldown_timer = cycle
 attacking = false
-
-global.rig_count += 1
 

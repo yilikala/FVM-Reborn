@@ -9,8 +9,8 @@
   "name":"obj_gaia_bullet_effect",
   "overriddenProperties":[],
   "parent":{
-    "name":"bullet effect",
-    "path":"folders/物体/Mod Cards & Weapons/Bullet/bullet effect.yy",
+    "name":"gaia",
+    "path":"folders/物体/new_cards/gaia.yy",
   },
   "parentObjectId":null,
   "persistent":false,

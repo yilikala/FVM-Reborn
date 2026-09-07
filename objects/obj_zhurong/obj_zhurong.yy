@@ -10,12 +10,12 @@
   "name":"obj_zhurong",
   "overriddenProperties":[],
   "parent":{
-    "name":"Pulter",
-    "path":"folders/物体/Mod Cards & Weapons/Cards/Pulter.yy",
+    "name":"brahma",
+    "path":"folders/物体/new_cards/brahma.yy",
   },
   "parentObjectId":{
-    "name":"obj_card_parent2",
-    "path":"objects/obj_card_parent2/obj_card_parent2.yy",
+    "name":"obj_card_parent",
+    "path":"objects/obj_card_parent/obj_card_parent.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

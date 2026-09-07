@@ -9,7 +9,7 @@ row = 0
 
 can_mouse_list = ["can_mouse"]
 
-damage = 900
+damage = 0
 timer = 0
 
 shape_bullet = 0
