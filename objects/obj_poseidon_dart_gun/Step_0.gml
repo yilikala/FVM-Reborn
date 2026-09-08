@@ -1,8 +1,8 @@
-// obj_plant_parent �?Step 事件
+// obj_plant_parent �?Step 事件
 if global.is_paused{
 	exit
 }
-// 动画计时�?
+// 动画计时�?
 	if timer < flash_speed - 1 {
 	    timer++;
 	} else {
@@ -23,9 +23,10 @@ if global.is_paused{
 
 
 
-// 计算深度�?//var depth_value = -((y + depth_offset) * 10 + x);
+// 计算深度�?//var depth_value = -((y + depth_offset) * 10 + x);
 //depth = depth_value - depth_group * 100;
 depth = parent_player.depth-2
+grid_row = parent_player.grid_row
 
 //检测自身右方是否有敌人
 var has_enemy = false
@@ -48,7 +49,7 @@ if (has_enemy) {
         if (fire_count < bullet_count) {
 
             if (fire_cd <= 0) {
-                event_user(1);   // 发射一�?
+                event_user(1);   // 发射一�?
 
                 fire_count++;
                 fire_cd = 4;     // 间隔5tick
@@ -60,12 +61,12 @@ if (has_enemy) {
 
     }
 
-    // 一个周期结�?
+    // 一个周期结�?
     if (attack_timer > cycle) {
         attack_timer = 0;
         state = CARD_STATE.IDLE;
 
-        // 重置发射状�?
+        // 重置发射状�?
         fire_count = 0;
         fire_cd = 0;
     }

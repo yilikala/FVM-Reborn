@@ -6,7 +6,7 @@ draw_set_alpha(1);
 draw_self()
 
 // 绘制背包格子背景
-draw_sprite_ext(spr_package_bg_2,0,530,room_height/2,1.8,1.8,0,c_white,1)
+draw_sprite_ext(spr_package_bg_2, 0, 530, room_height/2, 0.9, 0.9, 0, c_white, 1)
 
 // 绘制玩家金币数量
 draw_set_font(font_number); 
@@ -31,14 +31,14 @@ if info_button_select == 1{
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_bottom);
 	draw_set_font(font_yuan)
-	//绘制武器栏位
+	//绘制武器栏位（保留动态槽位逻辑，缩放对齐高清化）
 	var _slot_id_list = ["main_weapon","secondary_weapon","super_weapon"]
-	for(var i = 0;i < 3; i++){
-		draw_sprite_ext(spr_package_weapon_bg,0,x-1180,y-320+260*i,2,2,0,c_white,1)
+	for(var i = 0; i < 3; i++){
+		draw_sprite_ext(spr_package_weapon_bg, 0, x-1180, y-320+260*i, 1, 1, 0, c_white, 1)
 		var _wid = variable_struct_get(global.save_data.equipped_items, _slot_id_list[i]).id
 		var _slot_limit = get_weapon_slot_limit(_wid)
 		for(var j = 0; j < _slot_limit ; j++){
-			draw_sprite_ext(spr_package_gem_bg,0,x-1180+200*j,y-220+260*i,1.8,1.8,0,c_white,1)
+			draw_sprite_ext(spr_package_gem_bg, 0, x-1180+200*j, y-220+260*i, 0.9, 0.9, 0, c_white, 1)
 		}
 	}
 	if global.save_data.equipped_items.main_weapon.id != ""{
@@ -47,9 +47,9 @@ if info_button_select == 1{
 		var gem_list = global.save_data.equipped_items.main_weapon.gems
 		for(var i = 0 ; i < array_length(gem_list);i++){
 			var gem_icon = get_gem_info(gem_list[i]).icon
-			draw_sprite_ext(gem_icon,0,x-1180+200*i,y-220,1.7,1.7,0,c_white,1)
+			draw_sprite_ext(gem_icon,0,x-1180+200*i,y-220,0.85,0.85,0,c_white,1)
 			if get_gem_level(gem_list[i]) > 0{
-				draw_sprite_ext(spr_star_slot,get_gem_level(gem_list[i])-1,x-1205+200*i,y-246,1.6,1.6,0,c_white,1)
+				draw_sprite_ext(spr_star_slot, get_gem_level(gem_list[i])-1, x-1205+200*i, y-246, 0.8, 0.8, 0, c_white, 1)
 			}
 		}
 	}
@@ -59,9 +59,9 @@ if info_button_select == 1{
 		var gem_list = global.save_data.equipped_items.secondary_weapon.gems
 		for(var i = 0 ; i < array_length(gem_list);i++){
 			var gem_icon = get_gem_info(gem_list[i]).icon
-			draw_sprite_ext(gem_icon,0,x-1180+200*i,y+40,1.7,1.7,0,c_white,1)
+			draw_sprite_ext(gem_icon,0,x-1180+200*i,y+40,0.85,0.85,0,c_white,1)
 			if get_gem_level(gem_list[i]) > 0{
-				draw_sprite_ext(spr_star_slot,get_gem_level(gem_list[i])-1,x-1205+200*i,y+14,1.6,1.6,0,c_white,1)
+				draw_sprite_ext(spr_star_slot, get_gem_level(gem_list[i])-1, x-1205+200*i, y+14, 0.8, 0.8, 0, c_white, 1)
 			}
 		}
 	}
@@ -71,9 +71,9 @@ if info_button_select == 1{
 		var gem_list = global.save_data.equipped_items.super_weapon.gems
 		for(var i = 0 ; i < array_length(gem_list);i++){
 			var gem_icon = get_gem_info(gem_list[i]).icon
-			draw_sprite_ext(gem_icon,0,x-1180+200*i,y+300,1.7,1.7,0,c_white,1)
+			draw_sprite_ext(gem_icon,0,x-1180+200*i,y+300,0.85,0.85,0,c_white,1)
 			if get_gem_level(gem_list[i]) > 0{
-				draw_sprite_ext(spr_star_slot,get_gem_level(gem_list[i])-1,x-1205+200*i,y+274,1.6,1.6,0,c_white,1)
+				draw_sprite_ext(spr_star_slot, get_gem_level(gem_list[i])-1, x-1205+200*i, y+274, 0.8, 0.8, 0, c_white, 1)
 			}
 		}
 	}
@@ -133,10 +133,10 @@ if package_button_select == 1 {
     surface_set_target(card_surface)
     draw_clear_alpha(c_black, 0)
 
-    // 绘制背包格子背景
+    // 绘制背包格子背景（高清素材：1.8 -> 0.9）
     for(var i = 0 ; i < package_cols ; i++){
         for(var j = 0 ; j < _total_rows ; j++){
-            draw_sprite_ext(spr_package_slot_bg,0,42+i*84,48+96*j-y_offset,1.8,1.8,0,c_white,1)
+            draw_sprite_ext(spr_package_slot_bg, 0, 42+i*84, 48+96*j-y_offset, 0.9, 0.9, 0, c_white, 1)
         }
     }
 
@@ -196,7 +196,8 @@ if package_button_select == 1 {
             draw_text(_cx, _cy+37, card_data[? "cost"])
             draw_set_font(font_yuan)
             if level > 0{
-                draw_sprite_ext(spr_star_slot, level - 1, _cx-25, _cy-35, 1.4, 1.4, 0, c_white, 1)
+                // 高清星星插槽：1.4 -> 0.7
+                draw_sprite_ext(spr_star_slot, level - 1, _cx-25, _cy-35, 0.7, 0.7, 0, c_white, 1)
             }
         } else {
             // 被拖卡片：原位置留空（仅格子背景），并缓存渲染数据用于悬浮绘制
@@ -253,12 +254,12 @@ if package_button_select == 1 {
         draw_text(mouse_x, mouse_y+37, drag_card_data[? "cost"])
         draw_set_font(font_yuan)
         if drag_card_level > 0{
-            draw_sprite_ext(spr_star_slot, drag_card_level - 1, mouse_x-25, mouse_y-35, 1.4, 1.4, 0, c_white, 1)
+            // 高清星星插槽：1.4 -> 0.7
+            draw_sprite_ext(spr_star_slot, drag_card_level - 1, mouse_x-25, mouse_y-35, 0.7, 0.7, 0, c_white, 1)
         }
     } else {
         // 悬停提示（拖拽中不显示以免遮挡）
         if (hover_card_index != -1) {
-            // 获取鼠标位置
             var tooltip_x = mouse_x + 15
             var tooltip_y = mouse_y + 15
 
@@ -300,10 +301,10 @@ else if package_button_select == 2 {
     surface_set_target(weapon_surface)
     draw_clear_alpha(c_black, 0)
 
-    // 绘制武器栏背景网格（空槽位）
+    // 绘制武器栏背景网格（高清素材：1.8 -> 0.9）
     for(var i = 0; i < _gw; i++){
         for(var j = 0; j < _total_rows; j++){
-            draw_sprite_ext(spr_package_slot_bg,1,42+i*84,48+88*j-weapon_y_offset,1.8,1.8,0,c_white,1)
+            draw_sprite_ext(spr_package_slot_bg, 1, 42+i*84, 48+88*j-weapon_y_offset, 0.9, 0.9, 0, c_white, 1)
         }
     }
 
@@ -320,8 +321,8 @@ else if package_button_select == 2 {
         var _cx = 42 + _col * 84
         var _cy = 48 + _row * 88 - weapon_y_offset
         var _eq = is_weapon_equipped(_wid)
-        draw_sprite_ext(spr_package_slot_bg,1,_cx,_cy,1.8,1.8,0,_eq?c_yellow:c_white,1)
-        draw_sprite_ext(_wdata.icon,0,_cx,_cy,1,1,0,c_white,1)
+        draw_sprite_ext(spr_package_slot_bg, 1, _cx, _cy, 0.9, 0.9, 0, _eq?c_yellow:c_white, 1)
+        draw_sprite_ext(_wdata.icon, 0, _cx, _cy, 1, 1, 0, c_white, 1)
         if (point_in_rectangle(mouse_x,mouse_y,_surf_x+_cx-42,_surf_y+_cy-44,_surf_x+_cx+42,_surf_y+_cy+44)){
             hover_weapon_index = i
         }
@@ -342,10 +343,12 @@ else if package_button_select == 2 {
         var _cx = 42 + _col * 84
         var _cy = 48 + _row * 88 - weapon_y_offset
         var _eq = (get_gem_index(_gid) != -1)
-        draw_sprite_ext(spr_package_slot_bg,1,_cx,_cy,1.8,1.8,0,_eq?c_yellow:c_white,1)
-        draw_sprite_ext(_gdata.icon,0,_cx,_cy,1.4,1.4,0,c_white,1)
+        draw_sprite_ext(spr_package_slot_bg, 1, _cx, _cy, 0.9, 0.9, 0, _eq?c_yellow:c_white, 1)
+        // 宝石图标高清减半：1.4 -> 0.7
+        draw_sprite_ext(_gdata.icon, 0, _cx, _cy, 0.7, 0.7, 0, c_white, 1)
         if (get_gem_level(_gid) > 0){
-            draw_sprite_ext(spr_star_slot,get_gem_level(_gid)-1,_cx-28,_cy-30,1.4,1.4,0,c_white,1)
+            // 高清星星插槽：1.4 -> 0.7
+            draw_sprite_ext(spr_star_slot, get_gem_level(_gid)-1, _cx-28, _cy-30, 0.7, 0.7, 0, c_white, 1)
         }
         if (point_in_rectangle(mouse_x,mouse_y,_surf_x+_cx-42,_surf_y+_cy-44,_surf_x+_cx+42,_surf_y+_cy+44)){
             hover_gem_index = i
@@ -365,8 +368,8 @@ else if package_button_select == 2 {
         var _cx = 42 + _col * 84
         var _cy = 48 + _row * 88 - weapon_y_offset
         var _eq = is_weapon_equipped(_wid)
-        draw_sprite_ext(spr_package_slot_bg,1,_cx,_cy,1.8,1.8,0,_eq?c_yellow:c_white,1)
-        draw_sprite_ext(_wdata.icon,0,_cx,_cy,1,1,0,c_white,1)
+        draw_sprite_ext(spr_package_slot_bg, 1, _cx, _cy, 0.9, 0.9, 0, _eq?c_yellow:c_white, 1)
+        draw_sprite_ext(_wdata.icon, 0, _cx, _cy, 1, 1, 0, c_white, 1)
         if (point_in_rectangle(mouse_x,mouse_y,_surf_x+_cx-42,_surf_y+_cy-44,_surf_x+_cx+42,_surf_y+_cy+44)){
             hover_weapon_index = i
         }
@@ -395,11 +398,13 @@ else if package_button_select == 2 {
             var _cx2 = 42 + _col2 * 84
             var _cy2 = 48 + _row2 * 88 - weapon_y_offset
             var _eq2 = (get_gem_index(_gid) != -1)
-            draw_sprite_ext(spr_package_slot_bg,1,_cx2,_cy2,1.8,1.8,0,_eq2?c_yellow:c_white,1)
+            draw_sprite_ext(spr_package_slot_bg, 1, _cx2, _cy2, 0.9, 0.9, 0, _eq2?c_yellow:c_white, 1)
             if _gem_unlocked {
-                draw_sprite_ext(_gdata.icon,0,_cx2,_cy2,1.4,1.4,0,c_white,1)
+                // 专属宝石图标高清减半：1.4 -> 0.7
+                draw_sprite_ext(_gdata.icon, 0, _cx2, _cy2, 0.7, 0.7, 0, c_white, 1)
                 if (get_gem_level(_gid) > 0){
-                    draw_sprite_ext(spr_star_slot,get_gem_level(_gid)-1,_cx2-28,_cy2-30,1.4,1.4,0,c_white,1)
+                    // 高清星星插槽：1.4 -> 0.7
+                    draw_sprite_ext(spr_star_slot, get_gem_level(_gid)-1, _cx2-28, _cy2-30, 0.7, 0.7, 0, c_white, 1)
                 }
                 if (point_in_rectangle(mouse_x,mouse_y,_surf_x+_cx2-42,_surf_y+_cy2-44,_surf_x+_cx2+42,_surf_y+_cy2+44)){
                     hover_gem_index = _unlock_idx
@@ -418,34 +423,26 @@ else if package_button_select == 2 {
         var weapon_data = global.weapon_pool[? weapon_id];
         
         if (!is_undefined(weapon_data)) {
-            // 获取鼠标位置
             var tooltip_x = mouse_x - 15;
             var tooltip_y = mouse_y - 15;
-            
-			// 获取提示文本
             
             var tooltip_text = ""
             var is_equipped = is_weapon_equipped(weapon_id);
             if (is_equipped) {
-                var slot = get_weapon_slot(weapon_id);
                 tooltip_text = weapon_data.description + "\n已装备\n左键点击卸下"
             } else {
                 tooltip_text = weapon_data.description + "\n左键点击装备"
             }
 			
-            // 绘制提示背景
             draw_set_color(c_black);
             draw_set_alpha(0.7);
             draw_rectangle(tooltip_x - string_width(tooltip_text) - 5, tooltip_y - 5, 
                           tooltip_x +5, tooltip_y + string_height(tooltip_text)+5, false);
-			//绘制提示文本
 			draw_set_halign(fa_left);
             draw_set_valign(fa_top);
             draw_set_alpha(1);
             draw_set_color(c_white);
 			draw_text(tooltip_x- string_width(tooltip_text), tooltip_y, tooltip_text);
-			
-            
         }
     }
     if (hover_gem_index != -1) {
@@ -453,38 +450,28 @@ else if package_button_select == 2 {
         var weapon_data = get_gem_info(weapon_id)
         
         if (!is_undefined(weapon_data)) {
-            // 获取鼠标位置
             var tooltip_x = mouse_x - 15;
             var tooltip_y = mouse_y - 15;
-            
-			// 获取提示文本
             
             var tooltip_text = ""
             var is_equipped = (get_gem_index(weapon_id) != -1)
             if (is_equipped) {
-                //var slot = get_weapon_slot(weapon_id);
                 tooltip_text = weapon_data.description + "\n左键点击卸下\n右键点击编辑"
             } else {
                 tooltip_text = weapon_data.description + "\n左键点击镶嵌\n右键点击编辑"
             }
 			
-            // 绘制提示背景
             draw_set_color(c_black);
             draw_set_alpha(0.7);
             draw_rectangle(tooltip_x - string_width(tooltip_text)- 5, tooltip_y - 5, 
                           tooltip_x +5, tooltip_y + string_height(tooltip_text)+5, false);
-			//绘制提示文本
 			draw_set_halign(fa_left);
             draw_set_valign(fa_top);
             draw_set_alpha(1);
             draw_set_color(c_white);
 			draw_text(tooltip_x- string_width(tooltip_text), tooltip_y, tooltip_text);
-			
-            
         }
     }
-	
-
 }
 else if package_button_select == 3{
 	if surface_exists(package_surface){
@@ -494,7 +481,7 @@ else if package_button_select == 3{
 	// 绘制道具背包
     for(var i = 0 ; i < package_cols ; i++){
         for(var j = 0 ; j < package_rows ; j++){
-            draw_sprite_ext(spr_package_slot_bg,1,42+i*84,44 + 88 * j-y_offset,1.8,1.8,0,c_white,1)
+            draw_sprite_ext(spr_package_slot_bg, 1, 42+i*84, 44 + 88 * j-y_offset, 0.9, 0.9, 0, c_white, 1)
         }
     }
 	// 绘制所有道具
@@ -507,7 +494,6 @@ else if package_button_select == 3{
         var material_data = get_material_info(material_id)
         
         if (!is_undefined(material_data)) {
-            // 计算道具位置
             var row = material_data.pos_y;
             var col = material_data.pos_x;
             
@@ -515,8 +501,7 @@ else if package_button_select == 3{
                 var material_x = 42 + col * 84;
                 var material_y = 44 + row * 88 - y_offset;
                                
-                //draw_sprite_ext(spr_package_slot_bg, 1, weapon_x, weapon_y, 1.8, 1.8, 0, c_white, 1);
-                draw_sprite_ext(spr_craft_material,material_data.icon, material_x, material_y, 1.8, 1.8, 0, c_white, 1);
+                draw_sprite_ext(spr_craft_material, material_data.icon,  material_x,  material_y, 0.9, 0.9,  0,  c_white,  1);
 				draw_set_halign(fa_right);
 				draw_set_valign(fa_bottom);
 				draw_set_colour(c_white)
@@ -556,31 +541,21 @@ else if package_button_select == 3{
         var material_data = get_material_info(material_id)
         
         if (!is_undefined(material_data)) {
-            // 获取鼠标位置
             var tooltip_x = mouse_x - 15;
             var tooltip_y = mouse_y - 15;
             
-			// 获取提示文本
+            var tooltip_text = material_data.description + "\n数量："+string(get_material_amount(material_id))
             
-            var tooltip_text = ""
-            
-			tooltip_text = material_data.description + "\n数量："+string(get_material_amount(material_id))
-            
-			
-            // 绘制提示背景
 			draw_set_font(font_yuan)
             draw_set_color(c_black);
             draw_set_alpha(0.7);
             draw_rectangle(tooltip_x - string_width(tooltip_text) - 5, tooltip_y - 5, 
                           tooltip_x +5, tooltip_y + string_height(tooltip_text)+5, false);
-			//绘制提示文本
 			draw_set_halign(fa_left);
             draw_set_valign(fa_top);
             draw_set_alpha(1);
             draw_set_color(c_white);
 			draw_text(tooltip_x- string_width(tooltip_text), tooltip_y, tooltip_text);
-			
-            
         }
     }
 }

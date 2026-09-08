@@ -9,7 +9,7 @@ draw_text(565,53,global.level_data.name)
 	surface_set_target(slot_surface)
 for(var i = 0 ; i < slot_rows ; i++){
         for(var j = 0 ; j < slot_cols ; j++){
-            draw_sprite_ext(spr_package_slot_bg,0,x+42+i*84,y + 48 + 96 * j- y_offset,1.8,1.8,0,c_white,1)
+            draw_sprite_ext(spr_package_slot_bg, 0, x+42+i*84, y + 48 + 96 * j- y_offset, 0.9, 0.9, 0, c_white, 1)
         }
     }
     
@@ -71,6 +71,75 @@ for(var i = 0 ; i < slot_rows ; i++){
                 info_index = j
                 break
             }
+			for(var s = 0;s<ds_list_size(global.selected_deck);s++){
+				if global.selected_deck[| s][? "card_id"] == card_id{
+					is_unlocked = false
+					is_selected = true
+					break
+				}
+			}
+            
+            // 绘制卡片
+            if (is_unlocked) {
+                // 已解锁的卡片正常绘制
+				draw_sprite_ext(spr_slot, 0, card_x, card_y-3, 0.25, 0.25, 0, c_white, 1);
+                draw_sprite_ext(card_data[? "sprite"], 0, card_x, card_y+15, 0.7, 0.7, 0, c_white, 1);
+				draw_set_color(c_black);
+				draw_set_halign(fa_center);
+				draw_set_valign(fa_bottom);
+				draw_set_font(font_pixel)
+				draw_text(card_x,card_y+37,card_data[? "cost"])
+				draw_set_font(font_yuan)
+				var length = array_length(global.save_data.unlocked_cards)
+				var info_index = 0
+				for (var j = 0;j < length;j++){
+					if global.save_data.unlocked_cards[j].id == card_id{
+						info_index = j
+						break
+					}
+				}
+				var level = global.save_data.unlocked_cards[info_index].level
+				if level > 0{
+					draw_sprite_ext(spr_star_slot,  level - 1,  card_x-25,  card_y-35, 0.7, 0.7, 0, c_white, 1);
+				}
+                // 检查鼠标是否悬停在卡片上
+                var spr_width = 84;
+                var spr_height = 96;
+				
+				var hover_x = x + 803 + col * 84
+				var hover_y = y + 375 + row * 96 - y_offset
+                
+                if (point_in_rectangle(mouse_x, mouse_y, 
+                                      hover_x - spr_width/2, hover_y - spr_height/2,
+                                      hover_x + spr_width/2, hover_y + spr_height/2)) 
+				&& mouse_y > y+315 && mouse_y < y+755{
+                    hover_card_index = card_index;
+                }
+            } else if (is_selected){
+                // 未解锁的卡片使用灰色滤镜
+				draw_set_color(c_black);
+				draw_set_halign(fa_center);
+				draw_set_valign(fa_bottom);
+				draw_set_font(font_pixel)
+				draw_sprite_ext(spr_slot, 0, card_x, card_y-3, 0.25, 0.25, 0, c_gray, 1);
+				card_data = card_data_shapes[| card_shape]
+                draw_sprite_ext(card_data[? "sprite"], 0, card_x, card_y+15, 0.7, 0.7, 0, c_gray, 1);
+				var info_index = 0
+				var length = array_length(global.save_data.unlocked_cards)
+				for (var j = 0;j < length;j++){
+					if global.save_data.unlocked_cards[j].id == card_id{
+						info_index = j
+						break
+					}
+				}
+				var level = global.save_data.unlocked_cards[info_index].level
+				if level > 0{
+					draw_sprite_ext(spr_star_slot,  level - 1,  card_x-25,  card_y-35, 0.7, 0.7, 0, c_gray, 1);
+				}
+				draw_text(card_x,card_y+37,card_data[? "cost"])
+            }
+            
+            card_index++;
         }
         var level = global.save_data.unlocked_cards[info_index].level
         if level > 0{
@@ -135,20 +204,20 @@ draw_surface(slot_surface,x-25+803-42,y+ 375-48)
     }
 }	
 {//绘制已选择的卡组
-draw_sprite_ext(spr_ready_room_slot,0,x+1271,y+129,1.84,1.84,0,c_white,1)
+draw_sprite_ext(spr_ready_room_slot, 0, x+1271, y+129, 0.92, 0.92, 0, c_white, 1)
 for(var i = 0;i<11;i++){
-	draw_sprite_ext(spr_package_slot_bg,0,x+805+i*86,y + 130,1.8,1.8,0,c_white,1)
+	draw_sprite_ext(spr_package_slot_bg, 0, x+805+i*86, y + 130, 0.9, 0.9, 0, c_white, 1)
 	if i+deck_first_slot_index < global.save_data.unlocked_items.max_slot{
-		draw_sprite_ext(spr_ready_room_slot_number,i+deck_first_slot_index,x+805+i*86,y + 130,1.8,1.8,0,c_white,1)
+		draw_sprite_ext(spr_ready_room_slot_number, i+deck_first_slot_index, x+805+i*86, y + 130, 0.9, 0.9, 0, c_white, 1)
 	}
 	else{
-		draw_sprite_ext(spr_ready_room_slot_lock,0,x+805+i*86,y + 130,1.8,1.8,0,c_white,1)
+		draw_sprite_ext(spr_ready_room_slot_lock, 0, x+805+i*86, y + 130, 0.9, 0.9, 0, c_white, 1)
 	}
 	
 }
 hover_slot_index = -1
 for(var i = deck_first_slot_index; i < deck_first_slot_index+11;i++){
-	if i < ds_list_size(global.selected_deck){
+	if i < deck_slot_max() && !deck_slot_is_empty(i){
 	var card_id = global.selected_deck[| i][? "card_id"]
 	var card_shape = global.selected_deck[| i][? "shape"]
 	var card_data = global.selected_deck[| i][? "data"]
@@ -177,7 +246,7 @@ for(var i = deck_first_slot_index; i < deck_first_slot_index+11;i++){
 				}
 				var level = global.save_data.unlocked_cards[info_index].level
 				if level > 0{
-					draw_sprite_ext(spr_star_slot, level - 1, card_x-25, card_y-35,1.4,1.4,0,c_white,1);
+					draw_sprite_ext(spr_star_slot,  level - 1,  card_x-25,  card_y-35, 0.7, 0.7, 0, c_white, 1);
 				}
                 // 检查鼠标是否悬停在卡片上
                 var spr_width = 84;
@@ -206,11 +275,11 @@ for(var i = deck_first_slot_index; i < deck_first_slot_index+11;i++){
 	//绘制武器栏位
 	var _slot_id_list = ["main_weapon","secondary_weapon","super_weapon"]
 	for(var i = 0;i < 3; i++){
-		draw_sprite_ext(spr_package_weapon_bg,0,x+120,y+160+100*i,2,2,0,c_white,1)
+		draw_sprite_ext(spr_package_weapon_bg,0,x+120,y+160+100*i,1,1,0,c_white,1)
 		var _wid = variable_struct_get(global.save_data.equipped_items, _slot_id_list[i]).id
 		var _slot_limit = get_weapon_slot_limit(_wid)
 		for(var j = 0; j < _slot_limit ; j++){
-			draw_sprite_ext(spr_package_gem_bg,0,x+240+120*j,y+160+100*i,1.7,1.7,0,c_white,1)
+			draw_sprite_ext(spr_package_gem_bg,0,x+240+120*j,y+160+100*i,0.85,0.85,0,c_white,1)
 		}
 	}
 	if global.save_data.equipped_items.main_weapon.id != ""{
@@ -219,9 +288,9 @@ for(var i = deck_first_slot_index; i < deck_first_slot_index+11;i++){
 		var gem_list = global.save_data.equipped_items.main_weapon.gems
 		for(var i = 0 ; i < array_length(gem_list);i++){
 			var gem_icon = get_gem_info(gem_list[i]).icon
-			draw_sprite_ext(gem_icon,0,x+240+120*i,y+160,1.6,1.6,0,c_white,1)
+			draw_sprite_ext(gem_icon,0,x+240+120*i,y+160,0.8,0.8,0,c_white,1)
 			if get_gem_level(gem_list[i]) > 0{
-				draw_sprite_ext(spr_star_slot,get_gem_level(gem_list[i])-1,x+215+120*i,y+134,1.5,1.5,0,c_white,1)
+				draw_sprite_ext(spr_star_slot, get_gem_level(gem_list[i])-1, x+215+120*i, y+134, 0.75, 0.75, 0, c_white, 1)
 			}
 		}
 	}
@@ -231,9 +300,9 @@ for(var i = deck_first_slot_index; i < deck_first_slot_index+11;i++){
 		var gem_list = global.save_data.equipped_items.secondary_weapon.gems
 		for(var i = 0 ; i < array_length(gem_list);i++){
 			var gem_icon = get_gem_info(gem_list[i]).icon
-			draw_sprite_ext(gem_icon,0,x+240+120*i,y+260,1.6,1.6,0,c_white,1)
+			draw_sprite_ext(gem_icon,0,x+240+120*i,y+260,0.8,0.8,0,c_white,1)
 			if get_gem_level(gem_list[i]) > 0{
-				draw_sprite_ext(spr_star_slot,get_gem_level(gem_list[i])-1,x+215+120*i,y+234,1.5,1.5,0,c_white,1)
+				draw_sprite_ext(spr_star_slot, get_gem_level(gem_list[i])-1, x+215+120*i, y+234, 0.75, 0.75, 0, c_white, 1)
 			}
 		}
 	}
@@ -243,9 +312,9 @@ for(var i = deck_first_slot_index; i < deck_first_slot_index+11;i++){
 		var gem_list = global.save_data.equipped_items.super_weapon.gems
 		for(var i = 0 ; i < array_length(gem_list);i++){
 			var gem_icon = get_gem_info(gem_list[i]).icon
-			draw_sprite_ext(gem_icon,0,x+240+120*i,y+360,1.6,1.6,0,c_white,1)
+			draw_sprite_ext(gem_icon,0,x+240+120*i,y+360,0.8,0.8,0,c_white,1)
 			if get_gem_level(gem_list[i]) > 0{
-				draw_sprite_ext(spr_star_slot,get_gem_level(gem_list[i])-1,x+215+120*i,y+334,1.5,1.5,0,c_white,1)
+				draw_sprite_ext(spr_star_slot, get_gem_level(gem_list[i])-1, x+215+120*i, y+334, 0.75, 0.75, 0, c_white, 1)
 			}
 		}
 	}

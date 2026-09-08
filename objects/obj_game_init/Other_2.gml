@@ -23,6 +23,7 @@ task_init()
 map_object_init()
 attire_init()
 //battle_event_init()
+cookbook_init()
 randomise()
 
 // 全局植物注册表
@@ -163,6 +164,9 @@ unlock_card("rig",16,3,8)
 //	unlock_card("curry_lobster_cannon",13,2,8)
 //	unlock_card("soda_bubble",13,1,8)
 //	unlock_card("horseshoe_crab_bread",13,1,8)
+//	unlock_card("sugar_ball_pult",13,2,8)
+//	unlock_card("pizza_oven",13,2,8)
+//	unlock_card("fruit_tart",13,2,8)
 	
 //	global.save_data.player.gold = 99000000
 //	global.save_data.player.level = 60
@@ -234,6 +238,9 @@ unlock_card("rig",16,3,8)
 //	set_material_amount("royal_spices",999999999)
 //	set_material_amount("clover_4",999999999)
 //	set_material_amount("advanced_crystal",999999999)
+//	set_material_amount("copper_cookbook_fragment",2)
+//	set_material_amount("silver_cookbook_fragment",2)
+//	set_material_amount("gold_cookbook_fragment",2)
 //	global.save_data.unlocked_items.elite_unlocked = true
 	
 //}
