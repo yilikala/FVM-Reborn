@@ -11625,36 +11625,36 @@
     ],
     "rewards": [
         {
-            "gold": 12000.0,
+            "gold": 40000.0,
             "items": [
                 {
                     "id": "secret_spices",
-                    "amount": 600.0
+                    "amount": 80.0
                 },
                 {
                     "id": "middle_crystal",
-                    "amount": 500.0
+                    "amount": 40.0
                 },
                 {
-                    "id": "clover_2",
-                    "amount": 3.0
+                    "id": "clover_3",
+                    "amount": 5.0
                 }
             ]
         },
         {
-            "gold": 12000.0,
+            "gold": 40000.0,
             "items": [
                 {
                     "id": "secret_spices",
-                    "amount": 600.0
+                    "amount": 80.0
                 },
                 {
                     "id": "middle_crystal",
-                    "amount": 500.0
+                    "amount": 40.0
                 },
                 {
-                    "id": "clover_2",
-                    "amount": 3.0
+                    "id": "clover_3",
+                    "amount": 5.0
                 }
             ],
             "card_unlock": ["sugar_ball_pult"],
@@ -11676,4 +11676,4 @@
             "mouse_amount": 1.0
         }
     ]
-} 
+}

@@ -4,25 +4,9 @@ if global.is_paused{
 
 event_inherited();
 
-var current_flash_speed = flash_speed
-if is_slowdown{
-	current_flash_speed *= 2
-}
-
-// 变身倒计时
-if transform_timer > 0 {
-	transform_timer--
-}
-
-if shape >= 1 && transform_timer <= 55 && !exploded {
-	exploded = true
-	audio_play_sound(snd_coke_bomb_explode, 0, false);
-	event_user(1)
-}
-
-
-// 变身完成：复制上一张放置的卡片
-if transform_timer <= 0 && !is_derivative {
+// 动画第14帧：创造复制体
+if !copied && !is_derivative && image_index >= 14 {
+	copied = true
 	var _blacklist = ["brahma", "magic_chicken", "ice_cream"]
 	var _copy_count = 2
 	if shape == 2 { _copy_count = 3 }
@@ -42,7 +26,7 @@ if transform_timer <= 0 && !is_derivative {
 		var _copy_feature_type = card_slot_data[? "feature_type"]
 		var _copy_target_card = card_slot_data[? "target_card"]
 
-		// 第一个复制体直接放在brahma自身格位（复制后即自毁，格子必然可用）
+		// 第一个复制体直接放在brahma自身格位（动画结束后即自毁，格子必然可用）
 		var target_cells = [[grid_col, grid_row]]
 		var found_count = 1
 
@@ -111,8 +95,16 @@ if transform_timer <= 0 && !is_derivative {
 
 		global.replace_placement = prev_replace
 	}
-
-	// 复制完成后自毁
-	instance_destroy()
 }
 
+// 动画第22帧：触发灰烬爆炸伤害
+if shape >= 1 && !exploded && image_index >= 22 {
+	exploded = true
+	audio_play_sound(snd_coke_bomb_explode, 0, false);
+	event_user(1)
+}
+
+// 动画结束：立即销毁自身
+if image_index >= idle_anim {
+	instance_destroy()
+}

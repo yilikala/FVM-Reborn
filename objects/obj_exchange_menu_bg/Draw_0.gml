@@ -8,7 +8,7 @@ function draw_recipe(_cx, _cy, _r){
 	// 消耗材料图标
 	if _r.cost_item_id != ""{
 		var _info = get_material_info(_r.cost_item_id)
-		draw_sprite_ext(spr_craft_material, _info.icon, _cx - 203, _cy - 3, 1.9, 1.9, 0, c_white, 1)
+		draw_sprite_ext(spr_craft_material, _info.icon, _cx - 203, _cy - 3, 0.95, 0.95, 0, c_white, 1)
 		draw_set_colour(c_white)
 		draw_set_font(font_number)
 		draw_set_halign(fa_middle)
@@ -21,7 +21,7 @@ function draw_recipe(_cx, _cy, _r){
 	// 产物图标
 	if _r.reward_item_id != ""{
 		var _info = get_material_info(_r.reward_item_id)
-		draw_sprite_ext(spr_craft_material, _info.icon, _cx + 88, _cy - 3, 1.9, 1.9, 0, c_white, 1)
+		draw_sprite_ext(spr_craft_material, _info.icon, _cx + 88, _cy - 3, 0.95, 0.95, 0, c_white, 1)
 		draw_set_colour(c_white)
 		draw_set_font(font_number)
 		draw_set_halign(fa_left)

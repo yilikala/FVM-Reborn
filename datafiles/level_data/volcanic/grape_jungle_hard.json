@@ -3311,20 +3311,20 @@
     ],
     "rewards": [
         {
-            "gold": 8000.0,
+            "gold": 25000.0,
             "items": [
                 {
                     "id": "royal_spices",
-                    "amount": 1800.0
+                    "amount": 45.0
                 }
             ]
         },
         {
-            "gold": 8000.0,
+            "gold": 25000.0,
             "items": [
                 {
                     "id": "royal_spices",
-                    "amount": 1800.0
+                    "amount": 45.0
                 },
                 {
                     "id": "silver_cookbook_fragment",
@@ -3339,4 +3339,4 @@
         }
     ],
     "events": []
-} 
+}

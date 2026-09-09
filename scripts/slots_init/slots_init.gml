@@ -436,27 +436,27 @@ function slots_init(){
 		{"shape":3, "sprite":spr_aurora_3, "cost":190, "cooldown":1800, "description":"至尊曙光女神：为本行及相邻行投掷类卡片增伤，死亡后爆炸","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1,"place_preview":spr_aurora_3}
 	])
 	register_card("brahma", obj_brahma, [
-	    {"shape":0, "sprite":spr_brahma, "cost":325, "cooldown":55*60, "description":"梵天神使：变身出多个上一次种下的卡片","plant_type":"coffee","feature_type":"normal","target_card":"none","is_gold":1},
-		{"shape":1, "sprite":spr_brahma_1, "cost":325, "cooldown":55*60, "description":"梵天圣神：变身出多个上一次种下的卡片","plant_type":"coffee","feature_type":"normal","target_card":"none","is_gold":1},
-		{"shape":2, "sprite":spr_brahma_2, "cost":325, "cooldown":55*60, "description":"创造神·梵天：变身出多个上一次种下的卡片","plant_type":"coffee","feature_type":"normal","target_card":"none","is_gold":1},
-		{"shape":3, "sprite":spr_brahma_3, "cost":325, "cooldown":55*60, "description":"至尊创造神：变身出多个上一次种下的卡片","plant_type":"coffee","feature_type":"normal","target_card":"none","is_gold":1}
+	    {"shape":0, "sprite":spr_brahma, "cost":325, "cooldown":55*60, "description":"梵天神使：变身出多个上一次种下的卡片","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+		{"shape":1, "sprite":spr_brahma_1, "cost":325, "cooldown":55*60, "description":"梵天圣神：变身出多个上一次种下的卡片","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+		{"shape":2, "sprite":spr_brahma_2, "cost":325, "cooldown":55*60, "description":"创造神·梵天：变身出多个上一次种下的卡片","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+		{"shape":3, "sprite":spr_brahma_3, "cost":325, "cooldown":55*60, "description":"至尊创造神：变身出多个上一次种下的卡片","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1}
 	]);
 	register_card("gaia", obj_gaia, [
-	    {"shape":0, "sprite":spr_gaia, "cost":350, "cooldown":35*60, "description":"盖亚神使：双连发射3*3范围爆炸的毁灭巨石","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
-		{"shape":1, "sprite":spr_gaia_1, "cost":350, "cooldown":35*60, "description":"盖亚圣神：双连发射3*3范围爆炸的毁灭巨石","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
-		{"shape":2, "sprite":spr_gaia_2, "cost":350, "cooldown":35*60, "description":"大地女神·盖亚：三连发射3*3范围爆炸的毁灭巨石","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
-		{"shape":3, "sprite":spr_gaia_3, "cost":350, "cooldown":35*60, "description":"至尊大地女神：三连发射5*5范围爆炸的毁灭巨石","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1}
+	    {"shape":0, "sprite":spr_gaia, "cost":350, "cooldown":35*60, "description":"盖娅神使：抛射出范围爆炸的毁灭巨石","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+		{"shape":1, "sprite":spr_gaia_1, "cost":350, "cooldown":35*60, "description":"盖娅圣神：抛射出范围爆炸的毁灭巨石","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+		{"shape":2, "sprite":spr_gaia_2, "cost":350, "cooldown":35*60, "description":"大地女神·盖娅：抛射出范围爆炸的毁灭巨石","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+		{"shape":3, "sprite":spr_gaia_3, "cost":350, "cooldown":35*60, "description":"至尊大地女神：抛射出范围爆炸的毁灭巨石","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1}
 	]);
 	register_card("zhurong", obj_zhurong, [
-	    {"shape":0, "sprite":spr_zhurong, "cost":245, "cooldown":7*60, "description":"祝融神使：点燃前方3x3区域，持续灼烧敌人","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
-	    {"shape":1, "sprite":spr_zhurong_1, "cost":245, "cooldown":7*60, "description":"祝融圣神：点燃前方3x3区域，持续灼烧敌人","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
-		{"shape":2, "sprite":spr_zhurong_2, "cost":245, "cooldown":7*60, "description":"赤帝·祝融：点燃前方5x5区域，持续灼烧敌人","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
-		{"shape":3, "sprite":spr_zhurong_3, "cost":245, "cooldown":7*60, "description":"至尊赤帝：点燃前方7x5区域，持续灼烧敌人","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1}
+	    {"shape":0, "sprite":spr_zhurong, "cost":245, "cooldown":7*60, "description":"祝融神使：投掷一枚高温火球，持续灼烧敌人","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":1, "sprite":spr_zhurong_1, "cost":245, "cooldown":7*60, "description":"祝融圣神：投掷一枚高温火球，持续灼烧敌人","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+		{"shape":2, "sprite":spr_zhurong_2, "cost":245, "cooldown":7*60, "description":"赤帝·祝融：投掷一枚高温火球，持续灼烧敌人","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+		{"shape":3, "sprite":spr_zhurong_3, "cost":245, "cooldown":7*60, "description":"至尊赤帝：投掷一枚高温火球，持续灼烧敌人","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1}
 	]);
 	register_card("rig", obj_rig, [
-	    {"shape":0, "sprite":spr_rig, "cost":185, "cooldown":7*60, "description":"里格神使：前方5方向发射穿透子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
-	    {"shape":1, "sprite":spr_rig_1, "cost":260, "cooldown":7*60, "description":"里格圣神：前方5方向发射穿透子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
-		{"shape":2, "sprite":spr_rig_2, "cost":260, "cooldown":7*60, "description":"守护神·里格：前方5方向发射穿透子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
-		{"shape":3, "sprite":spr_rig_icon_3, "cost":260, "cooldown":7*60, "description":"至尊守护神：前方5方向发射穿透子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1,"place_preview":spr_rig_3}
+	    {"shape":0, "sprite":spr_rig, "cost":185, "cooldown":7*60, "description":"里格神使：向前方5个方向发射穿透子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+	    {"shape":1, "sprite":spr_rig_1, "cost":260, "cooldown":7*60, "description":"里格圣神：向前方5个方向发射穿透子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+		{"shape":2, "sprite":spr_rig_2, "cost":260, "cooldown":7*60, "description":"守护神·里格：向前方5个方向发射穿透子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1},
+		{"shape":3, "sprite":spr_rig_icon_3, "cost":260, "cooldown":7*60, "description":"至尊守护神：向前方5个方向发射穿透子弹","plant_type":"normal","feature_type":"normal","target_card":"none","is_gold":1,"place_preview":spr_rig_3}
 	]);
 }

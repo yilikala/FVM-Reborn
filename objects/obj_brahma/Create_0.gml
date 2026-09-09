@@ -24,10 +24,7 @@ current_hp = hp
 can_mouse_list = ["can_mouse"]
 exploded = false
 is_derivative = false
-
-
-var total_frames = sprite_get_number(sprite_index);
-transform_timer = total_frames * flash_speed
+copied = false
 
 // 记录上一张放置的卡片id，用于复制
 target_card = global.prev_place_id

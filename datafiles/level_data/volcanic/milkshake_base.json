@@ -2522,21 +2522,21 @@
     ],
     "rewards": [
         {
-            "gold": 12000.0,
+            "gold": 40000.0,
             "items": [
                 {
-                    "id": "royal_spices",
-                    "amount": 3600
+                    "id": "magical_spices",
+                    "amount": 30
                 }
             ]
         },
         {
             "skill_level": 0.0,
-            "gold": 12000.0,
+            "gold": 40000.0,
             "items": [
                 {
-                    "id": "royal_spices",
-                    "amount": 3600
+                    "id": "magical_spices",
+                    "amount": 30
                 },
                 {
                     "id": "gold_cookbook_fragment",
@@ -2550,4 +2550,4 @@
         }
     ],
     "events": []
-} 
+}

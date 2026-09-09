@@ -73,41 +73,46 @@ function material_init(){
 	register_material("clover_SSS",{"name":"SSS四叶草",
 										"description":"SSS四叶草：提升强化概率至3.6倍",
 										"icon":14,
-										"pos_x":0,
-										"pos_y":2}) //
+										"pos_x":8,
+										"pos_y":1}) //
 	register_material("clover_SSR",{"name":"SSR四叶草",
 										"description":"SSR四叶草：提升强化概率至4倍",
 										"icon":15,
-										"pos_x":1,
+										"pos_x":0,
 										"pos_y":2}) //
 	register_material("less_crystal",{"name":"初级强化水晶",
 										"description":"初级强化水晶：强化1~5星宝石所需材料",
 										"icon":16,
-										"pos_x":0,
-										"pos_y":3})
+										"pos_x":1,
+										"pos_y":2})
 	register_material("middle_crystal",{"name":"中级强化水晶",
 										"description":"中级强化水晶：强化6~10星宝石所需材料",
 										"icon":17,
-										"pos_x":1,
-										"pos_y":3})
+										"pos_x":2,
+										"pos_y":2})
 	register_material("advanced_crystal",{"name":"高级强化水晶",
 										"description":"高级强化水晶：强化11~15星宝石所需材料",
 										"icon":18,
-										"pos_x":2,
-										"pos_y":3})
+										"pos_x":3,
+										"pos_y":2})
 	register_material("copper_cookbook_fragment",{"name":"铜食谱碎片",
 										"description":"铜食谱碎片：解锁上等佳肴槽位所需材料",
-										"icon":10,
+										"icon":19,
 										"pos_x":0,
 										"pos_y":3})
 	register_material("silver_cookbook_fragment",{"name":"银食谱碎片",
 										"description":"银食谱碎片：解锁秘制佳肴槽位所需材料",
-										"icon":11,
+										"icon":20,
 										"pos_x":1,
 										"pos_y":3})
 	register_material("gold_cookbook_fragment",{"name":"金食谱碎片",
 										"description":"金食谱碎片：解锁极品佳肴槽位所需材料",
-										"icon":12,
+										"icon":21,
 										"pos_x":2,
+										"pos_y":3})
+	register_material("magic_cookbook_fragment",{"name":"魔法食谱碎片",
+										"description":"魔法食谱碎片：解锁魔法佳肴槽位所需材料",
+										"icon":22,
+										"pos_x":3,
 										"pos_y":3})
 }

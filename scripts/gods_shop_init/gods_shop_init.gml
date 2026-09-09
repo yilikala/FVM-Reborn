@@ -68,4 +68,5 @@ function gods_shop_init(){
 	register_gods_goods("ss_clover", {"type":"item","cost":"2","unlock_item_id":"clover_SS","description":"SS四叶草：提升强化概率至3.3倍","display_name":"SS四叶草","spr":spr_craft_material,"spr_index":13})
 	register_gods_goods("sss_clover", {"type":"item","cost":"4","unlock_item_id":"clover_SSS","description":"SSS四叶草：提升强化概率至3.6倍","display_name":"SSS四叶草","spr":spr_craft_material,"spr_index":14})
 	register_gods_goods("sssr_clover", {"type":"item","cost":"8","unlock_item_id":"clover_SSR","description":"SSR四叶草：提升强化概率至4倍","display_name":"SSR四叶草","spr":spr_craft_material,"spr_index":15})
+	register_gods_goods("magic_cookbook_fragment", {"type":"item","cost":"88","unlock_item_id":"magic_cookbook_fragment","description":"魔法食谱碎片：解锁魔法佳肴槽位所需材料","display_name":"魔法食谱碎片","spr":spr_craft_material,"spr_index":22})
 }

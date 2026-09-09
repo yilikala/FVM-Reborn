@@ -163,7 +163,7 @@ function reset_file(file_slot){
 			],
 			"completed_tasks":[],
 			"attires":[],
-			"deck_order":[]
+			"deck_order":[],
 			"equipped_cookbook":[[],[],[]]
         };
 	save_file(file_slot)
